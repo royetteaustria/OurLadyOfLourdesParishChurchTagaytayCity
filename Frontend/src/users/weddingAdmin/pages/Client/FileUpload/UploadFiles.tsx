@@ -41,19 +41,20 @@ const UploadFiles = () => {
 
   const handleFileChange = (e: any, fieldName: string) => {
     const file = e.target.files[0];
-  const isImageFile = file.type.startsWith('image/') && !file.type.endsWith('svg+xml');
-  const isPDFFile = file.type === 'application/pdf';
-
-  if (isImageFile || isPDFFile) {
-    setData({
-      ...data,
-      [fieldName]: file,
-    });
-  } else {
-    // Show an error message or reset the file input
-    toast.error('Please select an image or PDF file.');
-    e.target.value = null; // Reset the file input
-  }
+    const isPNGFile = file.type === 'image/png';
+    const isJPGFile = file.type === 'image/jpeg';
+    const isPDFFile = file.type === 'application/pdf';
+  
+    if (isJPGFile || isPDFFile && !isPNGFile) {
+      setData({
+        ...data,
+        [fieldName]: file,
+      });
+    } else {
+      // Show an error message or reset the file input
+      toast.error('Please select a JPG or PDF file.');
+      e.target.value = null; // Reset the file input
+    }
   };
 
   const upload = async (e: FormEvent) => {
@@ -160,7 +161,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       placeholder=""
                       name="FirstPaymentReciept"
                       
@@ -176,7 +178,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       placeholder=""
                       name="SecondPaymentReciept"
                       onChange={(e) =>
@@ -226,7 +229,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Baptismal_Certificate"
                       onChange={(e) =>
                         handleFileChange(e, "Groom_Baptismal_Certificate")
@@ -241,7 +245,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Groom_Confirmation_Certificate"
                         onChange={(e) =>
                           handleFileChange(e, "Groom_Confirmation_Certificate")
@@ -258,7 +263,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Groom_Birth_Certificate"
                         onChange={(e) =>
                           handleFileChange(e, "Groom_Birth_Certificate")
@@ -275,7 +281,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Groom_CeNomar_Civil_Married"
                         onChange={(e) =>
                           handleFileChange(e, "Groom_CeNomar_Civil_Married")
@@ -292,7 +299,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Groom_Cannonical_Application"
                         onChange={(e) =>
                           handleFileChange(e, "Groom_Cannonical_Application")
@@ -310,7 +318,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Id_Picture"
                       onChange={(e) => handleFileChange(e, "Groom_Id_Picture")}
                     />
@@ -324,7 +333,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Marriage_Banns"
                       // value={Groom_Baptismal_Certificate}
                       onChange={(e) =>
@@ -342,7 +352,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Banns_Reply"
                       // value={Groom_Baptismal_Certificate}
                       onChange={(e) => handleFileChange(e, "Groom_Banns_Reply")}
@@ -358,7 +369,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Pre_Cana"
                       // value={Groom_Baptismal_Certificate}
                       onChange={(e) => handleFileChange(e, "Groom_Pre_Cana")}
@@ -374,7 +386,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Groom_Marriage_Contract"
                       // value={Groom_Baptismal_Certificate}
                       onChange={(e) =>
@@ -426,7 +439,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Baptismal_Certificate"
                       onChange={(e) =>
                         handleFileChange(e, "Bride_Baptismal_Certificate")
@@ -441,7 +455,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Bride_Confirmation_Certificate"
                         onChange={(e) =>
                           handleFileChange(e, "Bride_Confirmation_Certificate")
@@ -458,7 +473,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Bride_Birth_Certificate"
                         onChange={(e) =>
                           handleFileChange(e, "Bride_Birth_Certificate")
@@ -475,7 +491,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Bride_CeNomar_Civil_Married"
                         onChange={(e) =>
                           handleFileChange(e, "Bride_CeNomar_Civil_Married")
@@ -492,7 +509,8 @@ const UploadFiles = () => {
                       <input
                         className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/jpeg,.pdf"
+                        
                         name="Bride_Cannonical_Application"
                         onChange={(e) =>
                           handleFileChange(e, "Bride_Cannonical_Application")
@@ -510,7 +528,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Id_Picture"
                       onChange={(e) => handleFileChange(e, "Bride_Id_Picture")}
                     />
@@ -524,7 +543,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Marriage_Banns"
                       // value={Bride_Baptismal_Certificate}
                       onChange={(e) =>
@@ -542,7 +562,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Banns_Reply"
                       // value={Bride_Baptismal_Certificate}
                       onChange={(e) => handleFileChange(e, "Bride_Banns_Reply")}
@@ -558,7 +579,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Pre_Cana"
                       // value={Bride_Baptismal_Certificate}
                       onChange={(e) => handleFileChange(e, "Bride_Pre_Cana")}
@@ -574,7 +596,8 @@ const UploadFiles = () => {
                     <input
                       className="border border-dashed border-primary  text-primary w-full p-4 text-center mb-2 justify-center"
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/jpeg,.pdf"
+                      
                       name="Bride_Marriage_Contract"
                       // value={Bride_Baptismal_Certificate}
                       onChange={(e) =>
