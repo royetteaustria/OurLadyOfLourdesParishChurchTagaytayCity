@@ -1,0 +1,186 @@
+
+      ghfdsjakfdguskdbfuidsvbfjhdsb
+
+
+      import Calendar from 'react-calendar';
+import './Calendar.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { add } from 'date-fns';
+import NoAvailable from '../../components/other/NoAvailable';
+
+type picker = {
+  date?: date | null;
+  time: string[];
+};
+
+type pickerProps = picker & {
+  updateFields: (fields: Partial<picker>) => void;
+};
+
+interface DateType {
+  justDate: Date | null;
+  dateTime: Date | null;
+}
+
+export function DatePicker({ date, time, updateFields }: pickerProps) {
+  const [araw, setAraW] = useState<DateType>({
+    justDate: null,
+    dateTime: null,
+  });
+
+  const [data, setData] = useState<picker[]>([]);
+  const [showAvailableTimes, setShowAvailableTimes] = useState(false);
+  
+  useEffect(() => {
+    async function getTimeDate() {
+      const res = await axios.get(import.meta.env.VITE_CREATE_DATEPICKER_INQURIES);
+      console.log(res.data)
+      setData(res.data);
+    }
+    getTimeDate();
+  }, []);
+
+  const availableTimes = araw.justDate
+    ? data
+        .filter((item) => {
+          const itemDate = new Date(item.date);
+          return itemDate.toDateString() === araw.justDate?.toDateString();
+        })
+        .map((item, index) => (
+          // Map over each time in the item.time array
+          item.time.map((timeItem, timeIndex) => (
+            <button
+              className='bg-white text-primary border border-primary hover:bg-primary hover:text-white p-2 rounded-sm'
+              key={timeIndex}
+              onClick={() => updateFields({ time: [timeItem] })} // Update to single item array
+            >
+              {timeItem}
+            </button>
+          ))
+        ))
+    : null;
+
+    const noAvailableSlotsMessage = availableTimes && availableTimes.length === 0 ? (
+      <div data-aos="fade-right">
+        <p className='text-black pl-4' >No available slots for this date <br /><span className='text-sm text-danger'>Note: Do not go to the office if have no available slot for this date</span></p>
+      </div>
+      
+    ) : null;
+
+  const handleCalendarClick = (date: Date) => {
+    setAraW({ justDate: date, dateTime: add(date, { hours: 12 }) });
+    setShowAvailableTimes(true);
+  };
+
+  return (
+    <>
+      <div className="flex relative flex-col justify-center items-center">
+        {data.length > 0 ? 
+        <><div className="p-4 text-black font-medium mb-4 text-lg">
+            <h1>Select Date and Time of Wedding</h1>
+          </div><div className="flex gap-4 w-full items-center justify-center">
+              <Calendar
+                minDate={new Date()}
+                className="React-Calendar p-2"
+                view="month"
+                onClickDay={(date) => handleCalendarClick(date)}
+                value={date ? new Date(date) : null}
+                onChange={(date) => updateFields({ date: date ? date.toString() : null })} />
+            </div>
+            {showAvailableTimes && <div className="flex flex-col mt-2">
+                {availableTimes}
+                {noAvailableSlotsMessage}
+            </div>}</> : 
+            <div><NoAvailable/></div>}
+      </div>
+    </>
+  );
+}
+
+export default DatePicker;
+
+
+
+
+
+fjdifhudsifhi
+
+
+import { useState, useEffect } from "react";
+import ReactDatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { TbCalendarSearch } from "react-icons/tb";
+import axios from "axios";
+import NoAvailable from "../../components/other/NoAvailable";
+
+interface AvailableDate {
+  start: Date;
+  updateFields: (fields: Partial<FormData>) => void;
+  // You can add other properties here if needed
+}
+
+export function DatePicker() {
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [availableDates, setAvailableDates] = useState<AvailableDate[]>([]);
+  const [filteredDates, setFilteredDates] = useState<AvailableDate[]>([]);
+
+  useEffect(() => {
+    fetchAvailableDates();
+  }, []);
+
+  const fetchAvailableDates = () => {
+    axios.get<AvailableDate[]>("http://localhost:5000/api/CalendarReservation/available-dates")
+      .then(response => {
+        setAvailableDates(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching available dates:', error);
+      });
+  };
+
+  const handleDateChange = (date: Date | null) => {
+    setStartDate(date);
+    if (date) {
+      const filteredDates = availableDates.filter(d => new Date(d.start).toDateString() === date.toDateString());
+      setFilteredDates(filteredDates);
+    } else {
+      setFilteredDates([]);
+    }
+  };
+
+  return (
+    <>
+      <div className='p-4 w-full'>
+        <div className='w-full grid p-4 bg-white '>
+          <div className="mr-12 flex justify-center">
+            <h1 className="text-lg font-md text-black m-2 mr-4 mb-5">Search date</h1>
+            <ReactDatePicker
+              className="ring-1 ring-primary"
+              placeholderText="Search date"
+              selected={startDate}
+              onChange={(date : Date | null) => handleDateChange(date)}
+              minDate={new Date()}
+            />
+          </div>
+          <div className=" bg-white p-4 flex justify-between items-center w-full">
+            {filteredDates.length === 0 ? (
+              <div className="flex justify-center items-center w-full h-full">
+              <NoAvailable/>
+            </div>
+            ) : (
+              <ul className="w-full">
+                {filteredDates.map((date, index) => (
+                  <li data-aos="fade-right" className="bg-white shadow-md p-4 m-4 w-full flex justify-between text-black font-medium" key={index}>{date.start.toString()}<span> <button className="bg-primary rounded-md p-2 text-white ml-4 justify-end">Get this date</button></span></li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default DatePicker;
+

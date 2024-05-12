@@ -1,0 +1,22 @@
+.rbc-header {
+  background: #3C50E0;
+  color: white;
+  padding: 4px;
+  font-weight: normal;
+}
+
+.rbc-event {
+  padding: 0 !important;
+  font-size: 16px;
+}
+
+.rbc-event-label {
+  display: none !important;
+
+}
+
+.rbc-events-container {
+  /* background-color: blueviolet !important; */
+}
+
+
