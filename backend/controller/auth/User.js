@@ -68,7 +68,14 @@ const registerUser = asyncHandler(async (req, res) => {
            <p>Email: ${UserEmail}</p>`
   };
 
+  
   const { username, email, password, role, status } = req.body;
+  const passwordRegex = /^(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  if (!passwordRegex.test(password)) {
+    res.status(400);
+    throw new Error("Password must be at least 8 characters long and contain at least 1 number and 1 special character.");
+  }
 
   if (role === "System Administrator") {
     const systemAdminExists = await checkSystemAdminExists();
@@ -654,7 +661,14 @@ const forgotPassword = asyncHandler(async (req, res) => {
 const resetPassword = (req, res) => {
   const { id, token } = req.params;
   const { password } = req.body;
+  // Regular expression for password validation
+  const passwordRegex = /^(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
+  // Validate password
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({ status: "Error", message: "Password must be at least 8 characters long and contain at least 1 number and 1 special character." });
+  }
+  
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.json({ Status: "Error with token" });

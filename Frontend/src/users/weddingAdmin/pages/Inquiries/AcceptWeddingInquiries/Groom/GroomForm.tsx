@@ -62,7 +62,7 @@ export function GroomForm({
       <div className="mx-auto w-91 px-2">
         <div className="grid grid-cols-1 gap-8">
           <div className="col-span-5 xl:col-span-3">
-            <div className="rounded-sm   bg-white ">
+            <div className="rounded-sm   bg-white dark:bg-transparent">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
                 <h3 className="font-medium text-black text-2xl py-4 dark:text-white">
                   Groom information

@@ -84,7 +84,7 @@ const WeddingClient = () => {
                   type="text"
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search client..."
-                  className="w-full bg-white bg-opacity dark:bg-boxdark rounded-sm h-10 pr-4 pl-9 focus:outline-none text-black"
+                  className="w-full bg-white bg-opacity dark:bg-boxdark rounded-sm h-10 pr-4 pl-9 focus:outline-none text-black dark:text-white"
                 />
               </div>
             </form>
@@ -118,8 +118,16 @@ const WeddingClient = () => {
                     return true;
                   }
                   const lowercaseSearch = search.toLowerCase();
-                  const lowercaseName = client.groomName.toLowerCase();
-                  return lowercaseName.includes(lowercaseSearch);
+                  const lowercaseGroomName = client.groomName.toLowerCase();
+                  const lowercaseBrideName = client.brideName.toLowerCase();
+                  const lowercaseGroomLastName = client.groomLastName.toLowerCase();
+                  const lowercaseBrideLastName = client.brideLastName.toLowerCase();
+                  const lowercaseWeddingStatus = client.weddingStatus.toLowerCase();
+                  return lowercaseGroomName.includes(lowercaseSearch) ||
+                  lowercaseBrideName.includes(lowercaseSearch) ||
+                  lowercaseGroomLastName.includes(lowercaseSearch) ||
+                  lowercaseBrideLastName.includes(lowercaseSearch) ||
+                  lowercaseWeddingStatus.includes(lowercaseSearch);
                 }).map((data, index) => (
                   <tr key={index}>
                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">

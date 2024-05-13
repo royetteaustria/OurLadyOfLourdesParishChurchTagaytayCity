@@ -81,7 +81,10 @@ const UpdateWeddingClient = () => {
                       >
                         <option value="Pending">Pending</option>
                         <option value="Cancel">Cancel</option>
-                        <option value="Complete">Complete</option>
+                        <option value="Complete"
+                        disabled={data.bridealreadyKumpil === 'No' || data.groomalreadyKumpil === 'No' || data.Bride_Cannonical_Interview === 'Pending' || data.bridealreadyBaptist === 'No' || data.groomalreadyBaptist === 'No' || data.groom_Cannonical_Interview === 'Pending'} 
+                        className={data.bridealreadyKumpil === 'No' || data.groomalreadyKumpil === 'No' || data.Bride_Cannonical_Interview === 'Pending' || data.bridealreadyBaptist === 'No' || data.groomalreadyBaptist === 'No' || data.groom_Cannonical_Interview === 'Pending' ? 'cursor-not-allowed' : 'cursor-pointer'}
+                        >Complete</option>
                       </select>
                     </div>
                   </div>

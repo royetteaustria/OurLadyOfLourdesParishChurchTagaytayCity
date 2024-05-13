@@ -20,6 +20,13 @@ const NewPass = () => {
     }
 
     try {
+      const passwordRegex = /^(?=.*[0-9])(?=.*[@#$%^&+=])(?=\S+$).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must be at least 8 characters long and contain at least one number and one special character."
+      );
+      return;
+    }
         const response = await axios.post(`http://localhost:5000/api/UserRoutes/reset-password/${id}/${token}`, { password });
         
         if (response.data.Status === "Success") {
