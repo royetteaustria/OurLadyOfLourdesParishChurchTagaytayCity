@@ -28,7 +28,7 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000
 app.use(cors({ 
-    origin: 'http://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app', 
+    origin: 'https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app', 
     credentials: true 
   }));
 
