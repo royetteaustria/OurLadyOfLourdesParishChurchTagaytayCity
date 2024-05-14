@@ -54,7 +54,7 @@ const Login = () => {
     }}
     >
         <div
-        data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" 
+        // data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" 
         className="flex flex-col items-center justify-center h-screen px-6 py-8 mx-auto lg:py-0">
           <div
           
