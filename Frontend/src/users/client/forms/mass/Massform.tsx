@@ -68,8 +68,8 @@ const Mass = () => {
 
   return (
     <>
-      <div className="flex flex-row h-screen py-12 justify-center">
-        <div className="w-1/2 relative">
+      <div className="flex flex-row h-screen lg:py-12 xl:py-12 md:py-8 justify-center">
+      <div className="w-1/2 relative hidden md:block">
           <Slider {...settings}>
             <div className="h-[40.5rem] relative">
               <img src={image1} alt="" className="h-full w-full object-cover blur-sm" />
@@ -120,7 +120,7 @@ const Mass = () => {
             </ul>
           </div>
         </div>
-        <div className="fixed-height-container  bg-white overflow-auto flex">
+        <div className="fixed-height-container bg-white overflow-auto flex w-full md:w-1/2">
           {formSubmitted ? (
             <Success onClose={() => setFormSubmitted(false)} />
           ) : (

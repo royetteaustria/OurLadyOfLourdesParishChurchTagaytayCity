@@ -55,7 +55,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
               Date of Baptismal
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
             {formatDateTime(data.dateofBaptismal ? data.dateofBaptismal : new Date())}
             </dd>
           </div>
@@ -64,7 +64,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
               Email
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.email}
             </dd>
           </div>
@@ -72,7 +72,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
               Phone Number
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.cellphoneNumber}
             </dd>
           </div>
@@ -80,7 +80,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
               Name
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.name}
             </dd>
           </div>
@@ -88,7 +88,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
               Last Name
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.lname}
             </dd>
           </div>
@@ -96,7 +96,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Birth date
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.dateofBirth}
             </dd>
           </div>
@@ -104,7 +104,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Birth Place
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.birthPlace}
             </dd>
           </div>
@@ -112,7 +112,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold dark:text-bodydark1 leading-6 text-black">
               Address
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.currentAddress}
             </dd>
           </div>
@@ -120,7 +120,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Baptismal Type
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.baptismalType}
             </dd>
           </div>
@@ -128,7 +128,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Father Name
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.fatherName}
             </dd>
           </div>
@@ -136,7 +136,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Father Birth place
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.fatherBirthOfPlace}
             </dd>
           </div>
@@ -144,7 +144,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Mother Name
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.motherName}
             </dd>
           </div>
@@ -152,7 +152,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Mother Birth Palce
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.motherBirthOfPlace}
             </dd>
           </div>
@@ -160,7 +160,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Place of married
             </dt>
-            <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">
+            <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.marriedPlace}
             </dd>
           </div>

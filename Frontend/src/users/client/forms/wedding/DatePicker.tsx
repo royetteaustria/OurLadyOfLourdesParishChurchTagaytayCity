@@ -84,12 +84,12 @@ export function DatePicker({updateFields} : AvailableDateProps) {
 
   return (
     <>
-      <div className='p-4 w-full md:py-8' data-aos="fade-right">
-        <div className='w-full grid p-4 bg-white '>
-          <div className="mr-12 flex justify-center md:justify-center ">
-            <h1 className="text-xl md:text-sm md:text-center font-md text-black m-2 mr-4 mb-5">Search date</h1>
+      <div className=' w-full md:py-8' data-aos="fade-right">
+        <div className='w-full grid  bg-white '>
+          <div className="mr-12 mt-8 px-8 overflow-hidden flex justify-center md:justify-center ">
+            <h1 className="text-xl ml-12 md:text-sm md:text-center mt-4 font-md text-black m-2 mr-4 mb-5">Search date</h1>
             <ReactDatePicker
-              className="ring-1 ring-primary md:w-24 text-lg xl:w-full font-medium text-black"
+              className="ring-1 ring-primary mt-2 xsm:w-24 lg:w-full font-medium text-black"
               placeholderText="Search date"
               selected={startDate}
               onChange={(date: Date | null) => handleDateChange(date)}

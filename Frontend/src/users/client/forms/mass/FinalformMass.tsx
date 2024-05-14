@@ -3,7 +3,7 @@ import Mass from './Massform'
 import background from '../../assets/Background.jpg'
 const FinalformMass = () => {
   return (
-    <div className='size-full flex bg-[#fbeede] px-12 border'
+    <div className='size-full flex bg-[#fbeede] lg:px-12 md:px-8 border'
     style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",

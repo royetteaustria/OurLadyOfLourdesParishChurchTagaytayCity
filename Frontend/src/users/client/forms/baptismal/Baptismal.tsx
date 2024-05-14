@@ -117,9 +117,9 @@ const Baptismal = () => {
   };
   return (
     <>
-      <div className="flex flex-row h-screen py-12 justify-center">
+      <div className="flex flex-row h-screen lg:py-12 xl:py-12 md:py-8 justify-center">
         {currentStepIndex !== 1 && (
-          <div className={"w-1/2 relative"}>
+          <div className="w-1/2 relative hidden md:block">
             <Slider {...settings}>
               <div className="h-[40.5rem] relative">
                 <img

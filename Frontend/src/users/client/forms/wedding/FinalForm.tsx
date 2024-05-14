@@ -7,7 +7,7 @@ import background from '../../assets/Background.jpg'
 const FinalForm = () => {
   return (
     <>
-    <div className='size-full flex bg-[#fbeede]  xl:px-8 lg:px-32 md:px-6'
+    <div className='size-full xl:px-8 lg:px-32 md:px-6'
     style={{
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
