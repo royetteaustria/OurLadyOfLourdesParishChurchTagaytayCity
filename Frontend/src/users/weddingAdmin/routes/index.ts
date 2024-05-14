@@ -36,12 +36,12 @@ const Requirements = lazy(() => import('../pages/Client/FileUpload/WedddingRequi
 const RequirementsInfo = lazy(() => import('../pages/Client/FileUpload/RequirementsInfo'))
 const UploadFiles = lazy(() => import('../pages/Client/FileUpload/UploadFiles'))
 const EditFiles = lazy(() => import('../pages/Client/FileUpload/EditFiles'))
-const BaptismalRequirements = lazy(() => import('../pages/Client/BaptismalReqFile/BaptismalRequirements'))
+// const BaptismalRequirements = lazy(() => import('../pages/Client/BaptismalReqFile/BaptismalRequirements'))
 
-const BaptismalRequirementsList = lazy(() => import('../pages/Client/BaptismalReqFile/BaptismalRequirememtsList'))
-const UpdateBaptismalReq = lazy(() => import('../pages/Client/BaptismalReqFile/UpdateBaptismalReq'))
+// const BaptismalRequirementsList = lazy(() => import('../pages/Client/BaptismalReqFile/BaptismalRequirememtsList'))
+// const UpdateBaptismalReq = lazy(() => import('../pages/Client/BaptismalReqFile/UpdateBaptismalReq'))
 
-const RequirementsInformation = lazy(() => import('../pages/Client/BaptismalReqFile/RequirementsInformation'))
+// const RequirementsInformation = lazy(() => import('../pages/Client/BaptismalReqFile/RequirementsInformation'))
 const coreRoutes = [
   // {
   //   path: '/weddingAdmin/BaptismalRequirementsInfo/:id',

@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react';
 import moment from 'moment';
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import toast from "react-hot-toast";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import toast from "react-hot-toast";
 
 interface Event {
   title: string;
@@ -19,23 +19,23 @@ interface ViewModalProps {
   onClose: () => void;
 }
 
-const ViewModal: React.FC<ViewModalProps> = ({ event, onDeleteEvent, onClose }) => {
-  const navigate = useNavigate();
+const ViewModal: React.FC<ViewModalProps> = ({ event, onClose }) => {
+  // const navigate = useNavigate();
 
-  const GoToEditEvent = () => {
-    navigate(`/systemAdmin/EditEvent/${event._id}`);
-  }
+  // const GoToEditEvent = () => {
+  //   navigate(`/systemAdmin/EditEvent/${event._id}`);
+  // }
 
-  async function handleDeleteEvent() {
-    try {
-      await axios.delete(`http://localhost:5000/api/Events/delete/${event._id}`);
-      toast.success('Successfully deleted');
-      onDeleteEvent(event._id);
-      onClose();
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function handleDeleteEvent() {
+  //   try {
+  //     await axios.delete(`http://localhost:5000/api/Events/delete/${event._id}`);
+  //     toast.success('Successfully deleted');
+  //     onDeleteEvent(event._id);
+  //     onClose();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   
   return (
     <Transition.Root show={!!event} as={Fragment}>

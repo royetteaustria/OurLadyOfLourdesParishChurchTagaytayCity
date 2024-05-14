@@ -1,12 +1,12 @@
 import FilterWeddingClient from "../../../../../weddingAdmin/components/filterClient/Filter";
 import axios from "axios"
 import { useState, useEffect } from 'react'
-import { GoEye } from "react-icons/go";
+// import { GoEye } from "react-icons/go";
 import Breadcrumb from "../../../../components/breadcrumbs/Breadcrum";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import NoClient from "../../../../../weddingAdmin/components/other/Noclient";
-import { FaRegEdit } from "react-icons/fa";
+// import { FaRegEdit } from "react-icons/fa";
 
 
 type WeddingClient = {

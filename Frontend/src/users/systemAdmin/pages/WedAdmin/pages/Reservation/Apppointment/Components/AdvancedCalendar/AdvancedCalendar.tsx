@@ -3,7 +3,7 @@ import Calendar from "../Calendar";
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Views } from "react-big-calendar";
-import ViewModal from "../ViewModal/ViewModal";
+// import ViewModal from "../ViewModal/ViewModal";
 
 const components = {
   event: (props: any) => {
@@ -21,7 +21,7 @@ const components = {
 
 const ControlCalendar: React.FC = () => {
   const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [, setSelectedEvent] = useState<any>(null);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/Events')
@@ -37,10 +37,10 @@ const ControlCalendar: React.FC = () => {
     setSelectedEvent(event);
   }
 
-  const handleDeleteEvent = (eventId: string) => {
-    setEvents(events.filter((e: any) => e._id !== eventId));
-    setSelectedEvent(null);
-  }
+  // const handleDeleteEvent = (eventId: string) => {
+  //   setEvents(events.filter((e: any) => e._id !== eventId));
+  //   setSelectedEvent(null);
+  // }
 
   return (
     <>

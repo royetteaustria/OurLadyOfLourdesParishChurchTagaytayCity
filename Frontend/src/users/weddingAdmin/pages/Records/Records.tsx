@@ -28,7 +28,7 @@ const Records = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [recordToDelete, setRecordToDelete] = useState<string | null>(null);
+  const [recordToDelete,] = useState<string | null>(null);
 
   function formatDateTime(date: Date | string) {
     if (typeof date === 'string') {
@@ -77,10 +77,10 @@ const Records = () => {
     setOpen(!open);
   };
 
-  const handleDeleteConfirmation = (recordId: string) => {
-    setRecordToDelete(recordId);
-    setShowModal(true);
-  };
+  // const handleDeleteConfirmation = (recordId: string) => {
+  //   setRecordToDelete(recordId);
+  //   setShowModal(true);
+  // };
 
   async function deleteRecord(id: string) {
     await axios.delete(`http://localhost:5000/api/WeddingRecords/deleteRecords/${id}`)

@@ -100,7 +100,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   pathname === '/' || pathname.includes('dashboard')
                 }
               >
-                {(handleClick, open) => {
+                {(_handleClick, open) => {
                   return (
                     <React.Fragment>
                       <NavLink

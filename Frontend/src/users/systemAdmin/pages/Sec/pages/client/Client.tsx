@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react'
-import { GoEye } from "react-icons/go";
-import { Link } from "react-router-dom";
+// import { GoEye } from "react-icons/go";
+// import { Link } from "react-router-dom";
 import FilterClient from "../../../../../secretary/components/FilterClient/FilterClient";
 import { CiSearch } from "react-icons/ci";
 import NoClient from "../../../../../secretary/components/other/Noclient";

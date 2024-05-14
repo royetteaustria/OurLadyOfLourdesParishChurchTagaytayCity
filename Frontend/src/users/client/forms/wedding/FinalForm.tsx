@@ -1,7 +1,7 @@
-import React from 'react'
-import FillOut from '../../assets/Fill out-amico.png'
+// import React from 'react'
+// import FillOut from '../../assets/Fill out-amico.png'
 import WeddingReserve from './WeddingReserve'
-import lourdes from '../../assets/5217466.jpg'
+// import lourdes from '../../assets/5217466.jpg'
 import background from '../../assets/Background.jpg'
 
 const FinalForm = () => {

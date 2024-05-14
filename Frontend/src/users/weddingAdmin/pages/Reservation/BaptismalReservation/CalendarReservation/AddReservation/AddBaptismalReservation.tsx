@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const AddBaptismal = () => {
   const [start, setStart] = useState<Date | null>(null);
   const [end, setEnd] = useState<Date | null>(null);
-  const [slot, setSlot] = useState<number>(0);
+  // const [slot, setSlot] = useState<number>(0);
   const [description, setDescription] = useState("Available");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false)
@@ -104,7 +104,7 @@ const AddBaptismal = () => {
     setIsLoading(true);
     // Loop through dates from start date to end date
     while (start <= endDate) {
-      const dayOfWeek = start.getDay();
+      // const dayOfWeek = start.getDay();
       const timeSlots = getTimeSlots(start);
   
       // Add reservations for valid days and time slots
@@ -252,7 +252,7 @@ const AddBaptismal = () => {
                   </div>
                   <span className="flex justify-end">
                     <button
-                      className={`bg-primary p-3 text-white w-full rounded-sm w-24 ${
+                      className={`bg-primary p-3 text-white rounded-sm w-24 ${
                         isLoading ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
                       disabled={isLoading}

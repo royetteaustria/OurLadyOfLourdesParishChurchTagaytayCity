@@ -17,7 +17,7 @@ type WeddingClient = {
 
 const BaptismalRequirementsList = () => {
   const [data, setData] = useState<WeddingClient[]>([]);
-  const [filterTextValue, updateFilterText] = useState("All");
+  const [filterTextValue,] = useState("All");
   const [search, setSearch] = useState("");
   
   const FilterClient = data.filter((client) => {

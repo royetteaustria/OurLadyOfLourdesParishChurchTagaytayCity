@@ -2,9 +2,9 @@ import BaptismalNoclient from '../../../../../weddingAdmin/components/other/Bapt
 import Breadcrumb from '../../../../components/breadcrumbs/Breadcrum';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
-import { GoEye } from 'react-icons/go';
+// import { GoEye } from 'react-icons/go';
 import { CiSearch } from 'react-icons/ci';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import FilterBaptismalClient from '../../../../../weddingAdmin/components/filterClient/FilterBaptismalClient';
 
 type BaptismalClient = {

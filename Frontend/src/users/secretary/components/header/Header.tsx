@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import DropdownNotification from '../dropdown/DropdownNotification';
+// import { Link } from 'react-router-dom';
+// import DropdownNotification from '../dropdown/DropdownNotification';
 import DarkModeSwitcher from '../Switcher/DarkModeSwitcher';
 import DropdownUser from '../dropdown/DropdownUser';
-import MaybeShowSearchbar from '../hideSeaRCH/MaybeShow';
+// import MaybeShowSearchbar from '../hideSeaRCH/MaybeShow';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;

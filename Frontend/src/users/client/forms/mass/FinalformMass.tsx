@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import Mass from './Massform'
 import background from '../../assets/Background.jpg'
 const FinalformMass = () => {

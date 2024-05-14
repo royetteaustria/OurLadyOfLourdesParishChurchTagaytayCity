@@ -1,12 +1,12 @@
-import { BsCheckLg } from 'react-icons/bs'
-import { GoEye } from "react-icons/go";
-import { MdCancel } from "react-icons/md";
+// import { BsCheckLg } from 'react-icons/bs'
+// import { GoEye } from "react-icons/go";
+// import { MdCancel } from "react-icons/md";
 import Breadcrumb from '../../../../components/breadcrumbs/Breadcrum';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 import BaptismalEmpty from '../../../../../weddingAdmin/components/other/BaptismalEmpty';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import RejectBaptismal from '../../../../../weddingAdmin/components/modal/RejectBaptismal/RejectBaptismal';
 
 type Baptismal_Inquiries = {
@@ -30,7 +30,7 @@ type Baptismal_Inquiries = {
 
 const baptismalInquiries = () => {
   const [data, setData] = useState<Baptismal_Inquiries[]>([])
-  const [inquireToDelete, setInquireToDelete] = useState<string | null>(null)
+  const [inquireToDelete, ] = useState<string | null>(null)
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -45,10 +45,10 @@ const baptismalInquiries = () => {
 
 
 
-  const handleInquieConfirmation = (inquireId: string) => {
-    setInquireToDelete(inquireId);
-    setShowModal(true);
-  };
+  // const handleInquieConfirmation = (inquireId: string) => {
+  //   setInquireToDelete(inquireId);
+  //   setShowModal(true);
+  // };
 
 
   async function deleteRecord(id: string) {

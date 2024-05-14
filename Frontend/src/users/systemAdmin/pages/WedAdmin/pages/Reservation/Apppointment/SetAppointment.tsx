@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { AdvancedCalendar } from "./Components"
 import Breadcrumb from "../../../../../components/breadcrumbs/Breadcrum"
-import {ControlCalendar} from "./Components"
+// import {ControlCalendar} from "./Components"
 
 const SetAppointment = () => {
   return (

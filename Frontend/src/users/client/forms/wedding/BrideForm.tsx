@@ -116,7 +116,7 @@ export function BrideForm({
                       required
                     />
                     {!isEmailNull && (
-                      <p className="text-danger text-sm text-sm mt-3 ml-2">
+                      <p className="text-danger text-sm mt-3 ml-2">
                         Email Address is required
                       </p>
                     )}
@@ -136,7 +136,7 @@ export function BrideForm({
                       required
                     />
                     {!isNumberNull && (
-                      <p className="text-danger text-sm text-sm mt-3 ml-2">
+                      <p className="text-danger text-sm mt-3 ml-2">
                         Cellphone number is required
                       </p>
                     )}

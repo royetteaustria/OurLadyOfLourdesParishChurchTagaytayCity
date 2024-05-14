@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Views } from 'react-big-calendar';
 import axios from 'axios';
 import Calendar from '../MainCalendar';
-import ViewModal from '../ViewModal/ViewModal';
+// import ViewModal from '../ViewModal/ViewModal';
 
 type Reservation = {
   _id: string;
@@ -17,12 +17,12 @@ function formatDateTime(date: Date | string) {
     date = new Date(date);
   }
 
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
+  // const monthNames = ["January", "February", "March", "April", "May", "June",
+  //   "July", "August", "September", "October", "November", "December"];
 
-  const day = date.getDate();
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
+  // const day = date.getDate();
+  // const month = monthNames[date.getMonth()];
+  // const year = date.getFullYear();
 
   const hours = date.getHours() % 12 || 12; // Get 12-hour format
   const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -51,7 +51,7 @@ const components = {
 
 const ControlCalendar: React.FC = () => {
   const [events, setEvents] = useState<Reservation[]>([]);
-  const [selectedEvent, setSelectedEvent] = useState<Reservation | null>(null);
+  const [, setSelectedEvent] = useState<Reservation | null>(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -78,10 +78,10 @@ const ControlCalendar: React.FC = () => {
   };
   
 
-  const handleDeleteEvent = (eventId: string) => {
-    setEvents(events.filter((e) => e._id !== eventId));
-    setSelectedEvent(null);
-  };
+  // const handleDeleteEvent = (eventId: string) => {
+  //   setEvents(events.filter((e) => e._id !== eventId));
+  //   setSelectedEvent(null);
+  // };
 
   return (
     <>

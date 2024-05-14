@@ -9,7 +9,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ allowedRoles, allowedPaths }: ProtectedRouteProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userRole, setUserRole] = useState('');
+  const [, setUserRole] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 

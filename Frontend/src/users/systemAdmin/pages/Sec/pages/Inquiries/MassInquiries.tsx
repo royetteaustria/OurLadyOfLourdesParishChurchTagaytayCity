@@ -2,9 +2,9 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 import EmptyInquiries from "../../../../../secretary/components/other/EmptyInquiries";
 import toast from 'react-hot-toast';
-import { GoEye } from "react-icons/go";
-import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom";
+// import { GoEye } from "react-icons/go";
+// import { MdCancel } from "react-icons/md";
+// import { Link } from "react-router-dom";
 import RejectMass from "../../../../../secretary/components/modal/RejectMassInquiry/RejectMass";
 import Breadcrumb from "../../../../components/breadcrumbs/Breadcrum";
 
@@ -20,7 +20,7 @@ type Mass_Inquiries = {
 const MassInquiries = () => {
   const [data, setData] = useState<Mass_Inquiries[]>([])
   const [showModal, setShowModal] = useState(false);
-  const [recordToDelete, setRecordToDelete] = useState<string | null>(null);
+  const [recordToDelete, ] = useState<string | null>(null);
 
   useEffect(() => {
     async function getInquiries() {
@@ -33,10 +33,10 @@ const MassInquiries = () => {
   }, [data.length])
 
 
-  const handleDeleteConfirmation = (recordId: string) => {
-    setRecordToDelete(recordId);
-    setShowModal(true);
-  };
+  // const handleDeleteConfirmation = (recordId: string) => {
+  //   setRecordToDelete(recordId);
+  //   setShowModal(true);
+  // };
 
 
   async function deleteRecord(id: string) {
@@ -70,24 +70,24 @@ const MassInquiries = () => {
     return `${month} ${day}, ${year} ${hours}:${minutes} ${amPm}`;
   }
 
-  function formatTime(date: Date | string) {
-    if (typeof date === 'string') {
-      date = new Date(date);
-    }
+  // function formatTime(date: Date | string) {
+  //   if (typeof date === 'string') {
+  //     date = new Date(date);
+  //   }
 
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"];
+  //   const monthNames = ["January", "February", "March", "April", "May", "June",
+  //     "July", "August", "September", "October", "November", "December"];
 
-    const day = date.getDate();
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
+  //   const day = date.getDate();
+  //   const month = monthNames[date.getMonth()];
+  //   const year = date.getFullYear();
 
-    const hours = date.getHours() % 12 || 12; // Get 12-hour format
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+  //   const hours = date.getHours() % 12 || 12; // Get 12-hour format
+  //   const minutes = date.getMinutes().toString().padStart(2, '0');
+  //   const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-    return ` ${hours}:${minutes} ${amPm}`;
-  }
+  //   return ` ${hours}:${minutes} ${amPm}`;
+  // }
   
   return (
     <>

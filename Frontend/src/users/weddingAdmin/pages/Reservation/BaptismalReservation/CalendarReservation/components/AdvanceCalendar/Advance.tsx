@@ -4,7 +4,7 @@ import { Views } from "react-big-calendar";
 import axios from "axios";
 import Calendar from "../MainCalendar";
 import ViewModal from "../ViewModal/ViewModal";
-import getHolidays from "../../holidays/getHolidays";
+// import getHolidays from "../../holidays/getHolidays";
 
 type Reservation = {
   _id: string;
@@ -18,24 +18,24 @@ function formatDateTime(date: Date | string) {
     date = new Date(date);
   }
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // const monthNames = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
 
-  const day = date.getDate();
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
+  // const day = date.getDate();
+  // const month = monthNames[date.getMonth()];
+  // const year = date.getFullYear();
 
   const hours = date.getHours() % 12 || 12; // Get 12-hour format
   const minutes = date.getMinutes().toString().padStart(2, "0");

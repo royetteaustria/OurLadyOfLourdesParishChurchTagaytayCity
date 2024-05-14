@@ -105,7 +105,7 @@ const getFirstFridayOfMonth = (date : Date) => {
     setIsLoading(true);
     while (currentDate <= endDate) {
       const dayOfWeek = currentDate.getDay();
-      const dayOfMonth = currentDate.getDate();
+      // const dayOfMonth = currentDate.getDate();
 
       if (dayOfWeek !== 0 && dayOfWeek !== 1 && !isHoliday(currentDate)) {
         // Not Sunday, Monday, or a holiday
@@ -148,7 +148,7 @@ const getFirstFridayOfMonth = (date : Date) => {
 
   const getTimeSlots = (date: Date) => {
     const dayOfWeek = date.getDay();
-    const dayOfMonth = date.getDate();
+    // const dayOfMonth = date.getDate();
     const isFirstWednesday = date.toDateString() === getFirstWednesdayOfMonth(date).toDateString();
     const isFirstFriday = date.toDateString() === getFirstFridayOfMonth(date).toDateString();
   
@@ -243,7 +243,7 @@ const getFirstFridayOfMonth = (date : Date) => {
                 </div>
                 <span className="flex justify-end">
                     <button
-                      className={`bg-primary p-3 text-white w-full rounded-sm w-24 ${
+                      className={`bg-primary p-3 text-white  rounded-sm w-24 ${
                         isLoading ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
                       disabled={isLoading}

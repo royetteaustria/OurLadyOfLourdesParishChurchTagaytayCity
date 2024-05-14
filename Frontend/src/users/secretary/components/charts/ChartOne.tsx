@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import axios from 'axios';
-import FakeChart from '../../../weddingAdmin/components/charts/FakeChart';
+// import FakeChart from '../../../weddingAdmin/components/charts/FakeChart';
 import NoDataChart from '../../../weddingAdmin/components/charts/NodataChart';
 
 

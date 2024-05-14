@@ -1,16 +1,16 @@
 import { lazy } from 'react';
 
 const MainPageReservation = lazy(() => import('../pages/reservation/MainPage'));
-const Baptismal = lazy(() => import('../forms/baptismal/Baptismal'));
+// const Baptismal = lazy(() => import('../forms/baptismal/Baptismal'));
 const OTP = lazy(() => import('../../../auth/OTP'));
 const NewPass = lazy(() => import('../../../auth/NewPass'));
 const PageErrror = lazy(() => import('../../../components/error/PageError'));
 const hfdshf = lazy(() => import('../../../auth/Login'));
-const Mass = lazy(() => import('../forms/mass/Massform'));
+// const Mass = lazy(() => import('../forms/mass/Massform'));
 const FinalForm = lazy(() => import('../forms/wedding/FinalForm'));
 const Forgot = lazy(() => import('../../../auth/Forgot'));
 const VerifyEmail = lazy(() => import('../../../auth/VerifyEmail'));
-const WeddingReserve = lazy(() => import('../forms/wedding/WeddingReserve'));
+// const WeddingReserve = lazy(() => import('../forms/wedding/WeddingReserve'));
 const FinalformMass = lazy(() => import('../forms/mass/FinalformMass'));
 import FinalBaptismalForm from '../forms/baptismal/FinalBaptismalForm';
 

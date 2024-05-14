@@ -1,8 +1,8 @@
-import { GoEye } from "react-icons/go";
-import { MdCancel } from "react-icons/md";
+// import { GoEye } from "react-icons/go";
+// import { MdCancel } from "react-icons/md";
 import axios from 'axios';
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import InquiriesEmpty from "../../../../../weddingAdmin/components/other/InquiriesEmpty";
 import toast from 'react-hot-toast';
 import RejectWedding from "../../../../../weddingAdmin/components/modal/RejectWedding/RejectWedding";
@@ -39,7 +39,7 @@ type Wedding_Inquiries = {
 
 const WeddingInquiries = () => {
   const [data, setData] = useState<Wedding_Inquiries[]>([])
-  const [inquireToDelete, setInquireToDelete] = useState<string | null>(null)
+  const [inquireToDelete, ] = useState<string | null>(null)
   const [showModal, setShowModal] = useState(false);
   
   useEffect(() => {
@@ -53,10 +53,10 @@ const WeddingInquiries = () => {
     return;
   }, [data.length])
 
-  const handleInquieConfirmation = (inquireId: string) => {
-    setInquireToDelete(inquireId);
-    setShowModal(true);
-  };
+  // const handleInquieConfirmation = (inquireId: string) => {
+  //   setInquireToDelete(inquireId);
+  //   setShowModal(true);
+  // };
   
   async function deleteRecord(id: string) {
     await axios.delete(`http://localhost:5000/api/weddingInquiries/reject/${id}`)

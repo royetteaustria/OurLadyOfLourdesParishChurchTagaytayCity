@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { RiArrowDropDownLine } from "react-icons/ri";
+// import { RiArrowDropDownLine } from "react-icons/ri";
 import Success from "../../components/modal/Success";
 import lourdes from "../../assets/mass.jpg";
 import Slider from "react-slick";
@@ -64,7 +64,7 @@ const Mass = () => {
     }
   };
 
-  const buttonClass = disAble() ? "bg-opacity-60" : "";
+  // const buttonClass = disAble() ? "bg-opacity-60" : "";
 
   return (
     <>

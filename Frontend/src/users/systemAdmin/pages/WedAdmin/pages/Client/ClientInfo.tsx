@@ -60,7 +60,7 @@ const Data = {
 const ClientInfo = () => {
   const {id} = useParams();
     const [data, setData] = useState(Data)
-    const [totalPaid, setTotalPaid] = useState(0);
+    const [, setTotalPaid] = useState(0);
 
     // Function to calculate the total amount
     const calculateTotalPaid = () => {

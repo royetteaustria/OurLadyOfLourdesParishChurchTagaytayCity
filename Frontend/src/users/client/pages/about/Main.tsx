@@ -1,5 +1,5 @@
-import About from "./About"
-import Abouts from "./Abouts"
+// import About from "./About"
+// import Abouts from "./Abouts"
 const Main = () => {
   return (
     <>

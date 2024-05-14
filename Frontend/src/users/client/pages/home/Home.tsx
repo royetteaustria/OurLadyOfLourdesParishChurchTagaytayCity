@@ -1,6 +1,6 @@
-import lourdes1 from '../../assets/lourdes.jpeg'
+// import lourdes1 from '../../assets/lourdes.jpeg'
 import lourdes2 from '../../assets/lourdes2-transformed.jpeg'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 export const HomePage = () => {
     return (
       <>

@@ -1,7 +1,7 @@
 import EmptyStates from "../../components/other/EmptyStates"
 import { AiOutlineEye } from 'react-icons/ai'
-import { BsTrash } from 'react-icons/bs'
-import { FiEdit2 } from 'react-icons/fi'
+// import { BsTrash } from 'react-icons/bs'
+// import { FiEdit2 } from 'react-icons/fi'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -25,7 +25,7 @@ const Record = () => {
   const [alldata, setAllData] = useState<BaptismalRecord[]>([]);
   const [search, setSearch] = useState('')
   const [showModal, setShowModal] = useState(false);
-  const [recordToDelete, setRecordToDelete] = useState<string | null>(null);
+  const [recordToDelete, ] = useState<string | null>(null);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -40,10 +40,10 @@ const Record = () => {
     getRecords()
   },[])
 
-  const handleDeleteConfirmation = (recordId: string) => {
-    setRecordToDelete(recordId);
-    setShowModal(true);
-  };
+  // const handleDeleteConfirmation = (recordId: string) => {
+  //   setRecordToDelete(recordId);
+  //   setShowModal(true);
+  // };
 
   const handleSelect = (date: any) => {
     const filtered = alldata.filter((data) => {
