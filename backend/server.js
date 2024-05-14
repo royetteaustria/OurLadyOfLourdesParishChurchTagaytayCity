@@ -27,7 +27,10 @@ connectDB();
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000
-app.use(cors());
+app.use(cors({
+    origin: 'our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app',
+    credentials: true
+  }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
