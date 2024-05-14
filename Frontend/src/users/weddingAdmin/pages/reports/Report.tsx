@@ -35,7 +35,7 @@ const Report = () => {
   let year = y.getUTCFullYear();
   const componentRef = useRef(null);
   
-  const [, setReportPdfBlob] = useState(null);
+  const [, setReportPdfBlob] = useState<Blob | null>(null);
 
     useEffect(() => {
       async function getReports() {
@@ -101,7 +101,7 @@ const Report = () => {
     };
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
-  
+      
       // Add table headers
       doc.text(7, 15, `Wedding Report for ${month} ${year}`);
       doc.setFontSize(10);
@@ -110,7 +110,7 @@ const Report = () => {
       doc.text(7, 25, headers.join('             '));
       
       // Add table data
-      let y : Number = 35;
+      let y : Number = 35 + 10;
       
       data.forEach((report) => {
         doc.text(7, y, report.GroomName);
@@ -119,11 +119,9 @@ const Report = () => {
         doc.text(110, y, report.TimeOfWedding);
         doc.text(131, y, report.Rites);
         doc.text(150, y, report.GuestPriest);
-        y += 10;
       });
   
-      const pdfBlob = doc.output('blob'); // Generate the PDF blob
-      setReportPdfBlob(null); // Set state to null before setting the Blob (fixes error)
+      const pdfBlob = doc.output('blob');
       setReportPdfBlob(pdfBlob);
   
       // Open the PDF in a new tab

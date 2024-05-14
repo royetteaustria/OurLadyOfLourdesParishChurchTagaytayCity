@@ -12,8 +12,8 @@ import { TbUserQuestion } from "react-icons/tb";
 import { LuCalendarClock } from "react-icons/lu";
 import { CiCalendarDate } from "react-icons/ci";
 import navicon from "../../../../assets/Icon__1_-removebg-preview.png";
-import { FaFilePen } from "react-icons/fa6";
-import { IoFolderOpenOutline } from "react-icons/io5";
+// import { FaFilePen } from "react-icons/fa6";
+// import { IoFolderOpenOutline } from "react-icons/io5";
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
@@ -107,7 +107,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   pathname === "/" || pathname.includes("dashboard")
                 }
               >
-                {(handleClick, open) => {
+                {(_handleClick, open) => {
                   return (
                     <React.Fragment>
                       <NavLink

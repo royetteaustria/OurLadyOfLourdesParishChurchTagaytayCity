@@ -1,9 +1,9 @@
-import Breadcrumb from "../../../components/breadcrumbs/Breadcrum";
+import Breadcrumb from "../../../../../components/breadcrumbs/Breadcrum";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NoDateAvailable from "../../../components/other/NoDateAvailable";
+import NoDateAvailable from "../../../../../../weddingAdmin/components/other/NoDateAvailable";
 
 type AvailableDates = {
   _id: string;

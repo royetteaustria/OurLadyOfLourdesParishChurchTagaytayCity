@@ -1,9 +1,9 @@
-import DropdownNotification from '../dropdown/DropdownNotification';
+// import DropdownNotification from '../dropdown/DropdownNotification';
 import DarkModeSwitcher from '../Switcher/DarkModeSwitcher';
 import DropdownUser from '../dropdown/DropdownUser';
-import MaybeShowSearchbar from '../other/MaybeShowSearchbar';
-import { useState }from 'react'
-import axios from 'axios';
+// import MaybeShowSearchbar from '../other/MaybeShowSearchbar';
+// import { useState }from 'react'
+// import axios from 'axios';
 
 
 const Header = (props: {

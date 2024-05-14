@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import axios from 'axios';
-import FakeChart from './FakeChart';
+// import FakeChart from './FakeChart';
 import NoDataChart from './NodataChart';
 
 const options: ApexOptions = {
@@ -151,7 +151,7 @@ const ChartOne: React.FC = () => {
     const year = parseInt(event.target.value);
     setSelectedYear(year);
   };
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
   // Function to render chart
   const renderChartComponent = () => {
     if (!renderChart) {

@@ -1,5 +1,5 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 const options: ApexOptions = {
@@ -126,7 +126,7 @@ type NumbersProps = {
     title: string;
 }
 const NoDataChart  = ({ title} : NumbersProps) => {
-  const [state, setState] = useState<ChartOneState>({
+  const [state,] = useState<ChartOneState>({
     series: [
       {
         name: 'Total Record of wedding',

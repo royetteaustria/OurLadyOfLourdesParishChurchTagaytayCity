@@ -6,8 +6,8 @@ import axios from 'axios'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css fil
 import { DateRange } from 'react-date-range';
-import jsPDF from 'jspdf';
-import toast from 'react-hot-toast';
+// import jsPDF from 'jspdf';
+// import toast from 'react-hot-toast';
 // import { BsTrash } from 'react-icons/bs';
 // import { FaRegEdit } from 'react-icons/fa';
 
@@ -35,7 +35,7 @@ const Report = () => {
   let year = y.getUTCFullYear();
   const componentRef = useRef(null);
   
-  const [reportPdfBlob, setReportPdfBlob] = useState(null);
+  // const [, setReportPdfBlob] = useState(null);
 
     useEffect(() => {
       async function getReports() {
@@ -71,49 +71,49 @@ const Report = () => {
     const handleToggle = () => {
       setOpen(!open);
     };
-    const handleGeneratePdf = async () => {
-      const doc  = new jsPDF();
+    // const handleGeneratePdf = async () => {
+    //   const doc  = new jsPDF();
   
-      // Add table headers
-      doc.text(7, 15, `Wedding Report for ${month} ${year}`);
-      doc.setFontSize(10);
-      doc.save(`Wedding Report for ${month} ${year}`);
-      const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
-      doc.text(7, 25, headers.join('             '));
+    //   // Add table headers
+    //   doc.text(7, 15, `Wedding Report for ${month} ${year}`);
+    //   doc.setFontSize(10);
+    //   doc.save(`Wedding Report for ${month} ${year}`);
+    //   const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
+    //   doc.text(7, 25, headers.join('             '));
       
-      // Add table data
-      let y : Number = 35;
+    //   // Add table data
+    //   let y : Number = 35;
       
-      data.forEach((report) => {
-        doc.text(7, y, report.GroomName);
-        doc.text(42, y, report.BrideName);
-        doc.text(77, y, report.DateOfWedding);
-        doc.text(110, y, report.TimeOfWedding);
-        doc.text(131, y, report.Rites);
-        doc.text(150, y, report.GuestPriest);
-        y += 10;
-      });
+    //   data.forEach((report) => {
+    //     doc.text(7, y, report.GroomName);
+    //     doc.text(42, y, report.BrideName);
+    //     doc.text(77, y, report.DateOfWedding);
+    //     doc.text(110, y, report.TimeOfWedding);
+    //     doc.text(131, y, report.Rites);
+    //     doc.text(150, y, report.GuestPriest);
+    //     y += 10;
+    //   });
   
-      const pdfBlob = doc.output('blob'); // Generate the PDF blob
-      setReportPdfBlob(null); // Set state to null before setting the Blob (fixes error)
-      setReportPdfBlob(pdfBlob);
+    //   const pdfBlob = doc.output('blob'); // Generate the PDF blob
+    //   setReportPdfBlob(null); // Set state to null before setting the Blob (fixes error)
+    //   setReportPdfBlob(pdfBlob);
   
-      // Open the PDF in a new tab
-      const url = URL.createObjectURL(pdfBlob);
-      window.open(url, '_blank');
-    };
+    //   // Open the PDF in a new tab
+    //   const url = URL.createObjectURL(pdfBlob);
+    //   window.open(url, '_blank');
+    // };
     
-    async function deleteReport(id:string) {
-      try {
-        await axios.delete(`http://localhost:5000/api/ReportModule/deleteReports/${id}`);
-        const newData = data.filter((el) => el._id !== id);
-        setData(newData);
-        toast.success(`Delete Successfully`);
-      } catch (error) {
-        console.error(error);
-        toast.error(`Failed to Delete`);
-      }
-    }
+    // async function deleteReport(id:string) {
+    //   try {
+    //     await axios.delete(`http://localhost:5000/api/ReportModule/deleteReports/${id}`);
+    //     const newData = data.filter((el) => el._id !== id);
+    //     setData(newData);
+    //     toast.success(`Delete Successfully`);
+    //   } catch (error) {
+    //     console.error(error);
+    //     toast.error(`Failed to Delete`);
+    //   }
+    // }
   return (
     <>
     <div className='flex mr-6'>

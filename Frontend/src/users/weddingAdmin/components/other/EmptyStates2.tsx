@@ -5,7 +5,7 @@ const EmptyStates2 = () => {
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const d = new Date();
   let month = months[d.getMonth()];
-  const y = new Date();
+  // const y = new Date();
   return (
     
   <div className="max-w-4xl mx-auto px-10 py-4 dark:bg-boxdark bg-white rounded-lg">

@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import axios from 'axios';
-import ChartClone from './FakeChart';
+// import ChartClone from './FakeChart';
 
 const options: ApexOptions = {
   legend: {
@@ -114,7 +114,7 @@ const options: ApexOptions = {
 };
 
 const FakeChart: React.FC = () => {
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [selectedYear,] = useState<number | null>(null);
   const [weddingData, setWeddingData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -132,10 +132,10 @@ const FakeChart: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const year = parseInt(event.target.value);
-    setSelectedYear(year);
-  };
+  // const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const year = parseInt(event.target.value);
+  //   setSelectedYear(year);
+  // };
 
   const PlaceholderComponent = () => {
     return <div>No data available</div>;
