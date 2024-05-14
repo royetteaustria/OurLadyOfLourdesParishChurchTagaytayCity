@@ -26,7 +26,7 @@ import path, { dirname } from 'path';
 connectDB();
 const app = express();
 dotenv.config();
-const PORT = "our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app"
+const PORT = process.env.PORT || 5000
 app.use(cors({ 
     origin: 'http://localhost:5100', 
     credentials: true 
