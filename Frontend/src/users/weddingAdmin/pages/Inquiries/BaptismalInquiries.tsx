@@ -1,4 +1,3 @@
-import { BsCheckLg } from 'react-icons/bs'
 import { GoEye } from "react-icons/go";
 import { MdCancel } from "react-icons/md";
 import Breadcrumb from '../../components/breadcrumbs/Breadcrum';

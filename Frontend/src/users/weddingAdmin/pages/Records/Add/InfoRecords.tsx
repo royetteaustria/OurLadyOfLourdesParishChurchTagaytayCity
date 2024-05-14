@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ReactToPrint from "react-to-print";
+// import ReactToPrint from "react-to-print";
 
 const WeddingRecord = {
   groomName: "",

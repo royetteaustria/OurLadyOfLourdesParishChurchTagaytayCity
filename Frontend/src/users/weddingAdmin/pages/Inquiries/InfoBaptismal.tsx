@@ -96,9 +96,9 @@ const InfoBaptismal = () => {
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
 
-    const hours = date.getHours() % 12 || 12; // Get 12-hour format
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+    // const hours = date.getHours() % 12 || 12; // Get 12-hour format
+    // const minutes = date.getMinutes().toString().padStart(2, '0');
+    // const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
 
     return `${month} ${day} ${year}`;
   }

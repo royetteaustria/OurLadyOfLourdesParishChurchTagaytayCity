@@ -249,181 +249,39 @@ export function BaptismalForm({
     hasfatherNameAndmarriedPlace && fatherName.trim() === marriedPlace.trim();
 
   // For fatherBirthOfPlace
-  const hasfatherBirthOfPlaceAndName =
-    fatherBirthOfPlace.trim().length > 0 && name.trim().length > 0;
-  const isfatherBirthOfPlaceSameAsName =
-    hasfatherBirthOfPlaceAndName && fatherBirthOfPlace.trim() === name.trim();
 
-  const hasfatherBirthOfPlaceAndlname =
-    fatherBirthOfPlace.trim().length > 0 && lname.trim().length > 0;
-  const isfatherBirthOfPlaceSameAslname =
-    hasfatherBirthOfPlaceAndlname && fatherBirthOfPlace.trim() === lname.trim();
 
-  const hasfatherBirthOfPlaceAndbirthPlace =
-    fatherBirthOfPlace.trim().length > 0 && birthPlace.trim().length > 0;
-  const isfatherBirthOfPlaceSameAsbirthPlace =
-    hasfatherBirthOfPlaceAndbirthPlace &&
-    fatherBirthOfPlace.trim() === birthPlace.trim();
 
-  const hasfatherBirthOfPlaceAndcurrentAddress =
-    fatherBirthOfPlace.trim().length > 0 && currentAddress.trim().length > 0;
-  const isfatherBirthOfPlaceSameAscurrentAddress =
-    hasfatherBirthOfPlaceAndcurrentAddress &&
-    fatherBirthOfPlace.trim() === currentAddress.trim();
 
-  const hasfatherBirthOfPlaceAndfatherName =
-    fatherBirthOfPlace.trim().length > 0 && fatherName.trim().length > 0;
-  const isfatherBirthOfPlaceSameAsfatherName =
-    hasfatherBirthOfPlaceAndfatherName &&
-    fatherBirthOfPlace.trim() === fatherName.trim();
 
-  const hasfatherBirthOfPlaceAndmotherName =
-    fatherBirthOfPlace.trim().length > 0 && motherName.trim().length > 0;
-  const isfatherBirthOfPlaceSameAsmotherName =
-    hasfatherBirthOfPlaceAndmotherName &&
-    fatherBirthOfPlace.trim() === motherName.trim();
 
-  const hasfatherBirthOfPlaceAndmarriedPlace =
-    fatherBirthOfPlace.trim().length > 0 && marriedPlace.trim().length > 0;
-  const isfatherBirthOfPlaceSameAsmarriedPlace =
-    hasfatherBirthOfPlaceAndmarriedPlace &&
-    fatherBirthOfPlace.trim() === marriedPlace.trim();
 
   // For motherName
-  const hasmotherNameAndName =
-    motherName.trim().length > 0 && name.trim().length > 0;
-  const ismotherNameSameAsName =
-    hasmotherNameAndName && motherName.trim() === name.trim();
 
-  const hasmotherNameAndlname =
-    motherName.trim().length > 0 && lname.trim().length > 0;
-  const ismotherNameSameAslname =
-    hasmotherNameAndlname && motherName.trim() === lname.trim();
 
-  const hasmotherNameAndbirthPlace =
-    motherName.trim().length > 0 && birthPlace.trim().length > 0;
-  const ismotherNameSameAsbirthPlace =
-    hasmotherNameAndbirthPlace && motherName.trim() === birthPlace.trim();
 
-  const hasmotherNameAndcurrentAddress =
-    motherName.trim().length > 0 && currentAddress.trim().length > 0;
-  const ismotherNameSameAscurrentAddress =
-    hasmotherNameAndcurrentAddress &&
-    motherName.trim() === currentAddress.trim();
 
-  const hasmotherNameAndfatherName =
-    motherName.trim().length > 0 && fatherName.trim().length > 0;
-  const ismotherNameSameAsfatherName =
-    hasmotherNameAndfatherName && motherName.trim() === fatherName.trim();
 
-  const hasmotherNameAndfatherBirthOfPlace =
-    motherName.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const ismotherNameSameAsfatherBirthOfPlace =
-    hasmotherNameAndfatherBirthOfPlace &&
-    motherName.trim() === fatherBirthOfPlace.trim();
 
-  const hasmotherNameAndmotherBirthOfPlace =
-    motherName.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const ismotherNameSameAsmotherBirthOfPlace =
-    hasmotherNameAndmotherBirthOfPlace &&
-    motherName.trim() === motherBirthOfPlace.trim();
 
-  const hasmotherNameAndmarriedPlace =
-    motherName.trim().length > 0 && marriedPlace.trim().length > 0;
-  const ismotherNameSameAsmarriedPlace =
-    hasmotherNameAndmarriedPlace && motherName.trim() === marriedPlace.trim();
 
   // For motherBirthOfPlace
-  const hasmotherBirthOfPlaceAndName =
-    motherBirthOfPlace.trim().length > 0 && name.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsName =
-    hasmotherBirthOfPlaceAndName && motherBirthOfPlace.trim() === name.trim();
 
-  const hasmotherBirthOfPlaceAndlname =
-    motherBirthOfPlace.trim().length > 0 && lname.trim().length > 0;
-  const ismotherBirthOfPlaceSameAslname =
-    hasmotherBirthOfPlaceAndlname && motherBirthOfPlace.trim() === lname.trim();
 
-  const hasmotherBirthOfPlaceAndbirthPlace =
-    motherBirthOfPlace.trim().length > 0 && birthPlace.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsbirthPlace =
-    hasmotherBirthOfPlaceAndbirthPlace &&
-    motherBirthOfPlace.trim() === birthPlace.trim();
 
-  const hasmotherBirthOfPlaceAndcurrentAddress =
-    motherBirthOfPlace.trim().length > 0 && currentAddress.trim().length > 0;
-  const ismotherBirthOfPlaceSameAscurrentAddress =
-    hasmotherBirthOfPlaceAndcurrentAddress &&
-    motherBirthOfPlace.trim() === currentAddress.trim();
 
-  const hasmotherBirthOfPlaceAndfatherName =
-    motherBirthOfPlace.trim().length > 0 && fatherName.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsfatherName =
-    hasmotherBirthOfPlaceAndfatherName &&
-    motherBirthOfPlace.trim() === fatherName.trim();
 
-  const hasmotherBirthOfPlaceAndfatherBirthOfPlace =
-    motherBirthOfPlace.trim().length > 0 &&
-    fatherBirthOfPlace.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsfatherBirthOfPlace =
-    hasmotherBirthOfPlaceAndfatherBirthOfPlace &&
-    motherBirthOfPlace.trim() === fatherBirthOfPlace.trim();
 
-  const hasmotherBirthOfPlaceAndmotherName =
-    motherBirthOfPlace.trim().length > 0 && motherName.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsmotherName =
-    hasmotherBirthOfPlaceAndmotherName &&
-    motherBirthOfPlace.trim() === motherName.trim();
 
-  const hasmotherBirthOfPlaceAndmarriedPlace =
-    motherBirthOfPlace.trim().length > 0 && marriedPlace.trim().length > 0;
-  const ismotherBirthOfPlaceSameAsmarriedPlace =
-    hasmotherBirthOfPlaceAndmarriedPlace &&
-    motherBirthOfPlace.trim() === marriedPlace.trim();
 
   // For marriedPlace
-  const hasmarriedPlaceAndName =
-    marriedPlace.trim().length > 0 && name.trim().length > 0;
-  const ismarriedPlaceSameAsName =
-    hasmarriedPlaceAndName && marriedPlace.trim() === name.trim();
 
-  const hasmarriedPlaceAndlname =
-    marriedPlace.trim().length > 0 && lname.trim().length > 0;
-  const ismarriedPlaceSameAslname =
-    hasmarriedPlaceAndlname && marriedPlace.trim() === lname.trim();
 
-  const hasmarriedPlaceAndbirthPlace =
-    marriedPlace.trim().length > 0 && birthPlace.trim().length > 0;
-  const ismarriedPlaceSameAsbirthPlace =
-    hasmarriedPlaceAndbirthPlace && marriedPlace.trim() === birthPlace.trim();
 
-  const hasmarriedPlaceAndcurrentAddress =
-    marriedPlace.trim().length > 0 && currentAddress.trim().length > 0;
-  const ismarriedPlaceSameAscurrentAddress =
-    hasmarriedPlaceAndcurrentAddress &&
-    marriedPlace.trim() === currentAddress.trim();
 
-  const hasmarriedPlaceAndfatherName =
-    marriedPlace.trim().length > 0 && fatherName.trim().length > 0;
-  const ismarriedPlaceSameAsfatherName =
-    hasmarriedPlaceAndfatherName && marriedPlace.trim() === fatherName.trim();
 
-  const hasmarriedPlaceAndfatherBirthOfPlace =
-    marriedPlace.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const ismarriedPlaceSameAsfatherBirthOfPlace =
-    hasmarriedPlaceAndfatherBirthOfPlace &&
-    marriedPlace.trim() === fatherBirthOfPlace.trim();
 
-  const hasmarriedPlaceAndmotherName =
-    marriedPlace.trim().length > 0 && motherName.trim().length > 0;
-  const ismarriedPlaceSameAsmotherName =
-    hasmarriedPlaceAndmotherName && marriedPlace.trim() === motherName.trim();
 
-  const hasmarriedPlaceAndmotherBirthOfPlace =
-    marriedPlace.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const ismarriedPlaceSameAsmotherBirthOfPlace =
-    hasmarriedPlaceAndmotherBirthOfPlace &&
-    marriedPlace.trim() === motherBirthOfPlace.trim();
   return (
     <>
       <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">

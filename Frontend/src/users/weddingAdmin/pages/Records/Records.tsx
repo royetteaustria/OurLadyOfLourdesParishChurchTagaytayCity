@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { AiOutlineEye } from 'react-icons/ai'
-import { BsTrash } from 'react-icons/bs'
+// import { BsTrash } from 'react-icons/bs'
 import { useEffect, useState } from "react";
 import EmptyStates from "../../components/other/EmptyStates";
 import axios from "axios";
 import toast from 'react-hot-toast';
 import { CiSearch } from "react-icons/ci";
-import { FaRegEdit } from "react-icons/fa";
+// import { FaRegEdit } from "react-icons/fa";
 import { DateRange } from "react-date-range";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';

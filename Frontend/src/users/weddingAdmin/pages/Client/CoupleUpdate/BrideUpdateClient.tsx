@@ -16,17 +16,17 @@ type BrideClientProps = BrideClientData & {
 }
 
 export function BrideUpdateClient ({
-    Bride_Baptismal_Certificate, 
-    Bride_Confirmation_Certificate,
-    Bride_Birth_Certificate, 
-    Bride_CeNomar_Civil_Married,
-    Bride_Cannonical_Application,
+    // Bride_Baptismal_Certificate, 
+    // Bride_Confirmation_Certificate,
+    // Bride_Birth_Certificate, 
+    // Bride_CeNomar_Civil_Married,
+    // Bride_Cannonical_Application,
     Bride_Cannonical_Interview, 
-    Bride_Id_Picture, 
-    Bride_Marriage_Banns,
-    Bride_Banns_Reply,
-    Bride_Pre_Cana, 
-    Bride_Marriage_Contract,
+    // Bride_Id_Picture, 
+    // Bride_Marriage_Banns,
+    // Bride_Banns_Reply,
+    // Bride_Pre_Cana, 
+    // Bride_Marriage_Contract,
     updateFields
 }: BrideClientProps) {
   return (

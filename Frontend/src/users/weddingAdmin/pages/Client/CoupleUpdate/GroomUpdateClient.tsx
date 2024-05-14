@@ -16,22 +16,22 @@ type GroomClientProps = GroomClientData & {
 };
 
 export function GroomUpdateClient({
-  Groom_Baptismal_Certificate,
-  Groom_Confirmation_Certificate,
-  Groom_Birth_Certificate,
-  Groom_CeNomar_Civil_Married,
-  Groom_Cannonical_Application,
+  // Groom_Baptismal_Certificate,
+  // Groom_Confirmation_Certificate,
+  // Groom_Birth_Certificate,
+  // Groom_CeNomar_Civil_Married,
+  // Groom_Cannonical_Application,
   Groom_Cannonical_Interview,
-  Groom_Id_Picture,
-  Groom_Marriage_Banns,
-  Groom_Banns_Reply,
-  Groom_Pre_Cana,
-  Groom_Marriage_Contract,
+  // Groom_Id_Picture,
+  // Groom_Marriage_Banns,
+  // Groom_Banns_Reply,
+  // Groom_Pre_Cana,
+  // Groom_Marriage_Contract,
   updateFields,
 }: GroomClientProps) {
-  const handleViewFile = (fileUrl: string) => {
-    window.open(fileUrl, "_blank");
-  };
+  // const handleViewFile = (fileUrl: string) => {
+  //   window.open(fileUrl, "_blank");
+  // };
   return (
     <>
       <div className="mx-auto max-w-full">

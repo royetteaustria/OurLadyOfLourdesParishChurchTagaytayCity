@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import { useState } from "react"
 
 type TermConditionProps = {
   isCheckboxChecked: boolean;
@@ -6,14 +6,14 @@ type TermConditionProps = {
   updateFields: (fields: Partial<TermConditionProps>) => void
 };
 
-export function TermCondition ({isCheckboxChecked, setIsCheckboxChecked, updateFields}: TermConditionProps) {
+export function TermCondition ({isCheckboxChecked, setIsCheckboxChecked}: TermConditionProps) {
 
-  const [seeMore, setSeeMore] = useState(false)
+  // const [seeMore, setSeeMore] = useState(false)
 
-  const handleClick = () => {
-    window.scrollTo(0, 0);
-    setSeeMore(!seeMore)
-  }
+  // const handleClick = () => {
+  //   window.scrollTo(0, 0);
+  //   setSeeMore(!seeMore)
+  // }
 
   const handleCheckboxChange = () => {
     setIsCheckboxChecked(!isCheckboxChecked);

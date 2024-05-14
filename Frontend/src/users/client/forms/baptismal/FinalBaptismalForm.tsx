@@ -1,4 +1,3 @@
-import React from 'react'
 import Baptismal from './Baptismal'
 import background from '../../assets/Background.jpg'
 const FinalBaptismalForm = () => {

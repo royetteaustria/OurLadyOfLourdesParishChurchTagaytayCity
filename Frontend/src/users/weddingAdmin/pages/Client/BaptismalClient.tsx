@@ -6,7 +6,7 @@ import { GoEye } from 'react-icons/go';
 import { CiSearch } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import FilterBaptismalClient from '../../components/filterClient/FilterBaptismalClient';
-import { FaRegEdit } from "react-icons/fa";
+
 type BaptismalClient = {
   _id: string,
   name: string,

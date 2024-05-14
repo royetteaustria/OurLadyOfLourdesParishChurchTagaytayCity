@@ -115,9 +115,7 @@ const ClientInfo = () => {
     return `${month} ${day}, ${year} ${hours}:${minutes} ${amPm}`;
   }
 
-  const handleViewFile = (fileUrl : string) => {
-    window.open(fileUrl, '_blank');
-  };
+ 
   return (
     <>
     <Breadcrumb pageName="Client Info" />

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "../../components/breadcrumbs/Breadcrum";
 
 type accept = {
@@ -41,7 +41,7 @@ const Data: accept = {
 const WeddingInfo = () => {
   const { id } = useParams();
   const [data, setData] = useState(Data);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     axios

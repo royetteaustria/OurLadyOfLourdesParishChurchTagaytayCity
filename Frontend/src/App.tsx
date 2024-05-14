@@ -10,7 +10,6 @@ import SecretaryDefaultLayout from "./users/secretary/layout/DefaultLayout";
 import Loader from "./users/weddingAdmin/common/Loader";
 import SystemAdminDefaultLayout from "./users/systemAdmin/layout/DefaultLayout";
 import Client from "./users/client/Client";
-import ListofAdmin from "./users/systemAdmin/pages/ManageAccount/ListOfAdmin";
 import ProtectedRoute from "./context/ProtectedRoutes";
 
 

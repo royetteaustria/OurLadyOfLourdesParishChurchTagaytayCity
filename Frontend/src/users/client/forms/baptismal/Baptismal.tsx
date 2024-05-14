@@ -55,11 +55,11 @@ const Baptismal = () => {
   const navigate = useNavigate();
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [data, setData] = useState(reserve);
-  const [selectedDate, setSelectedDate] = useState("");
+  // const [selectedDate, setSelectedDate] = useState("");
 
-  const handleDateSelected = (date: string) => {
-    setSelectedDate(date);
-  };
+  // const handleDateSelected = (date: string) => {
+  //   setSelectedDate(date);
+  // };
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
