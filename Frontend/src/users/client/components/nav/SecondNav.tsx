@@ -5,7 +5,7 @@ export const SecondNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
   
     return (
-      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-ful md:px-24 lg:px-8 bg-transparent bg-opacity-90 sticky top-0 z-50">
+      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-ful md:px-24 lg:px-8 bg-transparent bg-opacity-90 lg:sticky lg:top-0 z-50">
         <div className="relative flex items-center justify-between">
             <span className="sm:ml-0 xsm:ml-0 md:ml-0 lg:ml-18 xl:ml-18 text-xl font-bold tracking-wide text-black uppercase">
               <img src={navicon} alt="" className='h-[4.5rem]'/>
