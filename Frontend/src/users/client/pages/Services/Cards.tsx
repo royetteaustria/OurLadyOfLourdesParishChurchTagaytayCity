@@ -4,7 +4,8 @@ import { cards } from "./dataCards"
 const Cards = () => {
   return (
     <>
-    {cards.map ((card)=> (
+     <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+     {cards.map ((card)=> (
         <div className="relative p-px overflow-hidden transition duration-300  shadow-sm hover:scale-105 group hover:shadow-xl hover:border-primary">
           <div className="absolute bottom-0 left-0 w-full h-1 duration-300 origin-left transform scale-x-0 bg-deep-purple-accent-400 group-hover:scale-x-100" />
             <div className="absolute bottom-0 left-0 w-1 h-full duration-300 origin-bottom transform scale-y-0 bg-deep-purple-accent-400 group-hover:scale-y-100" />
@@ -30,6 +31,7 @@ const Cards = () => {
                 </div>
             </div>
         ))}
+     </div>
       </>
   )
 }

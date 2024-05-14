@@ -15,8 +15,12 @@ const Services = () => {
         </span>{' '}
         <span className="text-black">Provided to you</span>
       </h2>
+      {/* <p className="text-base text-black md:text-lg">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque rem aperiam, eaque ipsa quae.
+      </p> */}
     </div>
-    <div className="grid gap-8 px-32 row-gap-5 mb-8 md:mr-32 sm:mr-32 md:row-gap-3 lg:grid-cols-3 sm:grid-cols-1 sm:w-full" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
+    <div className="grid gap-8 px-32 row-gap-5 mb-8 md:row-gap-2 lg:grid-cols-3 sm:grid-cols-1" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
       <Cards/>
     </div>
   </div>
