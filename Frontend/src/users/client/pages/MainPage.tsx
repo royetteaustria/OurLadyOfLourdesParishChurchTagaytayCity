@@ -8,12 +8,12 @@ import Step from "./steps/Step"
 const MainPage = () => {
   return (
     <>
-    
+    <div className="">
     <HomePage/>
     <Services/>
     <Step/>
     <Location/>
-    
+    </div>
     </>
   )
 }

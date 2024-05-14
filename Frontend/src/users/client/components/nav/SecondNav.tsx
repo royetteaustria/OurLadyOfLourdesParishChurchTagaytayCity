@@ -14,7 +14,7 @@ export const SecondNav = () => {
           <li className="inline-flex items-center justify-center h-12 px-6 font-medium text-black transition duration-200">
             <Link to="/">Home</Link>
           </li>
-            <li className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary focus:shadow-outline focus:outline-none">
+            <li className="hidden lg:inline-flex xl:inline-flex md:hidden items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary focus:shadow-outline focus:outline-none">
               <Link to="/signIn">Sign in</Link>
             </li>
           </ul>

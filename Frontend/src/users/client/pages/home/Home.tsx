@@ -4,7 +4,7 @@ import lourdes2 from '../../assets/lourdes2-transformed.jpeg'
 export const HomePage = () => {
     return (
       <>
-       <div id="home" className="relative bg-white pb-[110px] pt-[120px] px-32 dark:bg-dark lg:pt-[150px]">
+       <div id="home" className="relative bg-white pb-[110px] pt-[120px] px-8 dark:bg-dark lg:pt-[150px]">
         <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-5/12">
@@ -32,9 +32,9 @@ export const HomePage = () => {
               
             </div>
           </div>
-          <div className="hidden px-4 lg:block lg:w-1/12"></div>
-          <div className="w-full px-4 lg:w-6/12">
-            <div data-aos="fade-left" data-aos-offset="300" data-aos-duration="800" data-aos-easing="ease-in-sine" className="lg:ml-auto lg:text-right">
+          <div className="hidden  lg:block lg:w-1/12"></div>
+          <div className="w-full lg:w-6/12">
+            <div className="lg:ml-auto lg:text-right">
               <div className="relative z-10 inline-block pt-11 lg:pt-0">
                 <img
                   src={lourdes2}

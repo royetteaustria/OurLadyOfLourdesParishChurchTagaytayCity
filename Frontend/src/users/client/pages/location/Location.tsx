@@ -3,11 +3,11 @@ import { IoLocationOutline } from "react-icons/io5";
 export const Location = () => {
     return (
       <section
-      className="relative z-10 overflow-hidden px-32 bg-white py-20 dark:bg-dark lg:py-[120px]"
+      className="relative z-10 overflow-hidden bg-white py-12 dark:bg-dark "
     >
       <div id="location" className="container mx-auto">
         <div className="-mx-4 flex flex-wrap lg:justify-between">
-          <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="800" data-aos-easing="ease-in-sine" className="w-full px-4 lg:w-1/2 xl:w-6/12">
+          <div className="w-full px-12 lg:w-1/2 xl:w-6/12">
             <div className="mb-12 max-w-[570px] lg:mb-0">
               <span className="mb-4 block text-base font-semibold text-primary">
                 Contact Us
@@ -126,9 +126,9 @@ export const Location = () => {
               </div>
             </div>
           </div>
-          <div data-aos="fade-left"  data-aos-offset="300" data-aos-duration="800" data-aos-easing="ease-in-sine" className="w-full mt-10 px-0 lg:w-1/2 xl:w-5/12">
+          <div  className="w-full mt-10 sm:w-full lg:w-1/2 xl:w-5/12">
             <div
-              className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12 aspect-w-16 aspect-h-9"
+              className="relative rounded-lg bg-white  shadow-lg dark:bg-dark-2 sm:p-12 aspect-w-16 aspect-h-9"
             >
               <iframe className="w-full aspec-h-full"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.422509962534!2d120.95482237493955!3d14.111232486319151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd7764459f8ce3%3A0xe729ecd446058e72!2sOur%20Lady%20of%20Lourdes%20Parish%20Church%20-%20Silang%20Junction%20North%2C%20Tagaytay%20City%2C%20Cavite%20%28Diocese%20of%20Imus%29!5e0!3m2!1sen!2sph!4v1695532050412!5m2!1sen!2sph"
