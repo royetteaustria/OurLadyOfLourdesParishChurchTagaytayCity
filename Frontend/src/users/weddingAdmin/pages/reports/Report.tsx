@@ -6,7 +6,7 @@ import axios from 'axios'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css fil
 import { DateRange } from 'react-date-range';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 // import { BsTrash } from 'react-icons/bs'
 // // import { FaRegEdit } from "react-icons/fa";
 // import toast from 'react-hot-toast';
@@ -35,7 +35,7 @@ const Report = () => {
   let year = y.getUTCFullYear();
   const componentRef = useRef(null);
   
-  const [, setReportPdfBlob] = useState<Blob | null>(null);
+  // const [, setReportPdfBlob] = useState<Blob | null>(null);
 
     useEffect(() => {
       async function getReports() {
@@ -99,35 +99,35 @@ const Report = () => {
     const handleToggle = () => {
       setOpen(!open);
     };
-    const handleGeneratePdf = async () => {
-      const doc  = new jsPDF();
+    // const handleGeneratePdf = async () => {
+    //   const doc  = new jsPDF();
       
-      // Add table headers
-      doc.text(7, 15, `Wedding Report for ${month} ${year}`);
-      doc.setFontSize(10);
-      doc.save(`Wedding Report for ${month} ${year}`);
-      const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
-      doc.text(7, 25, headers.join('             '));
+    //   // Add table headers
+    //   doc.text(7, 15, `Wedding Report for ${month} ${year}`);
+    //   doc.setFontSize(10);
+    //   doc.save(`Wedding Report for ${month} ${year}`);
+    //   const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
+    //   doc.text(7, 25, headers.join('             '));
       
-      // Add table data
-      let y : Number = 35 + 10;
+    //   // Add table data
+    //   let y : Number = 35 + 10;
       
-      data.forEach((report) => {
-        doc.text(7, y, report.GroomName);
-        doc.text(42, y, report.BrideName);
-        doc.text(77, y, report.DateOfWedding);
-        doc.text(110, y, report.TimeOfWedding);
-        doc.text(131, y, report.Rites);
-        doc.text(150, y, report.GuestPriest);
-      });
+    //   data.forEach((report) => {
+    //     doc.text(7, y, report.GroomName);
+    //     doc.text(42, y, report.BrideName);
+    //     doc.text(77, y, report.DateOfWedding);
+    //     doc.text(110, y, report.TimeOfWedding);
+    //     doc.text(131, y, report.Rites);
+    //     doc.text(150, y, report.GuestPriest);
+    //   });
   
-      const pdfBlob = doc.output('blob');
-      setReportPdfBlob(pdfBlob);
+    //   const pdfBlob = doc.output('blob');
+    //   setReportPdfBlob(pdfBlob);
   
-      // Open the PDF in a new tab
-      const url = URL.createObjectURL(pdfBlob);
-      window.open(url, '_blank');
-    };
+    //   // Open the PDF in a new tab
+    //   const url = URL.createObjectURL(pdfBlob);
+    //   window.open(url, '_blank');
+    // };
     
     // async function deleteReport(id:string) {
     //   try {
@@ -159,7 +159,7 @@ const Report = () => {
       <Link to='/weddingAdmin/addreports'>
         <button className={'ml-6 mb-6 p-2 bg-primary text-white rounded-sm'}>Add report</button>
       </Link>
-      <button onClick={handleGeneratePdf} className={'ml-6 mb-6 p-2 bg-primary  text-white rounded-sm'}>
+      <button className={'ml-6 mb-6 p-2 bg-primary  text-white rounded-sm'}>
         Print Report
       </button>
     </div>
