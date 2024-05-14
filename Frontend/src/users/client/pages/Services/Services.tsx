@@ -20,7 +20,7 @@ const Services = () => {
         accusantium doloremque rem aperiam, eaque ipsa quae.
       </p> */}
     </div>
-    <div className="grid gap-8 px-32 row-gap-5 mb-8 md:row-gap-8 lg:grid-cols-3 sm:grid-cols-2" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
+    <div className="grid gap-8 px-32 row-gap-5 mb-8 md:row-gap-3 lg:grid-cols-3 sm:grid-cols-2" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
       <Cards/>
     </div>
   </div>
