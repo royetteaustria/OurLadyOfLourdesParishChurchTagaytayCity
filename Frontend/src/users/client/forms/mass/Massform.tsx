@@ -44,7 +44,7 @@ const Mass = () => {
       toast.success("Successfully Inquire");
       setFormSubmitted(true);
     } catch (error) {
-      toast.error("Please input all the fields");
+      toast.error("Something went wrong");
     }
   };
   const settings = {

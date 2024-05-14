@@ -96,7 +96,7 @@ const Baptismal = () => {
       setFormSubmitted(true);
     } catch (error) {
       console.log(error);
-      toast.error("Please input all the fields");
+      toast.error("Something went wrong");
     }
     next();
   };

@@ -98,7 +98,7 @@ const WeddingReserve = () => {
       setFormSubmitted(true);
     } catch (error) {
       console.error(error);
-      toast.error("Please input all fields / Please Select date");
+      toast.error("Something went wrong");
     }
     // Move the next() call inside the try block, so it only proceeds to the next step if the API call is successful
     next();
