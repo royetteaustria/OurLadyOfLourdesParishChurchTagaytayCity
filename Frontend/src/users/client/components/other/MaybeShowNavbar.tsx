@@ -23,7 +23,7 @@ const MaybeShowNavbar = ({ children }: { children: ReactNode }) => {
         }
     }, [location]);
 
-    return <div className="lg:sticky lg:top-0 z-50">{showNavbar && children}</div>;
+    return <div className="sticky  z-50">{showNavbar && children}</div>;
 };
 
 export default MaybeShowNavbar;

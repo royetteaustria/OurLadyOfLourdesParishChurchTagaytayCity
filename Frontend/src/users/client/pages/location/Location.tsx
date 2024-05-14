@@ -126,7 +126,7 @@ export const Location = () => {
               </div>
             </div>
           </div>
-          <div  className="w-full mt-10 sm:w-full lg:w-1/2 xl:w-5/12">
+          <div  className="w-full mt-10 sm:w-full lg:w-1/2 xl:w-5/12 px-8">
             <div
               className="relative rounded-lg bg-white  shadow-lg dark:bg-dark-2 sm:p-12 aspect-w-16 aspect-h-9"
             >
