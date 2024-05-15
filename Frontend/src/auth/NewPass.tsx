@@ -27,7 +27,7 @@ const NewPass = () => {
       );
       return;
     }
-        const response = await axios.post(`http://localhost:5000/api/UserRoutes/reset-password/${id}/${token}`, { password });
+        const response = await axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/reset-password/${id}/${token}`, { password });
         
         if (response.data.Status === "Success") {
             navigate('/signIn');
