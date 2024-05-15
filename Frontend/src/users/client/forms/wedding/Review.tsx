@@ -10,6 +10,10 @@ type FormData = {
   Brideemail: string;
   BridephoneNumber: string;
   start: Date | string;
+  brideLastName: string;
+  brideMiddleName: string;
+  groomLastName: string;
+  groomMiddleName: string;
 };
 
 type ReviewProps = {
@@ -106,6 +110,22 @@ const Review: React.FC<ReviewProps> = ({ data }) => {
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
+              Middle Name
+            </dt>
+            <dd className="lg:ml-48  md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+              {data.groomMiddleName}
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
+              Last Name
+            </dt>
+            <dd className="lg:ml-48  md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+              {data.groomLastName}
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">
               Age
             </dt>
@@ -124,6 +144,22 @@ const Review: React.FC<ReviewProps> = ({ data }) => {
             </dt>
             <dd className="lg:ml-48  md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
               {data.brideName}
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
+              Middle Name
+            </dt>
+            <dd className="lg:ml-48  md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+              {data.brideMiddleName}
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">
+              Last Name
+            </dt>
+            <dd className="lg:ml-48  md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
+              {data.brideLastName}
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
