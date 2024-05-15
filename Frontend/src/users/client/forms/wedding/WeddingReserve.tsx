@@ -90,7 +90,7 @@ const WeddingReserve = () => {
 
     try {
       const res = await axios.post(
-        import.meta.env.VITE_CREATE_WEDDING_INQURIES,
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/create`,
         recordData
       );
       console.log(res);

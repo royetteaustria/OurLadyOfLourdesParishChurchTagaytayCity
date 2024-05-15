@@ -37,7 +37,7 @@ const Mass = () => {
     };
     try {
       const res = await axios.post(
-        import.meta.env.VITE_CREATE_MASS_INQURIES,
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/massInquiries/create`,
         MasslInquiries
       );
       console.log(res);

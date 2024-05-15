@@ -88,7 +88,7 @@ const Baptismal = () => {
 
     try {
       const res = await axios.post(
-        import.meta.env.VITE_CREATE_BAPTISMAL_INQURIES,
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/createInquiries`,
         recordData
       );
       console.log(res);
