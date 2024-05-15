@@ -530,7 +530,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
                                   <tr>
                                     <td class="pad">
                                       <div class="alignment" align="center">
-                                         <a href="https://our-lady-of-lourdes-parish-church-tagaytay-city-drab.vercel.app/NewPassword/${user._id}/${token}">Reset password</a></div>
+                                         <a href="https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app/NewPassword/${user._id}/${token}">Reset password</a></div>
                                     </td>
                                   </tr>
                                 </table>

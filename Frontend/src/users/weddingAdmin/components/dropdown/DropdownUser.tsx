@@ -53,7 +53,7 @@ const DropdownUser = () => {
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
-      await axios.post('http://localhost:5000/api/UserRoutes/logout', {
+      await axios.post('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/logout', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
