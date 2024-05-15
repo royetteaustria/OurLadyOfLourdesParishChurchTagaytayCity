@@ -5,10 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5100,
+    port: 5101,
     proxy: {
       'api' : {
-        target:  'https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app',
+        target:  'http://localhost:5000',
         changeOrigin: true
       }
     }

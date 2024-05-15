@@ -6,9 +6,9 @@ import axios from 'axios'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css fil
 import { DateRange } from 'react-date-range';
-// import jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 // import { BsTrash } from 'react-icons/bs'
-// // import { FaRegEdit } from "react-icons/fa";
+// import { FaRegEdit } from "react-icons/fa";
 // import toast from 'react-hot-toast';
 
 type Reports = {
@@ -30,12 +30,12 @@ const Report = () => {
   const [open, setOpen] = useState(false);
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const d = new Date();
-  let month = months[d.getMonth()];
+  let month : Date | string = months[d.getMonth()];
   const y = new Date();
   let year = y.getUTCFullYear();
   const componentRef = useRef(null);
   
-  // const [, setReportPdfBlob] = useState<Blob | null>(null);
+  const [, setReportPdfBlob] = useState<Blob | null>(null);
 
     useEffect(() => {
       async function getReports() {
@@ -99,35 +99,42 @@ const Report = () => {
     const handleToggle = () => {
       setOpen(!open);
     };
-    // const handleGeneratePdf = async () => {
-    //   const doc  = new jsPDF();
+    const handleGeneratePdf = async () => {
+      const doc  = new jsPDF();
+      let a : Number | string = 7;
+      let b : Number | string = 42;
+      let c : Number | string = 77;
+      let d : Number | string = 110;
+      let e : Number | string = 131;
+      let f : Number | string = 150;
       
-    //   // Add table headers
-    //   doc.text(7, 15, `Wedding Report for ${month} ${year}`);
-    //   doc.setFontSize(10);
-    //   doc.save(`Wedding Report for ${month} ${year}`);
-    //   const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
-    //   doc.text(7, 25, headers.join('             '));
+      // Add table headers
+      doc.text(`Wedding Report for ${month} ${year}`, parseFloat(a.toString()), 15);
+      doc.setFontSize(10);
+      doc.save(`Wedding Report for ${month} ${year}`);
+      const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
+      doc.text(headers.join('             '), parseInt(a.toString(), 10), 25);
       
-    //   // Add table data
-    //   let y : Number = 35 + 10;
-      
-    //   data.forEach((report) => {
-    //     doc.text(7, y, report.GroomName);
-    //     doc.text(42, y, report.BrideName);
-    //     doc.text(77, y, report.DateOfWedding);
-    //     doc.text(110, y, report.TimeOfWedding);
-    //     doc.text(131, y, report.Rites);
-    //     doc.text(150, y, report.GuestPriest);
-    //   });
+      // Add table data
+      let y: number = 35;
+
+      data.forEach((report) => {
+        doc.text(report.GroomName, parseFloat(a.toString()), y);
+        doc.text(report.BrideName, parseFloat(b.toString()), y);
+        doc.text(report.DateOfWedding, parseFloat(c.toString()), y);
+        doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
+        doc.text(report.Rites, parseFloat(e.toString()), y);
+        doc.text(report.GuestPriest, parseFloat(f.toString()), y);
+        y += 10; // Increment y for the next line
+      });
   
-    //   const pdfBlob = doc.output('blob');
-    //   setReportPdfBlob(pdfBlob);
+      const pdfBlob = doc.output('blob');
+      setReportPdfBlob(pdfBlob);
   
-    //   // Open the PDF in a new tab
-    //   const url = URL.createObjectURL(pdfBlob);
-    //   window.open(url, '_blank');
-    // };
+      // Open the PDF in a new tab
+      const url = URL.createObjectURL(pdfBlob);
+      window.open(url, '_blank');
+    };
     
     // async function deleteReport(id:string) {
     //   try {
@@ -159,7 +166,7 @@ const Report = () => {
       <Link to='/weddingAdmin/addreports'>
         <button className={'ml-6 mb-6 p-2 bg-primary text-white rounded-sm'}>Add report</button>
       </Link>
-      <button className={'ml-6 mb-6 p-2 bg-primary  text-white rounded-sm'}>
+      <button onClick={handleGeneratePdf} className={'ml-6 mb-6 p-2 bg-primary  text-white rounded-sm'}>
         Print Report
       </button>
     </div>

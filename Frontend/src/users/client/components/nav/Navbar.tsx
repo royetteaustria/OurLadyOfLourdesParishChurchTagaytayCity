@@ -20,7 +20,7 @@ export const Navbar = () => {
           <img src={navicon} alt="" className='h-[4.5rem]'/>
           </span>
         </a>
-        <ul className="flex items-center hidden space-x-8 lg:flex  mr-22 ">
+        <ul className="flex items-center space-x-8 lg:flex  mr-22 ">
           <li className='cursor-pointer hover:text-primary'>
             <Link to="home" smooth={true} duration={500}>Home</Link>
           </li>
