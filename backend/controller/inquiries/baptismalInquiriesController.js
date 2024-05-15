@@ -7,8 +7,8 @@ const CreateBaptismalInquiries = (req, res) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.NODE_MAILER_EMAIL,
-      pass: process.env.NODE_MAILER_PASSWORD
+      user: `lourdeschurchwebsite@gmail.com`,
+      pass: `gwve vxvf xpih ligd`
     }
   });
   
