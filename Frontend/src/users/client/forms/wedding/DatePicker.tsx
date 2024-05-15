@@ -25,7 +25,7 @@ export function DatePicker({updateFields} : AvailableDateProps) {
   }, []);
 
   const fetchAvailableDates = () => {
-    axios.get<AvailableDate[]>("http://localhost:5000/api/CalendarReservation/available-dates")
+    axios.get<AvailableDate[]>("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/available-dates")
       .then(response => {
         const sortedDates = response.data.sort((a, b) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();
