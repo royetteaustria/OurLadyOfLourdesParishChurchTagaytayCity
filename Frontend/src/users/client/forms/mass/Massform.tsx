@@ -63,7 +63,48 @@ const Mass = () => {
       return true;
     }
   };
+  const filterTime = (time : Date) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+    const selectedDay = selectedDate.getDay();
+    const currentHour = currentDate.getHours();
 
+    // Check if the selected date is today
+    if (
+      selectedDate.getDate() === currentDate.getDate() &&
+      selectedDate.getMonth() === currentDate.getMonth() &&
+      selectedDate.getFullYear() === currentDate.getFullYear()
+    ) {
+      // Filter for Sunday
+      if (selectedDay === 0) {
+        const allowedTimes = [7, 8, 10, 12, 16, 18];
+        const selectedHour = selectedDate.getHours();
+        return selectedHour > currentHour && allowedTimes.includes(selectedHour);
+      }
+
+      // Filter for Monday to Saturday
+      const allowedTimes = [6, 12, 17, 18];
+      const selectedHour = selectedDate.getHours();
+      return selectedHour > currentHour && allowedTimes.includes(selectedHour);
+    }
+
+    // Filter for Sunday
+    if (selectedDay === 0) {
+      const allowedTimes = [7, 8, 10, 12, 16, 18];
+      const selectedHour = selectedDate.getHours();
+      return allowedTimes.includes(selectedHour);
+    }
+
+    // Filter for Monday to Saturday
+    const allowedTimes = [6, 12, 17, 18];
+    const selectedHour = selectedDate.getHours();
+    return allowedTimes.includes(selectedHour);
+  };
+
+  const filterDate = (date : Date) => {
+    const currentDate = new Date();
+    return date >= currentDate;
+  };
   // const buttonClass = disAble() ? "bg-opacity-60" : "";
 
   return (
@@ -188,14 +229,15 @@ const Mass = () => {
                         </label>
                         <div className="relative">
                           <ReactDatePicker
-                            className="ring-1 text-lg font-medium text-black w-full "
+                            className="ring-1 text-lg font-medium text-black w-full"
                             placeholderText="Select date"
                             selected={date}
-                            onChange={(date: Date | null) => setDate(date)}
+                            onChange={(date) => setDate(date)}
                             minDate={new Date()}
                             showTimeSelect
-                            minTime={new Date(0, 0, 0, 5, 0, 0)}
-                            maxTime={new Date(0, 0, 0, 18, 30, 0)}
+                            dateFormat="MMMM d, yyyy h:mm aa"
+                            filterTime={filterTime}
+                            filterDate={filterDate}
                           />
                         </div>
                       </div>

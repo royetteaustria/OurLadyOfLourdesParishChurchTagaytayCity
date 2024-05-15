@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
-import lourdes from '../users/client/assets/4890914.jpg'
+import lourdes from '../users/client/assets/2-jsqrY0AQW-transformed.jpeg'
 
 const Forgot = () => {
     const [email, setEmail] = useState('');
@@ -25,16 +25,18 @@ const Forgot = () => {
 
     return (
         <>
-        <section className="bg-gray-50 dark:bg-gray-900 "
-        style={{
+        <section className="bg-gray-50 dark:bg-black flex items-center justify-center h-screen">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
             backgroundImage: `url(${lourdes})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)' // 0.5 represents 50% opacity
-          }}>
-            <div 
-            // data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" 
-            className="flex flex-col items-center justify-center h-screen px-6 py-8 mx-auto lg:py-0">
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // 0.5 represents 50% opacity
+            filter: "blur(4px)", // Adjust the blur value as needed
+          }}
+        />
+            <div className="z-10 bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 w-full">
                 <div className="w-full bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">
