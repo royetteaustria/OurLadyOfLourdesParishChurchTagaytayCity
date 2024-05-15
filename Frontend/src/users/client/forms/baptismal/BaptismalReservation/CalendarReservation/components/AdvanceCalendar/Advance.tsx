@@ -56,7 +56,7 @@ const ControlCalendar: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar');
+        const response = await axios.get('http://localhost:5000/api/BaptismalCalendar');
         const sortedEvents = response.data.sort((a : any, b : any) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();
         });

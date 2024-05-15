@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, FormEvent } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import lourdes from "../users/client/assets/2-jsqrY0AQW-transformed.jpeg";
+import lourdes from "../users/client/assets/BackgroundLogin.jpg";
 import logo from "../users/client/assets/Frame_13-removebg-preview.png";
 import Text from "../users/client/assets/TV_-_1-removebg-preview.png";
 
@@ -56,10 +56,10 @@ const Login = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundColor: "rgba(0, 0, 0, 0.5)", // 0.5 represents 50% opacity
-            filter: "blur(4px)", // Adjust the blur value as needed
+            filter: "blur(0px)", // Adjust the blur value as needed
           }}
         />
-        <div className="z-10 bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="z-10 bg-white bg-opacity-0 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="w-full bg-white bg-opacity-80 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4  sm:p-8">
               <div className="flex justify-between  w-full">

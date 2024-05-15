@@ -7,7 +7,7 @@ export const Location = () => {
     >
       <div id="location" className="container mx-auto">
         <div className="-mx-4 flex flex-wrap lg:justify-between">
-          <div className="w-full px-12 lg:w-1/2 xl:w-6/12">
+          <div  data-aos="fade-right" data-aos-offset="300" data-aos-duration="800" data-aos-easing="ease-in-sine" className="w-full px-12 lg:w-1/2 xl:w-6/12">
             <div className="mb-12 max-w-[570px] lg:mb-0">
               <span className="mb-4 block text-base font-semibold text-primary">
                 Contact Us
@@ -126,7 +126,7 @@ export const Location = () => {
               </div>
             </div>
           </div>
-          <div  className="w-full mt-10 sm:w-full lg:w-1/2 xl:w-5/12 px-8">
+          <div  data-aos="fade-left" data-aos-offset="300" data-aos-duration="800" data-aos-easing="ease-in-sine" className="w-full mt-10 sm:w-full lg:w-1/2 xl:w-5/12 px-8">
             <div
               className="relative rounded-lg bg-white  shadow-lg dark:bg-dark-2 sm:p-12 aspect-w-16 aspect-h-9"
             >

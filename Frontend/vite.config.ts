@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       'api' : {
         target:  'https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app',
-        changeOrigin: true
+        changeOrigin: true,
       }
     }
   },

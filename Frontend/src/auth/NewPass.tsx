@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FormEvent, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
-import lourdes from '../users/client/assets/2-jsqrY0AQW-transformed.jpeg'
+import lourdes from '../users/client/assets/BackgroundLogin.jpg'
 
 const NewPass = () => {
   const [password, setPassword] = useState('');
@@ -55,7 +55,7 @@ const NewPass = () => {
             filter: "blur(4px)", // Adjust the blur value as needed
           }}
         />
-        <div className="z-10 bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="z-10 bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 w-full">
           <div className="w-full bg-white bg-opacity-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">

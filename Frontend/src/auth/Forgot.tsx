@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
-import lourdes from '../users/client/assets/2-jsqrY0AQW-transformed.jpeg'
+import lourdes from '../users/client/assets/BackgroundLogin.jpg'
 
 const Forgot = () => {
     const [email, setEmail] = useState('');
