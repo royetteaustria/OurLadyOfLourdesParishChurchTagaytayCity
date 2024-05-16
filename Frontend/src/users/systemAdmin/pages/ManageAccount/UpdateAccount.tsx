@@ -44,7 +44,7 @@ const UpdateAccount = () => {
 
 
     useEffect(() => {
-      axios.get(`http://localhost:5000/api/UserRoutes/getInfo/`+ id)
+      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/getInfo/`+ id)
       .then(res => {
         const data = res.data;
         setUsername(data.username)
