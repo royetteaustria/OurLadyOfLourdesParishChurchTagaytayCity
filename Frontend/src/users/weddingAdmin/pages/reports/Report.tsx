@@ -67,15 +67,7 @@ const Report = () => {
     }
 
 
-     const formatTime = (date: Date | string) => {
-      if (typeof date === 'string') {
-        date = new Date(date);
-      }
-      const hours = date.getHours() % 12 || 12; // Get 12-hour format
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
-      return `${hours}:${minutes} ${amPm}`;
-     } 
+     
 
     const handleSelect = (date: any) => {
       const filtered = alldata.filter((data) => {
@@ -220,9 +212,7 @@ const Report = () => {
                     <td className="pl-12">
                       <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toLocaleUpperCase()}</p>
                     </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-6 text-black dark:text-white">{formatTime(report.TimeOfWedding).toLocaleUpperCase()}</p>
-                    </td>
+      
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toLocaleUpperCase()}</p>
                     </td>
