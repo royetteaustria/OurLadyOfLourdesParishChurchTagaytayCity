@@ -38,7 +38,7 @@ const WeddingClient = () => {
     async function getInquiries() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/WeddingClient/listOfClient`
+          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/listOfClient`
         );
         const inquiries = response.data;
         // Check if inquiries is an array before updating the state
