@@ -123,7 +123,7 @@ const ChartOne: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api/WeddingRecords/weddingRecordsList'
+          'https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/weddingRecordsList'
         );
         console.log(response.data); // Check the response data
         setWeddingData(response.data);

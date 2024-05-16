@@ -18,7 +18,7 @@ const RequirementsInformation = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/BaptismalReq/${id}`)
+      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalReq/${id}`)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
@@ -73,7 +73,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `http://localhost:5000/uploads/${data.birthCertificate}`
+                          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/uploads/${data.birthCertificate}`
                         )
                       }
                       className={
@@ -109,7 +109,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `http://localhost:5000/uploads/${data.MarriageContract}`
+                          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/uploads/${data.MarriageContract}`
                         )
                       }
                       className={
@@ -145,7 +145,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `http://localhost:5000/uploads/${data.FatherBaptismalCerticate}`
+                          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/uploads/${data.FatherBaptismalCerticate}`
                         )
                       }
                       className={
@@ -181,7 +181,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `http://localhost:5000/uploads/${data.MotherBaptismalCerticate}`
+                          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/uploads/${data.MotherBaptismalCerticate}`
                         )
                       }
                       className={
@@ -217,7 +217,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `http://localhost:5000/uploads/${data.ParishPermit}`
+                          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/uploads/${data.ParishPermit}`
                         )
                       }
                       className={

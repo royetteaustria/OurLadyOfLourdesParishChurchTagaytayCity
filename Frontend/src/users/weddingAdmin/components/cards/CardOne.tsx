@@ -5,7 +5,7 @@ import axios from 'axios';
 const CardOne = () => {
   const [totalInquirires, setTotalInquirires] = useState(0);
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/weddingInquiries/listWeddingInquiries`)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/listWeddingInquiries`)
     .then((response) => {
       const { data } = response;
       if (data && Array.isArray(data)) {

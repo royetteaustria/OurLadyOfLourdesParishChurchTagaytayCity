@@ -53,7 +53,7 @@ const ClientInfo = () => {
     const [data, setData] = useState(Data)
     
     useEffect(() => {
-      axios.get(`http://localhost:5000/api/WeddingClient/singleClient/`+id)
+      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/singleClient/`+id)
         .then((res) => {
           console.log(res);
           setData((prev) => ({

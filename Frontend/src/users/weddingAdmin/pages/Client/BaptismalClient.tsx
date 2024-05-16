@@ -55,7 +55,7 @@ const BaptismalClient = () => {
   useEffect(() => {
     async function getInquiries() {
       try {
-        const res = await axios.get(`http://localhost:5000/api/BaptismalClient/list`)
+        const res = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/list`)
         const inquiries = res.data;
         if (Array.isArray(inquiries)) {
           setData(inquiries);

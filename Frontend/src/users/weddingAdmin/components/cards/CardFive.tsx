@@ -12,7 +12,7 @@ const CardFive = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/BaptismalClient/list`);
+        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/list`);
         const clients: Baptismal[] = response.data;
         const PendingClients = clients.filter((client: Baptismal) => client.description === "Pending");
         setTotalPending(PendingClients.length);

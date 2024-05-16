@@ -128,7 +128,7 @@ const EditFiles = () => {
     formData.append("FirstPaymentReciept", data.FirstPaymentReciept);
     formData.append("SecondPaymentReciept", data.SecondPaymentReciept);
     axios
-      .put(`http://localhost:5000/api/Weddingreq/update/${id}`, formData)
+      .put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Weddingreq/update/${id}`, formData)
       .then((res) => {
         console.log(res);
         navigate('/weddingAdmin/Requirements')
@@ -140,7 +140,7 @@ const EditFiles = () => {
       });
   };
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/Weddingreq/${id}`)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Weddingreq/${id}`)
     .then((res) => {
       console.log(res);
       setData((prev) => ({

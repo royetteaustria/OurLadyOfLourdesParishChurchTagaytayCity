@@ -11,7 +11,7 @@ const CardTwo = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/WeddingClient/listOfClient`);
+        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/listOfClient`);
         const clients: Wedding[] = response.data;
         const PendingClients = clients.filter((client: Wedding) => client.weddingStatus === "Pending");
         setTotalPending(PendingClients.length);

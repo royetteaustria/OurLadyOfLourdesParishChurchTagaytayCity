@@ -22,7 +22,7 @@ const UpdateWeddingClient = () => {
     // Fetch data from the server and set it to the state
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/WeddingClient/singleClient/${id}`);
+        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/singleClient/${id}`);
         setData(response.data);
       } catch (err) {
         console.log(err);
