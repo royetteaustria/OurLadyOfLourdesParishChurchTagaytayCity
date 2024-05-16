@@ -43,7 +43,7 @@ const InfoBaptismal = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-     axios.get(`http://localhost:5000/api/baptismalInquiries/singleInquiries/` +id)
+     axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/singleInquiries/` +id)
     .then(res => {
       console.log(res)
       setData(prev => ({

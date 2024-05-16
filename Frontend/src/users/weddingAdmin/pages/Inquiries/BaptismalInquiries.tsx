@@ -51,7 +51,7 @@ const baptismalInquiries = () => {
   }
   useEffect(() => {
     async function getInquiries() {
-      const response = await axios.get(`http://localhost:5000/api/baptismalInquiries`)
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries`)
       const inquries = await response.data;
       setData(inquries)
     }
