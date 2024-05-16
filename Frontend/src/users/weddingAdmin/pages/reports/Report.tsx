@@ -89,12 +89,12 @@ const Report = () => {
     };
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
-      let a : Number | string = 7;
-      let b : Number | string = 42;
-      let c : Number | string = 77;
-      let d : Number | string = 110;
-      let e : Number | string = 131;
-      let f : Number | string = 150;
+      let a : Number  = 7;
+      let b : Number  = 42;
+      let c : Number  = 77;
+      let d : Number  = 110;
+      let e : Number  = 131;
+      let f : Number  = 150;
       
       // Add table headers
       doc.text(`Wedding Report for ${month} ${year}`, parseFloat(a.toString()), 15);
@@ -105,7 +105,7 @@ const Report = () => {
       
       // Add table data
       let y: number = 35;
-
+  
       data.forEach((report) => {
         doc.text(report.GroomName, parseFloat(a.toString()), y);
         doc.text(report.BrideName, parseFloat(b.toString()), y);
@@ -119,9 +119,10 @@ const Report = () => {
       const pdfBlob = doc.output('blob');
       setReportPdfBlob(pdfBlob);
   
-      // Open the PDF in a new tab
+      // Instead of opening the PDF in a new tab, trigger the print dialog
       const url = URL.createObjectURL(pdfBlob);
-      window.open(url, '_blank');
+      const printWindow = window.open(url);
+      printWindow?.print();
     };
     
     // async function deleteReport(id:string) {
