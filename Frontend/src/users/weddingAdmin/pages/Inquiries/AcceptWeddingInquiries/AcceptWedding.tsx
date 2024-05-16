@@ -75,6 +75,9 @@ const INITIAL_DATA: FormData = {
 };
 const AcceptWedding = () => {
   const [data, setData] = useState(INITIAL_DATA);
+  const [GroomName, setGroomName] = useState(data.groomName);
+  const [BrideName, setBrideName] = useState(data.brideName);
+  const [DateOfWedding, setDateOfWedding] = useState(data.start);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -94,7 +97,7 @@ const AcceptWedding = () => {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:5000/api/weddingInquiries/Info/` + id)
+      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/` + id)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
@@ -112,7 +115,7 @@ const AcceptWedding = () => {
           brideAge: res.data.brideAge,
           brideLastName: res.data.brideLastName,
           brideMiddleName: res.data.brideMiddleName,
-          start: res.data.start
+          start: res.data.start,
         }));
       })
       .catch((err) => console.log(err));
@@ -121,18 +124,23 @@ const AcceptWedding = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const recordData = data;
-
+    const reportData = {
+      GroomName: GroomName,
+      BrideName: BrideName,
+      DateOfWedding: DateOfWedding,
+    };
     try {
+      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
       const res = await axios.post(
-        "http://localhost:5000/api/WeddingClient/accept/" ,
+        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept/",
         recordData
       );
       await axios.delete(
-        `http://localhost:5000/api/weddingInquiries/reject/${id}`
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`
       );
       console.log(res);
       toast.success("Successfully Accept Inquiries");
-      navigate("/weddingAdmin/Client")
+      navigate("/weddingAdmin/Client");
     } catch (error) {
       console.error(error);
       toast.error("Please input all the fields");
@@ -156,6 +164,42 @@ const AcceptWedding = () => {
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           {step}
           <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              name="GroomName"
+              required
+              value={data.groomName}
+              // onChange={(e) => setGroomName(e.target.value)}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
+            <input
+              type="text"
+              name="GroomName"
+              required
+              value={GroomName}
+              onChange={(e) => setGroomName(e.target.value)}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
+            <input
+              type="text"
+              name="GroomName"
+              required
+              value={BrideName}
+              onChange={(e) => setBrideName(e.target.value)}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
+            <input
+              type="text"
+              name="GroomName"
+              required
+              value={DateOfWedding.toISOString()}
+              onChange={(e) => setDateOfWedding(new Date(e.target.value))}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
             <div className="flex justify-end gap-4.5 mb-12 mr-8">
               {!isFirstStep && (
                 <button
