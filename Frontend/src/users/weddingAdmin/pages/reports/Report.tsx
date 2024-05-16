@@ -194,26 +194,26 @@ const Report = () => {
                       <div className="flex items-center">
                         <div className="pl-0 inline-flex">
                           <button className='hidden'>Edit</button>
-                          <p className="font-normal text-black dark:text-white">{report.GroomName.toUpperCase() === '' ? 'To be determined' : report.GroomName.toUpperCase()}</p>
+                          <p className="font-normal text-black dark:text-white">{report.GroomName.toUpperCase()}</p>
                         </div>
                       </div>
                     </td>
                     <td className="pl-12">
                       <div className="flex items-center">
                         <div className="pl-0">
-                          <p className="font-normal text-black dark:text-white">{report.BrideName.toUpperCase() === '' ? 'To be determined' : report.BrideName.toUpperCase()}</p>
+                          <p className="font-normal text-black dark:text-white">{report.BrideName.toUpperCase() }</p>
                         </div>
                       </div>
                     </td>
                     <td className="pl-12">
-                      <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toUpperCase() === '' ? 'Unknown date of wedding' : formatDateTime(report.DateOfWedding).toUpperCase()}</p>
+                      <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toUpperCase() }</p>
                     </td>
       
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase() === '' ? 'To be determined' : report.Rites.toUpperCase()}</p>
+                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase() === '' ? 'To be determined' : report.GuestPriest.toUpperCase()}</p>
+                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase()}</p>
                     </td>
                     {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark space-x-4">
                     <button className="text-warning">
