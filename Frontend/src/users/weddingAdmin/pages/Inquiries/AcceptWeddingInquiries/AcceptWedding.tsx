@@ -95,31 +95,33 @@ const AcceptWedding = () => {
       <BrideForm {...data} updateFields={updateFields} />,
     ]);
 
-  useEffect(() => {
-    axios
-      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/` + id)
-      .then((res) => {
-        console.log(res);
-        setData((prev) => ({
-          ...prev,
-          email: res.data.email,
-          phoneNumber: res.data.phoneNumber,
-          groomName: res.data.groomName,
-          groomAge: res.data.groomAge,
-          groomLastName: res.data.groomLastName,
-          groomMiddleName: res.data.groomMiddleName,
-
-          Brideemail: res.data.Brideemail,
-          BridephoneNumber: res.data.BridephoneNumber,
-          brideName: res.data.brideName,
-          brideAge: res.data.brideAge,
-          brideLastName: res.data.brideLastName,
-          brideMiddleName: res.data.brideMiddleName,
-          start: res.data.start,
-        }));
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+    useEffect(() => {
+      axios
+        .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/` + id)
+        .then((res) => {
+          console.log(res);
+          setData((prev) => ({
+            ...prev,
+            email: res.data.email,
+            phoneNumber: res.data.phoneNumber,
+            groomName: res.data.groomName,
+            groomAge: res.data.groomAge,
+            groomLastName: res.data.groomLastName,
+            groomMiddleName: res.data.groomMiddleName,
+    
+            Brideemail: res.data.Brideemail,
+            BridephoneNumber: res.data.BridephoneNumber,
+            brideName: res.data.brideName,
+            brideAge: res.data.brideAge,
+            brideLastName: res.data.brideLastName,
+            brideMiddleName: res.data.brideMiddleName,
+            start: res.data.start,
+          }));
+          setGroomName(res.data.groomName); // Update GroomName state
+          setBrideName(res.data.brideName); // Update BrideName state
+        })
+        .catch((err) => console.log(err));
+    }, [id]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -130,9 +132,9 @@ const AcceptWedding = () => {
       DateOfWedding: DateOfWedding,
     };
     try {
-      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
+     axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
       const res = await axios.post(
-        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept/",
+        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept",
         recordData
       );
       await axios.delete(
