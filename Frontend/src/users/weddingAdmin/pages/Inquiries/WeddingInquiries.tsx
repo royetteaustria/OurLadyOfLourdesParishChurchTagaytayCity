@@ -47,7 +47,7 @@ const WeddingInquiries = () => {
   
   useEffect(() => {
     async function getInquiries() {
-      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/weddingInquiries/listWeddingInquiries`)
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/listWeddingInquiries`)
       const inquries = await response.data;
       
       setData(inquries)
