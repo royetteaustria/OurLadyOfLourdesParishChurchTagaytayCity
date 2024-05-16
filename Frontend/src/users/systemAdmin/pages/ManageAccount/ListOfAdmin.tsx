@@ -20,7 +20,7 @@ function ListofAdmin() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await axios.get(`http://localhost:5000/api/userRoutes/listofusers`);
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/userRoutes/listofusers`);
       const records = response.data;
       setData(records);
     }

@@ -24,7 +24,7 @@ const MassInquiries = () => {
 
   useEffect(() => {
     async function getInquiries() {
-      const response = await axios.get(`http://localhost:5000/api/massInquiries/listofInquire`)
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/massInquiries/listofInquire`)
       const inquries = await response.data;
       setData(inquries)
     }

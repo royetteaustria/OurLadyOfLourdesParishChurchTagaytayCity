@@ -33,7 +33,7 @@ const BaptismRecord = ({}) => {
 
   useEffect(() => {
     async function getRecords() {
-      const res = await axios.get(`http://localhost:5000/api/BaptismalRecords/bapstismalRecordList`)
+      const res = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/bapstismalRecordList`)
       const records = await res.data;
       setData(records)
       setAllData(res.data)

@@ -63,48 +63,78 @@ const Mass = () => {
       return true;
     }
   };
-  const filterTime = (time : Date) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
-    const selectedDay = selectedDate.getDay();
-    const currentHour = currentDate.getHours();
+  const filterTime = (time: Date): boolean => {
+    const selectedTime = time.getHours();
+    const selectedMinutes = time.getMinutes();
+    const selectedDay = time.getDay();
 
-    // Check if the selected date is today
-    if (
-      selectedDate.getDate() === currentDate.getDate() &&
-      selectedDate.getMonth() === currentDate.getMonth() &&
-      selectedDate.getFullYear() === currentDate.getFullYear()
-    ) {
-      // Filter for Sunday
-      if (selectedDay === 0) {
-        const allowedTimes = [7, 8, 10, 12, 16, 18];
-        const selectedHour = selectedDate.getHours();
-        return selectedHour > currentHour && allowedTimes.includes(selectedHour);
-      }
+    function isFirstSaturdayOfMonth(date: Date): boolean {
+        // Get the first day of the month
+        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
 
-      // Filter for Monday to Saturday
-      const allowedTimes = [6, 12, 17, 18];
-      const selectedHour = selectedDate.getHours();
-      return selectedHour > currentHour && allowedTimes.includes(selectedHour);
+        // If the first day of the month is Saturday, return true
+        if (firstDayOfMonth.getDay() === 6) {
+            return true;
+        }
+
+        // Otherwise, get the date of the first Saturday
+        const dayOfWeek = firstDayOfMonth.getDay();
+        const daysToAddForSaturday = (dayOfWeek === 0) ? 6 : 6 - dayOfWeek;
+        const firstSaturdayOfMonth = new Date(firstDayOfMonth.getFullYear(), firstDayOfMonth.getMonth(), firstDayOfMonth.getDate() + daysToAddForSaturday);
+
+        // Check if the given date matches the first Saturday of the month
+        return date.getDate() === firstSaturdayOfMonth.getDate();
     }
 
-    // Filter for Sunday
     if (selectedDay === 0) {
-      const allowedTimes = [7, 8, 10, 12, 16, 18];
-      const selectedHour = selectedDate.getHours();
-      return allowedTimes.includes(selectedHour);
+        // Sunday
+        const times = [
+            { hour: 7, minute: 0 },
+            { hour: 8, minute: 30 },
+            { hour: 10, minute: 0 },
+            { hour: 12, minute: 0 },
+            { hour: 16, minute: 0 },
+            { hour: 18, minute: 0 }
+        ];
+        return times.some(t => t.hour === selectedTime && t.minute === selectedMinutes);
+    } else if (selectedDay === 6) {
+        // Saturday
+        if (isFirstSaturdayOfMonth(time)) {
+            const times = [
+                { hour: 6, minute: 30 }, // First Saturday (corrected time)
+                { hour: 12, minute: 0 }, // First Saturday
+                { hour: 18, minute: 0 }  // First Saturday
+            ];
+            return times.some(t => t.hour === selectedTime && t.minute === selectedMinutes);
+        } else {
+            const times = [
+                { hour: 6, minute: 15 }, // Other Saturdays
+                { hour: 12, minute: 0 }, // Other Saturdays
+                { hour: 18, minute: 0 }  // Other Saturdays
+            ];
+            return times.some(t => t.hour === selectedTime && t.minute === selectedMinutes);
+        }
+    } else if (selectedDay >= 1 && selectedDay <= 3) {
+        // Monday to Wednesday
+        return selectedTime === 17 && selectedMinutes === 30;
+    } else if (selectedDay === 4 || selectedDay === 5) {
+        // Thursday and Friday
+        const times = [
+            { hour: 17, minute: 30 },
+            { hour: 6, minute: 15 },
+        ];
+        return times.some(t => t.hour === selectedTime && t.minute === selectedMinutes);
     }
 
-    // Filter for Monday to Saturday
-    const allowedTimes = [6, 12, 17, 18];
-    const selectedHour = selectedDate.getHours();
-    return allowedTimes.includes(selectedHour);
-  };
+    return false;
+};
 
-  const filterDate = (date : Date) => {
+
+const filterDate = (date : Date) => {
     const currentDate = new Date();
     return date >= currentDate;
-  };
+};
+
   // const buttonClass = disAble() ? "bg-opacity-60" : "";
 
   return (
@@ -238,6 +268,7 @@ const Mass = () => {
                             dateFormat="MMMM d, yyyy h:mm aa"
                             filterTime={filterTime}
                             filterDate={filterDate}
+                            timeIntervals={15}
                           />
                         </div>
                       </div>

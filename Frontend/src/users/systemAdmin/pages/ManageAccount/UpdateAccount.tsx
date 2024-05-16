@@ -21,7 +21,7 @@ const UpdateAccount = () => {
     
       try {
         const res = await axios.put(
-          `http://localhost:5000/api/UserRoutes/updateUser/${id}/${token}`,
+          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/updateUser/${id}/${token}`,
           updateUser
         );
         console.log(res);
