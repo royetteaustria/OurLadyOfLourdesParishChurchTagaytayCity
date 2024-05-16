@@ -180,7 +180,7 @@ const Report = () => {
               <th className="font-bold text-black dark:text-white text-left pl-4">{(`Groom name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Bride name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Date of marriage`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-8">{(`Time`).toUpperCase()}</th>
+              {/* <th className="font-bold text-black dark:text-white text-left pl-8">{(`Time`).toUpperCase()}</th> */}
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Rites`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Guest Priest`).toUpperCase()}</th>
               {/* <th className="font-bold text-black dark:text-white text-left pl-2">{(`Action`).toUpperCase()}</th> */}
@@ -209,23 +209,12 @@ const Report = () => {
                       <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toUpperCase() }</p>
                     </td>
       
-                    {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase()}</p>
+                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase() === '' ? 'Rites is to be determined' : report.Rites.toUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase()}</p>
-                    </td> */}
-                    {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark space-x-4">
-                    <button className="text-warning">
-                          <Link to={`/weddingAdmin/editReport/${report._id}`}><FaRegEdit size={20} style={{color: '#3C50E0'}}/></Link>
-                        </button>
-                        <button
-                          onClick={() => deleteReport(report._id)}
-                          className="text-danger"
-                        >
-                          <BsTrash size={20} />
-                        </button>
-                    </td> */}
+                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase() === '' ? 'Guest priest is to be determined' : report.GuestPriest.toUpperCase()}</p>
+                    </td>
                   </tr>
                 ))
               ) : (
