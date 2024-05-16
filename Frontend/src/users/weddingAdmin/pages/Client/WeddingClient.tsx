@@ -43,13 +43,13 @@ const WeddingClient = () => {
         const inquiries = response.data;
         // Check if inquiries is an array before updating the state
         if (Array.isArray(inquiries)) {
-          const uppercaseData = inquiries.map(client => ({
+          const uppercaseData = inquiries.map((client) => ({
             ...client,
             groomName: client.groomName.toUpperCase(),
             brideName: client.brideName.toUpperCase(),
             groomLastName: client.groomLastName.toUpperCase(),
             brideLastName: client.brideLastName.toUpperCase(),
-            weddingStatus: client.weddingStatus.toUpperCase()
+            weddingStatus: client.weddingStatus.toUpperCase(),
           }));
           setData(uppercaseData);
         } else {
@@ -92,7 +92,7 @@ const WeddingClient = () => {
         </div>
         <div className="max-w-full overflow-x-auto">
           <table className="w-full table-auto">
-            <thead >
+            <thead>
               <tr className="bg-gray-2 text-left dark:bg-meta-4">
                 <th className="min-w-[220px] text-left font-bold text-lg text-black dark:text-white xl:pl-11">
                   {`Groom Name`.toLocaleUpperCase()}
@@ -120,14 +120,19 @@ const WeddingClient = () => {
                   const lowercaseSearch = search.toLowerCase();
                   const lowercaseGroomName = client.groomName.toLowerCase();
                   const lowercaseBrideName = client.brideName.toLowerCase();
-                  const lowercaseGroomLastName = client.groomLastName.toLowerCase();
-                  const lowercaseBrideLastName = client.brideLastName.toLowerCase();
-                  const lowercaseWeddingStatus = client.weddingStatus.toLowerCase();
-                  return lowercaseGroomName.includes(lowercaseSearch) ||
-                  lowercaseBrideName.includes(lowercaseSearch) ||
-                  lowercaseGroomLastName.includes(lowercaseSearch) ||
-                  lowercaseBrideLastName.includes(lowercaseSearch) ||
-                  lowercaseWeddingStatus.includes(lowercaseSearch);
+                  const lowercaseGroomLastName =
+                    client.groomLastName.toLowerCase();
+                  const lowercaseBrideLastName =
+                    client.brideLastName.toLowerCase();
+                  const lowercaseWeddingStatus =
+                    client.weddingStatus.toLowerCase();
+                  return (
+                    lowercaseGroomName.includes(lowercaseSearch) ||
+                    lowercaseBrideName.includes(lowercaseSearch) ||
+                    lowercaseGroomLastName.includes(lowercaseSearch) ||
+                    lowercaseBrideLastName.includes(lowercaseSearch) ||
+                    lowercaseWeddingStatus.includes(lowercaseSearch)
+                  );
                 }).map((data, index) => (
                   <tr key={index}>
                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
@@ -165,7 +170,11 @@ const WeddingClient = () => {
                             <GoEye size={20} />
                           </Link>
                         </button>
-                        <Link to={`/weddingAdmin/UpdateWeddingClient/${data._id}`}><FaRegEdit size={20} style={{color: '#3C50E0'}}/></Link>
+                        <Link
+                          to={`/weddingAdmin/UpdateWeddingClient/${data._id}`}
+                        >
+                          <FaRegEdit size={20} style={{ color: "#3C50E0" }} />
+                        </Link>
                         <button className="hover:text-primary text-primary">
                           <Link
                             to={`/weddingAdmin/ManageRequirements/${data._id}`}

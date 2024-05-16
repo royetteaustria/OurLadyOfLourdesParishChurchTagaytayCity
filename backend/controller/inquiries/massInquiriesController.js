@@ -6,8 +6,8 @@ const CreateMassInquiries = (req, res) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: `lourdeschurchwebsite@gmail.com`,
-      pass: `gwve vxvf xpih ligd`
+      user: process.env.NODE_MAILER_EMAIL,
+      pass: process.env.NODE_MAILER_PASSWORD,
     }
   });
   
