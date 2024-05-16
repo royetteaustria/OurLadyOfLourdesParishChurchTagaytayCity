@@ -4,27 +4,23 @@ const ReportSchema = mongoose.Schema(
     {
         GroomName: {
             type: String,
-            required: true
+            // required: true
         },
         BrideName: {
             type: String,
-            required: true
+            // required: true
         },
         DateOfWedding: {
             type: String,
-            required: true
-        },
-        TimeOfWedding: {
-            type: String,
-            required: true
+            // required: true
         },
         Rites: {
             type: String,
-            required: true
+            // required: true
         },
         GuestPriest: {
             type: String,
-            required: true
+            // required: true
         },
     }
 )
