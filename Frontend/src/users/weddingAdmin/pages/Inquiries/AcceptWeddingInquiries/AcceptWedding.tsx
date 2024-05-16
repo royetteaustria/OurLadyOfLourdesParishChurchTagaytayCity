@@ -78,6 +78,8 @@ const AcceptWedding = () => {
   const [GroomName, setGroomName] = useState(data.groomName);
   const [BrideName, setBrideName] = useState(data.brideName);
   const [DateOfWedding, setDateOfWedding] = useState(data.start);
+  const [Rites, setRites] = useState('');
+  const [GuestPriest, setGuestPriest] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -119,6 +121,8 @@ const AcceptWedding = () => {
           }));
           setGroomName(res.data.groomName); // Update GroomName state
           setBrideName(res.data.brideName); // Update BrideName state
+          setRites('')
+          setGuestPriest('')
         })
         .catch((err) => console.log(err));
     }, [id]);
@@ -130,6 +134,8 @@ const AcceptWedding = () => {
       GroomName: GroomName,
       BrideName: BrideName,
       DateOfWedding: DateOfWedding,
+      Rites: Rites,
+      GuestPriest: GuestPriest
     };
     try {
      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
@@ -197,11 +203,30 @@ const AcceptWedding = () => {
               type="text"
               name="GroomName"
               required
+              value={Rites}
+              onChange={(e) => setRites(e.target.value)}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
+            <input
+              type="text"
+              name="Priest"
+              required
+              value={GuestPriest}
+              onChange={(e) => setGuestPriest(e.target.value)}
+              placeholder="Enter Groom name"
+              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+            />
+            <input
+              type="text"
+              name="DateOfwedding"
+              required
               value={DateOfWedding.toISOString()}
               onChange={(e) => setDateOfWedding(new Date(e.target.value))}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
+
             <div className="flex justify-end gap-4.5 mb-12 mr-8">
               {!isFirstStep && (
                 <button
