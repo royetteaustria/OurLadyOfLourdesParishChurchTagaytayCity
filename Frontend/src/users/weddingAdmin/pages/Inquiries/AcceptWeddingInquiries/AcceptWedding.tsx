@@ -124,13 +124,8 @@ const AcceptWedding = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const recordData = data;
-    const reportData = {
-      GroomName: GroomName,
-      BrideName: BrideName,
-      DateOfWedding: DateOfWedding,
-    };
     try {
-      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
+      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create");
       const res = await axios.post(
         "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept/",
         recordData
