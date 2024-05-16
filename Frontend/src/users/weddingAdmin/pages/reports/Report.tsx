@@ -205,19 +205,19 @@ const Report = () => {
                     <td className="pl-12">
                       <div className="flex items-center">
                         <div className="pl-0">
-                          <p className="font-normal text-black dark:text-white">{report.BrideName.toLocaleUpperCase()}</p>
+                          <p className="font-normal text-black dark:text-white">{report.BrideName.toUpperCase()}</p>
                         </div>
                       </div>
                     </td>
                     <td className="pl-12">
-                      <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toLocaleUpperCase()}</p>
+                      <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toUpperCase()}</p>
                     </td>
       
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toLocaleUpperCase()}</p>
+                      <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toLocaleUpperCase()}</p>
+                      <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase()}</p>
                     </td>
                     {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark space-x-4">
                     <button className="text-warning">
