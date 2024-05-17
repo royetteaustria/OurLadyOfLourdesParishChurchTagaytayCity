@@ -1,6 +1,5 @@
 import CalendarBaptismal from './../../model/BaptismalCalendar/Calendar.js';
 
-
 export default function handler() {
     cron.schedule('0 0 * * *', async () => {
         
