@@ -56,7 +56,7 @@ const {id} = useParams()
   ])
     const navigate = useNavigate();
     useEffect(() => {
-      axios.get(`http://localhost:5000/api/BaptismalRecords/SingleUserUpdate/`+id)
+      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/SingleUserUpdate/`+id)
         .then(res => {
           console.log(res);
           setData(prev => ({
@@ -85,7 +85,7 @@ const {id} = useParams()
     const recordData = data;
 
     try {
-      const res = await axios.put('http://localhost:5000/api/BaptismalRecords/updateBaptismalRecords/'+id, recordData);
+      const res = await axios.put('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/updateBaptismalRecords/'+id, recordData);
       console.log(res);
       toast.success('Successfully update record');
       navigate('/ParishSecretary/record');

@@ -13,7 +13,7 @@ const UpdateBaptismalClient = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/BaptismalClient/singleClient/`+id)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/singleClient/`+id)
     .then(res => {
       console.log(res)
       setSeminar(res.data.seminar)
@@ -25,7 +25,7 @@ const UpdateBaptismalClient = () => {
   },[])
   const update = (e: FormEvent) => {
     e.preventDefault();
-    axios.put(`http://localhost:5000/api/BaptismalClient/update/${id}`, {
+    axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/update/${id}`, {
       status,
       seminar
     })

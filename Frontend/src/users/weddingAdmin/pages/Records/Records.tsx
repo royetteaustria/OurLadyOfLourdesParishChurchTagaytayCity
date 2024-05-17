@@ -96,7 +96,7 @@ const Records = () => {
   return (
     <>
     <div className="ml-4 px-3">
-    <Breadcrumb pageName="Records"/>
+    <Breadcrumb pageName="Wedding Records"/>
     </div>
       <div className="w-full sm:px-6">
         <div className="px-4 md:px-10 py-4 md:py-7 text-black dark:text-white bg-white rounded-tl-lg rounded-tr-lg dark:bg-boxdark">

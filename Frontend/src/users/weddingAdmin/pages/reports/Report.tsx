@@ -1,6 +1,6 @@
 import EmptyStates2 from '../../components/other/EmptyStates2';
 // import ReactToPrint from 'react-to-print';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -8,7 +8,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css fil
 import { DateRange } from 'react-date-range';
 import jsPDF from 'jspdf';
 // import { BsTrash } from 'react-icons/bs'
-// import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
 // import toast from 'react-hot-toast';
 
 type Reports = {
@@ -24,6 +24,7 @@ type Reports = {
 const Report = () => {
   // create state for getting the data
   const [data, setData] = useState<Reports[]>([]);
+  const {id} = useParams()
   const [alldata, setAllData] = useState<Reports[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
   const [endDate, setEndDate] = useState(new Date());
@@ -39,7 +40,7 @@ const Report = () => {
 
     useEffect(() => {
       async function getReports() {
-        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`)
+        const response = await axios.get(`http://localhost:5000/api/ReportModule/listofReport`)
         setData(response.data);
         setAllData(response.data)
       }
@@ -105,7 +106,7 @@ const Report = () => {
       
       // Add table data
       let y: number = 35;
-  
+
       data.forEach((report) => {
         doc.text(report.GroomName, parseFloat(a.toString()), y);
         doc.text(report.BrideName, parseFloat(b.toString()), y);
@@ -119,10 +120,9 @@ const Report = () => {
       const pdfBlob = doc.output('blob');
       setReportPdfBlob(pdfBlob);
   
-      // Instead of opening the PDF in a new tab, trigger the print dialog
+      // Open the PDF in a new tab
       const url = URL.createObjectURL(pdfBlob);
-      const printWindow = window.open(url);
-      printWindow?.print();
+      window.open(url, '_blank');
     };
     
     // async function deleteReport(id:string) {
@@ -152,9 +152,9 @@ const Report = () => {
       /> */}
         {/* to add report button */}
         
-      <Link to='/weddingAdmin/addreports'>
+      {/* <Link to='/weddingAdmin/addreports'>
         <button className={'ml-6 mb-6 p-2 bg-primary text-white rounded-sm'}>Add report</button>
-      </Link>
+      </Link> */}
       <button onClick={handleGeneratePdf} className={'ml-6 mb-6 p-2 bg-primary  text-white rounded-sm'}>
         Print Report
       </button>
@@ -180,11 +180,11 @@ const Report = () => {
             <tr className="h-16 w-full text-sm leading-none text-gray-800 bg-gray-2 dark:bg-meta-4">
               <th className="font-bold text-black dark:text-white text-left pl-4">{(`Groom name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Bride name`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-8">{(`Date of marriage`).toUpperCase()}</th>
+              <th className="font-bold text-black dark:text-white text-left pl-12">{(`Date of marriage`).toUpperCase()}</th>
               {/* <th className="font-bold text-black dark:text-white text-left pl-8">{(`Time`).toUpperCase()}</th> */}
-              <th className="font-bold text-black dark:text-white text-left pl-8">{(`Rites`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-8">{(`Guest Priest`).toUpperCase()}</th>
-              {/* <th className="font-bold text-black dark:text-white text-left pl-2">{(`Action`).toUpperCase()}</th> */}
+              <th className="font-bold text-black dark:text-white text-left pl-14">{(`Rites`).toUpperCase()}</th>
+              <th className="font-bold text-black dark:text-white text-left pl-12">{(`Guest Priest`).toUpperCase()}</th>
+              <th className="font-bold text-black dark:text-white text-left pl-2">{(`Action`).toUpperCase()}</th>
             </tr>
           </thead>
             <tbody className="w-full ">
@@ -215,6 +215,9 @@ const Report = () => {
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase() === '' ? 'Guest priest is to be determined' : report.GuestPriest.toUpperCase()}</p>
+                    </td>
+                    <td className={"border-b border-[#eee] py-5 px-4 dark:border-strokedark"}>
+                      <Link to={`/weddingAdmin/editReport/${report._id}`}><FaRegEdit size={20} style={{color: '#3C50E0'}}/></Link>
                     </td>
                   </tr>
                 ))

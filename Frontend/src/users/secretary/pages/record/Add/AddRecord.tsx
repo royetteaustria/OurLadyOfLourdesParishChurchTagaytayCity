@@ -61,7 +61,7 @@ const AddRecord = () => {
       const recordData = data;
     
       try {
-        const res = await axios.post('http://localhost:5000/api/BaptismalRecords/create', recordData);
+        const res = await axios.post('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/create', recordData);
         console.log(res);
         toast.success('Successfully added record');
         navigate('/ParishSecretary/record');

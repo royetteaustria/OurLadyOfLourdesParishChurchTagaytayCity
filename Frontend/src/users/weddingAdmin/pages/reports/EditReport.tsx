@@ -5,9 +5,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 
 const EditReport = () => {
-  const [GroomName, setGroomName] = useState('');
-  const [BrideName, setBrideName] = useState('');
-  const [DateOfWedding, setDateOfWedding] = useState('');
+  // const [GroomName, setGroomName] = useState('');
+  // const [BrideName, setBrideName] = useState('');
+  // const [DateOfWedding, setDateOfWedding] = useState('');
   const [TimeOfWedding, setTimeOfWedding] = useState('8:30 am');
   const [Rites, setRites] = useState('Tagalog');
   const [GuestPriest, setGuestPriest] = useState('Rev. Fr. Arnold M. Montella');
@@ -19,9 +19,9 @@ const EditReport = () => {
     axios.get(`http://localhost:5000/api/ReportModule/${id}`)
     .then(res => {
         console.log(res)
-        setGroomName(res.data.GroomName)
-        setBrideName(res.data.BrideName)
-        setDateOfWedding(res.data.DateOfWedding)
+        // setGroomName(res.data.GroomName)
+        // setBrideName(res.data.BrideName)
+        // setDateOfWedding(res.data.DateOfWedding)
         setTimeOfWedding(res.data.TimeOfWedding)
         setRites(res.data.Rites)
         setGuestPriest(res.data.GuestPriest)
@@ -34,9 +34,9 @@ const EditReport = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const reportData ={
-      GroomName: GroomName,
-      BrideName: BrideName,
-      DateOfWedding: DateOfWedding,
+      // GroomName: GroomName,
+      // BrideName: BrideName,
+      // DateOfWedding: DateOfWedding,
       TimeOfWedding: TimeOfWedding,
       Rites: Rites,
       GuestPriest: GuestPriest
@@ -66,7 +66,7 @@ const EditReport = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div className="p-6.5">
-                <div className="mb-4.5">
+                {/* <div className="mb-4.5">
                   <label className="mb-2.5 block text-black dark:text-white">
                     Groom Name
                   </label>
@@ -109,7 +109,7 @@ const EditReport = () => {
                       onChange={(e) => setDateOfWedding(e.target.value)}
                     />
                   </div>
-                </div>
+                </div> */}
                 {/* <div className="mb-4.5">
                   <label className="mb-2.5 block text-black dark:text-white">
                     Time of Marriage
@@ -135,24 +135,26 @@ const EditReport = () => {
                   </select>
                   </div>
                 </div>
-                <div className="mb-4.5">
-                  <label className="mb-2.5 block text-black dark:text-white">
-                    Guest Priest
-                  </label>
-                  <div className="relative z-20 bg-transparent dark:bg-form-input">
-                  <select value={GuestPriest} onChange={(e) => setGuestPriest(e.target.value)}className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus-border-primary active-border-primary dark-border-form-strokedark dark-bg-form-input dark-focus-border-primary">
-                    <option value="Rev. Fr. Arnold M. Montella">Rev. Fr. Arnold M. Montella</option>
-                    <option value="Rev. Fr. Eugenio Juanito P. Lopez">Rev. Fr. Eugenio Juanito P. Lopez</option>
-                    <option value="Rev. Fr. Rolando B. Datu">Rev. Fr. Rolando B. Datu</option>
-                    <option value="Rev. Fr. Zacarias M Parra">Rev. Fr. Zacarias M Parra</option>
-                  </select>
+                <div className="mb-5.5">
+                    <label className="mb-3 block text-black dark:text-white">
+                      Guest Priest
+                    </label>
+                    <div className="relative">
+                    <input
+                      type="input"
+                      name="GuestPriest"
+                      required
+                      className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                      value={GuestPriest}
+                      onChange={(e) => setGuestPriest(e.target.value)}
+                    />
                   </div>
-                </div>
                 <button 
                 type="submit"
-                className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
+                className="flex mt-8 w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                   Save
                 </button>
+              </div>
               </div>
             </form>
             <Toaster/>

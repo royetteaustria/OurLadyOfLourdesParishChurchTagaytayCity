@@ -18,7 +18,7 @@ const CardTwo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/MassClient/getAll');
+        const response = await axios.get('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/MassClient/getAll');
         const clients: MassInquiry[] = response.data;
 
         const incompleteClients = clients.filter((client: MassInquiry) => client.status === 'Pending');

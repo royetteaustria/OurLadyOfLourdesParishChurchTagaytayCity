@@ -18,7 +18,7 @@ const ClientInfo = () => {
     const [data, setData] = useState(Data)
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/api/MassClient/singleClient/`+id)
+        .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/MassClient/singleClient/`+id)
         .then((res) => {
           console.log(res);
           setData((prev) => ({

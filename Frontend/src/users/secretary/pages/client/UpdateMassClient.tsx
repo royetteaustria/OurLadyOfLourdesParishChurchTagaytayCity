@@ -12,7 +12,7 @@ const UpdateMassClient = () => {
   const {id} = useParams()
 
   useEffect (() => {
-    axios.get(`http://localhost:5000/api/MassClient/singleClient/`+id)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/MassClient/singleClient/`+id)
     .then(res => {
       console.log(res)
       setDescription(res.data.description)
@@ -25,7 +25,7 @@ const UpdateMassClient = () => {
 
   const update = (e: FormEvent) => {
     e.preventDefault()
-    axios.put(`http://localhost:5000/api/MassClient/update/${id}`, { description, status })
+    axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/MassClient/update/${id}`, { description, status })
     .then(res => {
       console.log(res)
       navigate('/ParishSecretary/Client')

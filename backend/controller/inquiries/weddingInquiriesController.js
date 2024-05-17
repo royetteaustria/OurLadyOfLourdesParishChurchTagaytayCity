@@ -1,6 +1,7 @@
 import weddinginquiries from "../../model/Inquiries/weddingInquiries.js";
 import nodemailer from 'nodemailer'
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
+
 const CreateWeddingInquiries = (req, res) => {
   //For generating an automated email
   var transporter = nodemailer.createTransport({
