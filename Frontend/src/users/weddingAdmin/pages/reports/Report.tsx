@@ -1,6 +1,6 @@
 import EmptyStates2 from '../../components/other/EmptyStates2';
 // import ReactToPrint from 'react-to-print';
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -24,7 +24,7 @@ type Reports = {
 const Report = () => {
   // create state for getting the data
   const [data, setData] = useState<Reports[]>([]);
-  const {id} = useParams()
+  // const {id} = useParams()
   const [alldata, setAllData] = useState<Reports[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
   const [endDate, setEndDate] = useState(new Date());
