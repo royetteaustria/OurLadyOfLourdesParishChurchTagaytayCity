@@ -110,9 +110,33 @@ const SingleInfo = (req, res) => {
     .catch(err => res.json(err))
 }
 
+const singleSubmitForm = async(req, res) => {
+  try {
+    const start = req.params.start;
+    const newStatus = 'Pending';
+
+  const document = await CalendarForReservation.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
+  }
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 export {
     CreateWeddingInquiries,
     deleteweddingInquiries,
     listWeddingInquiries,
-    SingleInfo
+    SingleInfo,
+    singleSubmitForm
 }

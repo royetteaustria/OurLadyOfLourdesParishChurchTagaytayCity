@@ -99,6 +99,29 @@ const getAvailableSlots = async (req, res) => {
     }
   };
 
+// const singleSubmitForm = async(req, res) => {
+//   try {
+//     const start = req.params.start;
+//   const newStatus = 'Pending';
+
+//   const document = await CalendarBaptismal.findOneAndUpdate(
+//     { start },
+//     { $set: { start: newStatus } },
+//     {
+//       new: true,
+//       runValidators: true,
+//     }
+//   );
+//   if (!document) {
+//     return res.status(404).json({ message: 'Document not found' });
+//   }
+//   res.json(document);
+//   } catch(err) {
+//     console.log(err)
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// }
+
 const getAvailableDates = async (req, res) => {
     try {
       const availableDates = await CalendarBaptismal.find({ description: "Available" });

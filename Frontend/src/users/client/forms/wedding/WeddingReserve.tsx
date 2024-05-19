@@ -7,7 +7,7 @@ import DatePicker from "./DatePicker";
 import { useMultistepForm } from "./useMultistepForm";
 import Review from "./Review";
 import Success from "../../components/modal/Success";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TermCondition from "../../../../components/modal/TermCondition";
 // import lourdes from "../../assets/wedding.jpg";
 import wedding2 from "../../assets/WeddingForm.jpg";
@@ -56,7 +56,7 @@ const reserve: FormData = {
 
 const WeddingReserve = () => {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
-
+  const {start} = useParams()
   const [data, setData] = useState(reserve);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const navigate = useNavigate();
@@ -93,6 +93,7 @@ const WeddingReserve = () => {
         `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/create`,
         recordData
       );
+      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update${start}`)
       console.log(res);
       toast.success("Successfully Reserve");
       setFormSubmitted(true);
