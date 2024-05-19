@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-// import cors from 'cors'
+import cors from 'cors'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import UserRoutes from './routes/auth/UserRoutes.js'
 import weddingRecordsRoutes from './routes/weddingrecords/weddingRecordRoutes.js'
@@ -27,11 +27,11 @@ connectDB();
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000
-// app.use(cors({ 
-//     origin: 'https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app', 
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
-//   }));
+app.use(cors({ 
+    origin: 'https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app', 
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+  }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
