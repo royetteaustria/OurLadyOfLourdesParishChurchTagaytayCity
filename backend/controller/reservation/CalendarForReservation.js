@@ -44,12 +44,24 @@ const getReservation = async(req, res) => {
 }
 
 const addReservation = async(req, res) => {
-    try {
-        const newReservation = await CalendarForReservation.create(req.body);
-        res.status(200).json(newReservation);
-    } catch(err) {
-        handleError(err, res)
+    const { start, end, description } = req.body;
+
+  try {
+    // Check if there's an existing reservation for the same start and end times
+    const existingReservation = await CalendarForReservation.findOne({
+      start: { $gte: start, $lte: end },
+      end: { $gte: start, $lte: end },
+    });
+
+    if (existingReservation) {
+      return res.status(409).json({ error: "A reservation already exists for the specified time period." });
     }
+
+    const newReservation = await CalendarForReservation.create({ start, end, description });
+    res.status(200).json(newReservation);
+  } catch (err) {
+    handleError(err, res);
+  }
 }
 
 const EditReservation = async(req, res) => {

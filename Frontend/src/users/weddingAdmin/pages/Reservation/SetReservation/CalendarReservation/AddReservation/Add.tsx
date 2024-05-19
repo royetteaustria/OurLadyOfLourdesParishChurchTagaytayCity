@@ -135,10 +135,17 @@ const getFirstFridayOfMonth = (date : Date) => {
       // Success toast
       toast.success("Success adding reservations");
       navigate("/weddingAdmin/Reservation");
-    } catch (err) {
-      console.error(err);
-      // Error toast
-      toast.error("Error adding reservations");
+    }catch (err : any) {
+      // Check if the error is from the server
+      if (err.response) {
+        // Extract the error message from the response
+        const errorMessage = err.response.data.error;
+        toast.error(errorMessage);
+      } else {
+        // Handle other types of errors
+        console.error(err);
+        toast.error("Error adding reservations");
+      }
     } finally {
       // Close loading toast when done
       setIsLoading(false);
