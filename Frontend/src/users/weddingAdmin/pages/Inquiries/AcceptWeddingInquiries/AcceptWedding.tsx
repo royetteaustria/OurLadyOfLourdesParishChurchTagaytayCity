@@ -77,8 +77,8 @@ const AcceptWedding = () => {
   const [data, setData] = useState(INITIAL_DATA);
   const [GroomName, setGroomName] = useState(data.groomName);
   const [BrideName, setBrideName] = useState(data.brideName);
-  const [BrideLastname, setBrideLastName] = useState(data.brideLastName)
-  const [GroomLastname, setGroomLastName] = useState(data.groomLastName)
+  const [BrideLastName, setBrideLastName] = useState(data.brideLastName)
+  const [GroomLastName, setGroomLastName] = useState(data.groomLastName)
   const [DateOfWedding, setDateOfWedding] = useState(data.start);
   // const [Rites, setRites] = useState('');
   // const [GuestPriest, setGuestPriest] = useState('');
@@ -136,8 +136,8 @@ const AcceptWedding = () => {
       GroomName: GroomName,
       BrideName: BrideName,
       DateOfWedding: DateOfWedding,
-      GroomLastname: GroomLastname,
-      BrideLastname: BrideLastname
+      GroomLastname: GroomLastName,
+      BrideLastname: BrideLastName
     };
     try {
      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
@@ -205,7 +205,7 @@ const AcceptWedding = () => {
               type="text"
               name="Groom Last name"
               required
-              value={GroomLastname}
+              value={GroomLastName}
               onChange={(e) => setGroomLastName(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
@@ -214,7 +214,7 @@ const AcceptWedding = () => {
               type="text"
               name="Priest"
               required
-              value={BrideLastname}
+              value={BrideLastName}
               onChange={(e) => setBrideLastName(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"

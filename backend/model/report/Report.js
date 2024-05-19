@@ -14,7 +14,7 @@ const ReportSchema = mongoose.Schema(
             type: String,
             // required: true
         },
-        BrideLastname: {
+        BrideLastName: {
             type: String,
             // required: true
         },
