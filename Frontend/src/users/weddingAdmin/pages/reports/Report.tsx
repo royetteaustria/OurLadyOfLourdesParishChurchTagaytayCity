@@ -16,8 +16,8 @@ type Reports = {
   GroomName: string;
   BrideName: string;
   DateOfWedding: string;
-  BrideLastname: string;
-  GroomLastname: string;
+  BrideLastName: string;
+  GroomLastName: string;
   // TimeOfWedding: string;
   // Rites: string;
   // GuestPriest: string;
@@ -110,8 +110,8 @@ const Report = () => {
       let y: number = 35;
 
       data.forEach((report) => {
-        doc.text(`${report.GroomName} ${report.GroomLastname}`, parseFloat(a.toString()), y);
-        doc.text(`${report.BrideName} ${report.BrideLastname}`, parseFloat(b.toString()), y);
+        doc.text(`${report.GroomName} ${report.GroomLastName}`, parseFloat(a.toString()), y);
+        doc.text(`${report.BrideName} ${report.BrideLastName}`, parseFloat(b.toString()), y);
         doc.text(formatDateTime(report.DateOfWedding), parseFloat(c.toString()), y);
         // doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
         // doc.text(report.Rites, parseFloat(e.toString()), y);
@@ -197,14 +197,14 @@ const Report = () => {
                       <div className="flex items-center">
                         <div className="pl-0 inline-flex">
                           <button className='hidden'>Edit</button>
-                          <p className="font-normal text-black dark:text-white">{`${report.GroomName.toUpperCase()} ${report.GroomLastname.toUpperCase()}`}</p>
+                          <p className="font-normal text-black dark:text-white">{`${report.GroomName.toUpperCase()} ${report.GroomLastName.toUpperCase()}`}</p>
                         </div>
                       </div>
                     </td>
                     <td className="pl-12">
                       <div className="flex items-center">
                         <div className="pl-0">
-                          <p className="font-normal text-black dark:text-white">{`${report.BrideName.toUpperCase()} ${report.BrideLastname.toUpperCase()}`}</p>
+                          <p className="font-normal text-black dark:text-white">{`${report.BrideName.toUpperCase()} ${report.BrideLastName.toUpperCase()}`}</p>
                         </div>
                       </div>
                     </td>
