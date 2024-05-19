@@ -136,8 +136,8 @@ const AcceptWedding = () => {
       GroomName: GroomName,
       BrideName: BrideName,
       DateOfWedding: DateOfWedding,
-      GroomLastname: GroomLastName,
-      BrideLastname: BrideLastName
+      GroomLastName: GroomLastName,
+      BrideLastName: BrideLastName
     };
     try {
      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
@@ -174,7 +174,7 @@ const AcceptWedding = () => {
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           {step}
           <form onSubmit={onSubmit}>
-            <input
+            {/* <input
               type="text"
               name="GroomName"
               required
@@ -182,7 +182,7 @@ const AcceptWedding = () => {
               // onChange={(e) => setGroomName(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-            />
+            /> */}
             <input
               type="text"
               name="GroomName"
@@ -212,7 +212,7 @@ const AcceptWedding = () => {
             />
             <input
               type="text"
-              name="Priest"
+              name="Bride Lastname"
               required
               value={BrideLastName}
               onChange={(e) => setBrideLastName(e.target.value)}
