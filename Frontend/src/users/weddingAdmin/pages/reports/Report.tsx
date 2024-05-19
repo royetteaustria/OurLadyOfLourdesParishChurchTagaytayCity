@@ -182,9 +182,9 @@ const Report = () => {
               <th className="font-bold text-black dark:text-white text-left pl-8">{(`Bride name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-12">{(`Date of marriage`).toUpperCase()}</th>
               {/* <th className="font-bold text-black dark:text-white text-left pl-8">{(`Time`).toUpperCase()}</th> */}
-              <th className="font-bold text-black dark:text-white text-left pl-14">{(`Rites`).toUpperCase()}</th>
+              {/* <th className="font-bold text-black dark:text-white text-left pl-14">{(`Rites`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-12">{(`Guest Priest`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-2">{(`Action`).toUpperCase()}</th>
+              <th className="font-bold text-black dark:text-white text-left pl-2">{(`Action`).toUpperCase()}</th> */}
             </tr>
           </thead>
             <tbody className="w-full ">
@@ -210,15 +210,15 @@ const Report = () => {
                       <p className="font-normal text-black dark:text-white">{formatDateTime(report.DateOfWedding).toUpperCase() }</p>
                     </td>
       
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-8 text-black dark:text-white">{report.Rites.toUpperCase() === '' ? 'Rites is to be determined' : report.Rites.toUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase() === '' ? 'Guest priest is to be determined' : report.GuestPriest.toUpperCase()}</p>
-                    </td>
-                    <td className={"border-b border-[#eee] py-5 px-4 dark:border-strokedark"}>
+                    </td> */}
+                    {/* <td className={"border-b border-[#eee] py-5 px-4 dark:border-strokedark"}>
                       <Link to={`/weddingAdmin/editReport/${report._id}`}><FaRegEdit size={20} style={{color: '#3C50E0'}}/></Link>
-                    </td>
+                    </td> */}
                   </tr>
                 ))
               ) : (
