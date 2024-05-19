@@ -16,6 +16,8 @@ type Reports = {
   GroomName: string;
   BrideName: string;
   DateOfWedding: string;
+  BrideLastname: string;
+  GroomLastname: string;
   // TimeOfWedding: string;
   // Rites: string;
   // GuestPriest: string;
@@ -91,7 +93,7 @@ const Report = () => {
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
       let a : Number  = 7;
-      let b : Number  = 77;
+      let b : Number  = 75;
       let c : Number  = 127;
       // let d : Number  = 110;
       // let e : Number  = 131;
@@ -108,8 +110,8 @@ const Report = () => {
       let y: number = 35;
 
       data.forEach((report) => {
-        doc.text(report.GroomName, parseFloat(a.toString()), y);
-        doc.text(report.BrideName, parseFloat(b.toString()), y);
+        doc.text(`${report.GroomName} ${report.GroomLastname}`, parseFloat(a.toString()), y);
+        doc.text(`${report.BrideName} ${report.BrideLastname}`, parseFloat(b.toString()), y);
         doc.text(formatDateTime(report.DateOfWedding), parseFloat(c.toString()), y);
         // doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
         // doc.text(report.Rites, parseFloat(e.toString()), y);

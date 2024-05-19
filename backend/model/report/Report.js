@@ -6,7 +6,15 @@ const ReportSchema = mongoose.Schema(
             type: String,
             // required: true
         },
+        GroomLastName: {
+            type: String,
+            // required: true
+        },
         BrideName: {
+            type: String,
+            // required: true
+        },
+        BrideLastname: {
             type: String,
             // required: true
         },

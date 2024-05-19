@@ -77,6 +77,8 @@ const AcceptWedding = () => {
   const [data, setData] = useState(INITIAL_DATA);
   const [GroomName, setGroomName] = useState(data.groomName);
   const [BrideName, setBrideName] = useState(data.brideName);
+  const [BrideLastname, setBrideLastName] = useState(data.brideLastName)
+  const [GroomLastname, setGroomLastName] = useState(data.groomLastName)
   const [DateOfWedding, setDateOfWedding] = useState(data.start);
   const [Rites, setRites] = useState('');
   const [GuestPriest, setGuestPriest] = useState('');
@@ -121,8 +123,8 @@ const AcceptWedding = () => {
           }));
           setGroomName(res.data.groomName); // Update GroomName state
           setBrideName(res.data.brideName); // Update BrideName state
-          setRites('')
-          setGuestPriest('')
+          setGroomLastName(res.data.groomLastName); // Update GroomName state
+          setBrideLastName(res.data.brideLastName); // Update BrideName state
         })
         .catch((err) => console.log(err));
     }, [id]);
@@ -201,10 +203,10 @@ const AcceptWedding = () => {
             />
             <input
               type="text"
-              name="GroomName"
+              name="Groom Last name"
               required
-              value={Rites}
-              onChange={(e) => setRites(e.target.value)}
+              value={GroomLastname}
+              onChange={(e) => setGroomLastName(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
@@ -212,8 +214,8 @@ const AcceptWedding = () => {
               type="text"
               name="Priest"
               required
-              value={GuestPriest}
-              onChange={(e) => setGuestPriest(e.target.value)}
+              value={BrideLastname}
+              onChange={(e) => setBrideLastName(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
