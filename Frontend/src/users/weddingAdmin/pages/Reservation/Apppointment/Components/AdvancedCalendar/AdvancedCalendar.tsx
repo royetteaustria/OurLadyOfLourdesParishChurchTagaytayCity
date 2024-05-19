@@ -24,7 +24,7 @@ const ControlCalendar: React.FC = () => {
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/Events')
+    axios.get('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Events')
       .then(response => {
         setEvents(response.data);
       })

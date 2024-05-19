@@ -14,7 +14,7 @@ const Edit = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/CalendarReservation/${id}`)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/${id}`)
       .then(res => {
         const eventData = res.data; // Assuming res.data is an object containing the event data
         setStart(new Date(eventData.start));

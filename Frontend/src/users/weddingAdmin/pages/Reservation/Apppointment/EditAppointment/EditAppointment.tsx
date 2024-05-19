@@ -14,7 +14,7 @@ const EditAppointment = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/Events/${id}`)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Events/${id}`)
       .then(res => {
         const eventData = res.data; // Assuming your API returns the event data as an object
         setTitle(eventData.title);

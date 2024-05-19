@@ -15,7 +15,7 @@ const EditBaptismal = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/BaptismalCalendar/${id}`)
+      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/${id}`)
       .then((res) => {
         const eventData = res.data; // Assuming res.data is an object containing the event data
         setStart(new Date(eventData.start));

@@ -133,7 +133,7 @@ const AddBaptismal = () => {
       // Send the array of reservations to the backend
       await Promise.all(
         reservations.map(async (reservation) => {
-          await axios.post("http://localhost:5000/api/BaptismalCalendar/add", reservation);
+          await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
         })
       );
       // Success toast
