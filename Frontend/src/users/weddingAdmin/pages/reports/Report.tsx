@@ -204,7 +204,7 @@ const Report = () => {
                     <td className="pl-12">
                       <div className="flex items-center">
                         <div className="pl-0">
-                          <p className="font-normal text-black dark:text-white">{`${report.BrideName.toUpperCase()} ${report.BrideName.toUpperCase()}`}</p>
+                          <p className="font-normal text-black dark:text-white">{`${report.BrideName.toUpperCase()} ${report.BrideLastname.toUpperCase()}`}</p>
                         </div>
                       </div>
                     </td>
