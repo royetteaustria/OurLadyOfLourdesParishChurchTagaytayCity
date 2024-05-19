@@ -93,7 +93,7 @@ const Report = () => {
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
       let a : Number  = 7;
-      let b : Number  = 75;
+      let b : Number  = 71;
       let c : Number  = 127;
       // let d : Number  = 110;
       // let e : Number  = 131;
@@ -197,14 +197,14 @@ const Report = () => {
                       <div className="flex items-center">
                         <div className="pl-0 inline-flex">
                           <button className='hidden'>Edit</button>
-                          <p className="font-normal text-black dark:text-white">{report.GroomName.toUpperCase()}</p>
+                          <p className="font-normal text-black dark:text-white">{`${report.GroomName.toUpperCase()} ${report.GroomLastname.toUpperCase()}`}</p>
                         </div>
                       </div>
                     </td>
                     <td className="pl-12">
                       <div className="flex items-center">
                         <div className="pl-0">
-                          <p className="font-normal text-black dark:text-white">{report.BrideName.toUpperCase() }</p>
+                          <p className="font-normal text-black dark:text-white">{`${report.BrideName.toUpperCase()} ${report.BrideName.toUpperCase()}`}</p>
                         </div>
                       </div>
                     </td>
