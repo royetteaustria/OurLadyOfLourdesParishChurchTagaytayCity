@@ -80,8 +80,8 @@ const AcceptWedding = () => {
   const [BrideLastname, setBrideLastName] = useState(data.brideLastName)
   const [GroomLastname, setGroomLastName] = useState(data.groomLastName)
   const [DateOfWedding, setDateOfWedding] = useState(data.start);
-  const [Rites, setRites] = useState('');
-  const [GuestPriest, setGuestPriest] = useState('');
+  // const [Rites, setRites] = useState('');
+  // const [GuestPriest, setGuestPriest] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -136,8 +136,8 @@ const AcceptWedding = () => {
       GroomName: GroomName,
       BrideName: BrideName,
       DateOfWedding: DateOfWedding,
-      Rites: Rites,
-      GuestPriest: GuestPriest
+      GroomLastname: GroomLastname,
+      BrideLastname: BrideLastname
     };
     try {
      axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
