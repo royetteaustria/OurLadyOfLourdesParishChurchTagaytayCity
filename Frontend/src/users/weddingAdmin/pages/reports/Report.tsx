@@ -91,8 +91,8 @@ const Report = () => {
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
       let a : Number  = 7;
-      let b : Number  = 62;
-      let c : Number  = 97;
+      let b : Number  = 92;
+      let c : Number  = 127;
       // let d : Number  = 110;
       // let e : Number  = 131;
       // let f : Number  = 150;
@@ -102,7 +102,7 @@ const Report = () => {
       doc.setFontSize(10);
       doc.save(`Wedding Report for ${month} ${year}`);
       const headers = ['Groom Name', 'Bride Name', 'Date of Marriage'];
-      doc.text(headers.join('                       '), parseInt(a.toString(), 10), 25);
+      doc.text(headers.join('                                           '), parseInt(a.toString(), 10), 25);
       
       // Add table data
       let y: number = 35;
