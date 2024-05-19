@@ -16,9 +16,9 @@ type Reports = {
   GroomName: string;
   BrideName: string;
   DateOfWedding: string;
-  TimeOfWedding: string;
-  Rites: string;
-  GuestPriest: string;
+  // TimeOfWedding: string;
+  // Rites: string;
+  // GuestPriest: string;
 };
 
 const Report = () => {
