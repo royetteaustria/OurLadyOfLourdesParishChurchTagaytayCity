@@ -93,7 +93,7 @@ const WeddingReserve = () => {
         `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/create`,
         recordData
       );
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update${start}`)
+      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update/${start}`)
       console.log(res);
       toast.success("Successfully Reserve");
       setFormSubmitted(true);
