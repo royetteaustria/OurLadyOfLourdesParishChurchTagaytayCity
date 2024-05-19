@@ -101,7 +101,7 @@ const Report = () => {
       doc.text(`Wedding Report for ${month} ${year}`, parseFloat(a.toString()), 15);
       doc.setFontSize(10);
       doc.save(`Wedding Report for ${month} ${year}`);
-      const headers = ['Groom Name', 'Bride Name', 'Date of Marriage', 'Time', 'Rites', 'Guest Priest'];
+      const headers = ['Groom Name', 'Bride Name', 'Date of Marriage'];
       doc.text(headers.join('             '), parseInt(a.toString(), 10), 25);
       
       // Add table data
