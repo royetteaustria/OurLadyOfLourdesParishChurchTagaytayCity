@@ -16,7 +16,7 @@ const EditReport = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/ReportModule/${id}`)
+    axios.get(`${import.meta.env.APP_URL}/ReportModule/${id}`)
     .then(res => {
         console.log(res)
         // setGroomName(res.data.GroomName)
@@ -41,7 +41,7 @@ const EditReport = () => {
       Rites: Rites,
       GuestPriest: GuestPriest
     };
-    axios.put('http://localhost:5000/api/ReportModule/updateReports', reportData)
+    axios.put(`${import.meta.env.APP_URL}/ReportModule/updateReports`, reportData)
       .then(res => {
         console.log(res)
         toast.success('Successfully edit report');

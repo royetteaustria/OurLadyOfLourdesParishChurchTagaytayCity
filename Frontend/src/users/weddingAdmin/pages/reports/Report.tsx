@@ -40,7 +40,7 @@ const Report = () => {
 
     useEffect(() => {
       async function getReports() {
-        const response = await axios.get(`http://localhost:5000/api/ReportModule/listofReport`)
+        const response = await axios.get(`${import.meta.env.APP_URL}/ReportModule/listofReport`)
         setData(response.data);
         setAllData(response.data)
       }
