@@ -1,4 +1,5 @@
 import CalendarBaptismal from './../../model/BaptismalCalendar/Calendar.js';
+import cron from 'node-cron'
 
 export default function handler() {
     cron.schedule('0 0 * * *', async () => {
@@ -9,9 +10,6 @@ export default function handler() {
         console.log('Today:', today);
       
         try {
-            // if (req.headers.get('Authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
-            //     return res.status(401).end('Unauthorized');
-            //   }
           const deletedEvents = await CalendarBaptismal.deleteMany({
             end: { $lt: today },
           });
