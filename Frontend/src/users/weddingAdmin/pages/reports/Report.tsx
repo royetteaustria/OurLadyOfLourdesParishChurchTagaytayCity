@@ -40,7 +40,7 @@ const Report = () => {
 
     useEffect(() => {
       async function getReports() {
-        const response = await axios.get(`${import.meta.env.APP_URL}/ReportModule/listofReport`)
+        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`)
         setData(response.data);
         setAllData(response.data)
       }
