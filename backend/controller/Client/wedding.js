@@ -1,4 +1,5 @@
 import weddingClient from "../../model/client/wedding.js";
+import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 
 const acceptWedidngClient = (req, res) => {
     weddingClient.create(req.body)
@@ -65,10 +66,33 @@ const getSingleClient = (req, res) => {
     .catch(err => res.json(err))
 };
   
+const updatedToAppointment = async(req, res) => {
+    try {
+      const start = req.params.start;
+      const newStatus = 'Appointed';
+  
+    const document = await CalendarForReservation.findOneAndUpdate(
+      { start },
+      { $set: { description: newStatus } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found' });
+    }
+    res.json(document);
+    } catch(err) {
+      console.log(err)
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
 
 export {
     acceptWedidngClient,
     listWeddingClient,
     updateWeddingClient,
     getSingleClient,
+    updatedToAppointment
 }
