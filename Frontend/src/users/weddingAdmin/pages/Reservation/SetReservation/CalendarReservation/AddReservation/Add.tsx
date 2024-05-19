@@ -135,16 +135,13 @@ const getFirstFridayOfMonth = (date : Date) => {
       // Success toast
       toast.success("Success adding reservations");
       navigate("/weddingAdmin/Reservation");
-    }catch (err : any) {
-      // Check if the error is from the server
-      if (err.response) {
-        // Extract the error message from the response
-        const errorMessage = err.response.data.error;
-        toast.error(errorMessage);
+    } catch (err : any) {
+      console.error(err);
+      if(err.response === "A reservation already exists for the specified time period.") {
+        toast.error("A reservation already exists for the specified time period");
       } else {
-        // Handle other types of errors
-        console.error(err);
-        toast.error("Error adding reservations");
+        // Error toast
+      toast.error("Error adding reservations");
       }
     } finally {
       // Close loading toast when done
