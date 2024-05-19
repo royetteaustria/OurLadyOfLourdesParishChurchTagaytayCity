@@ -91,8 +91,8 @@ const Report = () => {
     const handleGeneratePdf = async () => {
       const doc  = new jsPDF();
       let a : Number  = 7;
-      let b : Number  = 42;
-      let c : Number  = 77;
+      let b : Number  = 52;
+      let c : Number  = 87;
       // let d : Number  = 110;
       // let e : Number  = 131;
       // let f : Number  = 150;
