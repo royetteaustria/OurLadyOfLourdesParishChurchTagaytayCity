@@ -110,7 +110,7 @@ const Report = () => {
       data.forEach((report) => {
         doc.text(report.GroomName, parseFloat(a.toString()), y);
         doc.text(report.BrideName, parseFloat(b.toString()), y);
-        doc.text(report.DateOfWedding, parseFloat(c.toString()), y);
+        doc.text(formatDateTime(report.DateOfWedding), parseFloat(c.toString()), y);
         // doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
         // doc.text(report.Rites, parseFloat(e.toString()), y);
         // doc.text(report.GuestPriest, parseFloat(f.toString()), y);
