@@ -14,14 +14,14 @@ const ReportSchema = mongoose.Schema(
             type: String,
             // required: true
         },
-        Rites: {
-            type: String,
-            // required: true
-        },
-        GuestPriest: {
-            type: String,
-            // required: true
-        },
+        // Rites: {
+        //     type: String,
+        //     // required: true
+        // },
+        // GuestPriest: {
+        //     type: String,
+        //     // required: true
+        // },
     }
 )
 

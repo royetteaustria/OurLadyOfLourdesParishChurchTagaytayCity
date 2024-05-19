@@ -93,9 +93,9 @@ const Report = () => {
       let a : Number  = 7;
       let b : Number  = 42;
       let c : Number  = 77;
-      let d : Number  = 110;
-      let e : Number  = 131;
-      let f : Number  = 150;
+      // let d : Number  = 110;
+      // let e : Number  = 131;
+      // let f : Number  = 150;
       
       // Add table headers
       doc.text(`Wedding Report for ${month} ${year}`, parseFloat(a.toString()), 15);
@@ -111,9 +111,9 @@ const Report = () => {
         doc.text(report.GroomName, parseFloat(a.toString()), y);
         doc.text(report.BrideName, parseFloat(b.toString()), y);
         doc.text(report.DateOfWedding, parseFloat(c.toString()), y);
-        doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
-        doc.text(report.Rites, parseFloat(e.toString()), y);
-        doc.text(report.GuestPriest, parseFloat(f.toString()), y);
+        // doc.text(report.TimeOfWedding, parseFloat(d.toString()), y);
+        // doc.text(report.Rites, parseFloat(e.toString()), y);
+        // doc.text(report.GuestPriest, parseFloat(f.toString()), y);
         y += 10; // Increment y for the next line
       });
   
