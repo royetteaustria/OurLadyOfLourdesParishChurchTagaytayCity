@@ -4,13 +4,13 @@ import {
     listWeddingClient,
     updateWeddingClient,
     getSingleClient,
-    updatedToAppointment
+    // updatedToAppointment
 } from '../../controller/Client/wedding.js'
 
 const router = express.Router();
 
 router.post('/accept', acceptWedidngClient)
-router.put('/update/:start', updatedToAppointment)
+// router.put('/update/:start', updatedToAppointment)
 router.get('/listOfClient', listWeddingClient)
 router.put('/update/:id', updateWeddingClient)
 router.get('/singleClient/:id', getSingleClient)
