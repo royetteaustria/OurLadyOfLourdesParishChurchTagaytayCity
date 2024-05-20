@@ -277,7 +277,7 @@ const AddBaptismal = () => {
                       dateFormat="MMMM d, yyyy"
                       // minTime={new Date(0, 0, 0, 8, 0, 0)} // 6:00 AM
                       // maxTime={new Date(0, 0, 0, 10, 0, 0)} // 5:00 PM
-                      className="form-control"
+                      className="form-control bg-transparent"
                       id="end"
                       filterDate={isNotMonday}
                     />
@@ -304,7 +304,7 @@ const AddBaptismal = () => {
                       // maxTime={new Date(0, 0, 0, 17, 0, 0)}
                       // timeFormat="HH:mm"
                       dateFormat="MMMM d, yyyy"
-                      className="form-control"
+                      className="form-control bg-transparent"
                       id="start"
                     />
                   </div>

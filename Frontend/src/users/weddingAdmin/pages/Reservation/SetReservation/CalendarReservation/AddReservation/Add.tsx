@@ -293,7 +293,7 @@ const getFirstFridayOfMonth = (date : Date) => {
                         minDate={new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate())}
                         onChange={(date: Date | null) => setStart(date)}
                         dateFormat="MMMM d, yyyy"
-                        className="form-control"
+                        className="form-control bg-transparent"
                         id="end"
                         filterDate={(date) => {
                             const day = date.getDay();
@@ -320,7 +320,7 @@ const getFirstFridayOfMonth = (date : Date) => {
                       // maxTime={new Date(0, 0, 0, 17, 0, 0)}
                       // timeFormat="HH:mm"
                       dateFormat="MMMM d, yyyy h:mm aa"
-                      className="form-control"
+                      className="form-control bg-transparent"
                       id="start"
                     />
                   </div>
