@@ -96,12 +96,12 @@ const WeddingReserve = () => {
         );
     
         // Update calendar reservation
-        const updateRes = await axios.put(
+        await axios.put(
           `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update/${data.start}`
         );
     
         // Update baptismal calendar
-        const blockDateRes = await axios.put(
+        await axios.put(
           `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/BlockDateUpdate/${data.start}`
         );
     
