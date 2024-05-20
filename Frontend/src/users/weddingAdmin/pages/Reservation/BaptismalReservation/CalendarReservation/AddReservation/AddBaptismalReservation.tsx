@@ -50,72 +50,55 @@ const AddBaptismal = () => {
     const holidayString = `${month}/${day}/${year}`;
     return holidayDates.includes(holidayString) || holidayDates.includes(date.toDateString());
   };
+  const getTimeSlots = (date: Date) => {
+    const dayOfWeek = date.getDay();
+    switch (dayOfWeek) {
+      case 0: // Sunday
+        return [];
+      case 1: // Monday
+        return [];
+      case 2: // Tuesday
+      case 3: // Wednesday
+      case 4: // Thursday
+      case 5: // Friday
+        return ["8:00 AM", "9:00 AM", "10:00 AM"];
+      case 6: // Saturday
+        return ["8:00 AM", "9:00 AM", "10:00 AM"];
+      default:
+        return [];
+    }
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | null) => {
     if (!e) return;
     e.preventDefault();
-  
-    if (start === null) {
+
+    if (!start) {
       toast.error("Please select a date.");
       return;
     }
-  
-    // Check if the selected date is a holiday in the Philippines
-    const isHolidayDate = isHoliday(start);
-  
-    // If it's a holiday or Sunday, prevent submission
-    if (isHolidayDate || start.getDay() === 0) {
+
+    if (isHoliday(start) || start.getDay() === 0) {
       toast.error("Can't set reservation on holidays or Sundays.");
       return;
     }
-    const getTimeSlots = (date: Date) => {
-      const dayOfWeek = date.getDay();
-    
-      switch (dayOfWeek) {
-        case 0: // Sunday
-          return ["11:00 AM"];
-        case 1: // Monday
-          return [];
-        case 2: // Tuesday
-        case 3: // Wednesday
-        case 4: // Thursday
-        case 5: // Friday
-          return ["8:00 AM", "9:00 AM", "10:00 AM"];
-        case 6: // Saturday
-          return ["8:00 AM", "9:00 AM", "10:00 AM"];
-        default:
-          return [];
-      }
-  };
-  
-    // Check if the selected date is more than one year in advance
-    let endDate = new Date(start);
-    endDate.setFullYear(endDate.getFullYear() + 1); // Declare endDate as let instead of const
-    if (new Date() > endDate) {
-      toast.error("Reservation cannot be set more than one year in advance.");
-      return;
-    }
-  
+
     const reservations = [];
-  
-    // Set end date to one year from the selected date
-    endDate = new Date(start);
+    const startDate = new Date(start);
+    const endDate = new Date(start);
     endDate.setFullYear(endDate.getFullYear() + 1);
-    
-    setIsLoading(true);
-    // Loop through dates from start date to end date
-    while (start <= endDate) {
-      // const dayOfWeek = start.getDay();
-      const timeSlots = getTimeSlots(start);
-  
-      // Add reservations for valid days and time slots
+
+    let currentDate = startDate;
+    while (currentDate <= endDate) {
+      const timeSlots = getTimeSlots(currentDate);
+
       if (timeSlots.length > 0) {
         for (const timeSlot of timeSlots) {
-          const startTime = new Date(start);
           const [hours, minutes] = timeSlot.split(":");
+          const startTime = new Date(currentDate);
           startTime.setHours(parseInt(hours));
           startTime.setMinutes(parseInt(minutes));
-          const endTime = new Date(startTime.getTime() + 3600000); // Add 1 hour for end time
-  
+
+          const endTime = new Date(startTime.getTime() + 3600000); // Add 1 hour
           reservations.push({
             start: startTime,
             end: endTime,
@@ -124,28 +107,25 @@ const AddBaptismal = () => {
           });
         }
       }
-  
-      // Move to the next day
-      start.setDate(start.getDate() + 1);
+      currentDate.setDate(currentDate.getDate() + 1);
     }
-  
+
+    setIsLoading(true);
+
     try {
-      // Send the array of reservations to the backend
       await Promise.all(
         reservations.map(async (reservation) => {
           await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
         })
       );
-      // Success toast
       toast.success("Success adding reservations");
       navigate("/weddingAdmin/BaptismalReservation");
     } catch (err) {
       console.error(err);
-      // Error toast
       toast.error("Error adding reservations");
     } finally {
-      // Close loading toast when done
-      setIsLoading(false); }
+      setIsLoading(false);
+    }
   };
   
   
