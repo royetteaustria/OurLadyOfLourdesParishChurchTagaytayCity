@@ -10,7 +10,7 @@ const acceptWedidngClient = async(req, res) => {
     // Update the CalendarReservation collection
     const updatedReservationDocument = await CalendarForReservation.findOneAndUpdate(
       { start: wedDate },
-      { $set: { description: 'Pending' } },
+      { $set: { description: 'Appointed' } },
       { new: true, runValidators: true }
     );
 
