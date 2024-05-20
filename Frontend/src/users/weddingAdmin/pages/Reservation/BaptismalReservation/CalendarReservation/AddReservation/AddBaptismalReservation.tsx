@@ -344,9 +344,9 @@ const AddBaptismal = () => {
                     </div>
                     </div> */}
                   </div>
-                  <span className="flex justify-end">
+                  <span className="flex justify-end w-full">
                     <button
-                      className={`bg-primary p-3 text-white rounded-sm w-24 ${
+                      className={`bg-primary p-3 text-white rounded-sm w-full ${
                         isLoading ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
                       disabled={isLoading}
