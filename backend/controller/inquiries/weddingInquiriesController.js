@@ -48,32 +48,27 @@ const CreateWeddingInquiries = async (req, res) => {
     <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`
   };
   //Function for creating an inquiries
-  const BaptismalDate = CalendarBaptismal.find({start: start})
   
-
-  if(BaptismalDate === wedDate) {
-    try {
-      const start = req.params.start;
+  try {
+    const BaptismalDate = await CalendarBaptismal.find({start: wedDate});
+    if(BaptismalDate.length > 0) {
       const newStatus = 'Not available';
       const newSlot = 0;
-  
-    const document = await CalendarBaptismal.findOneAndUpdate(
-      { start },
-      { $set: { description: newStatus, slot: newSlot } },
-      {
-        new: true,
-        runValidators: true,
+      const document = await CalendarBaptismal.findOneAndUpdate(
+        { start: wedDate },
+        { $set: { description: newStatus, slot: newSlot } },
+        { new: true, runValidators: true }
+      );
+      if (!document) {
+        return res.status(404).json({ message: 'Document not found' });
       }
-    );
-    if (!document) {
-      return res.status(404).json({ message: 'Document not found' });
+      res.json(document);
     }
-    res.json(document);
-    } catch(err) {
-      console.log(err)
-      res.status(500).json({ message: 'Internal server error' });
-    }
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
   }
+
   weddinginquiries.create(req.body)
     .then((weddingInquiries) => {
       //generating an email
@@ -81,21 +76,13 @@ const CreateWeddingInquiries = async (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          res.json({
-            message: info.response,
-        })
+          res.json({ message: info.response });
         }
       });
-      res.json({
-        message: "Successfully Inquired",
-        weddingInquiries,
-      });
+      res.json({ message: "Successfully Inquired", weddingInquiries });
     })
     .catch((err) => {
-      res.status(404).json({
-        message: "Failed to Inquire",
-        error: err.message,
-      });
+      res.status(404).json({ message: "Failed to Inquire", error: err.message });
     });
 }
 //Function for rejecting an single inquries
