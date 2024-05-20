@@ -37,20 +37,6 @@ const CreateWeddingInquiries = async (req, res) => {
     }
   });
 
-  // function formatDateTime(date) {
-  //   if (typeof date === 'string') {
-  //     date = new Date(date);
-  //   }
-  //   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  //   const day = date.getDate();
-  //   const month = monthNames[date.getMonth()];
-  //   const year = date.getFullYear();
-  //   const hours = date.getHours() % 12 || 12; // Get 12-hour format
-  //   const minutes = date.getMinutes().toString().padStart(2, '0');
-  //   const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
-  //   return `${month} ${day} ${year} ${hours}:${minutes} ${amPm}`;
-  // }
-
   const clientEmail = req.body.email;
   const brideGmail = req.body.Brideemail;
   const Gname = req.body.groomName;
@@ -102,20 +88,50 @@ const CreateWeddingInquiries = async (req, res) => {
 }
 
 //Function for rejecting an single inquries
-const deleteweddingInquiries = (req, res) => {
-    weddinginquiries.findOneAndDelete({ _id: req.params.id})
-    .then((weddingInquiries) => {
-        res.json({
-            message: "Successfully delete wedding inquiries",
-            weddingInquiries
-        })
-    })
-    .catch((err) => {
-        res.status(404).json({
-          message: "failed to delete",
-          error: err.message,
-        });
-      });
+const deleteweddingInquiries = async (req, res) => {
+  try {
+    const deletedInquiry = await weddinginquiries.findOneAndDelete({ _id: req.params.id });
+    if (!deletedInquiry) {
+      return res.status(404).json({ message: 'Wedding inquiry not found' });
+    }
+
+    // Find the corresponding baptismal event
+    const baptismalEvent = await CalendarBaptismal.findOne({ start: deletedInquiry.start });
+
+    // If there is no corresponding baptismal event, return an error
+    if (!baptismalEvent) {
+      return res.status(404).json({ message: 'Baptismal event not found' });
+    }
+
+    // Update the baptismal event to mark it as available with 5 slots
+    baptismalEvent.description = 'Available';
+    baptismalEvent.slot = 5;
+    await baptismalEvent.save();
+
+    // Now, execute the singleSubmitForm functionality
+    const start = deletedInquiry.start;
+    const newStatus = 'Available';
+
+    const document = await CalendarForReservation.findOneAndUpdate(
+      { start },
+      { $set: { description: newStatus } },
+      { new: true, runValidators: true }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found' });
+    }
+
+    res.json({
+      message: "Successfully deleted wedding inquiry and updated baptismal slot availability, and submitted form",
+      deletedInquiry,
+      baptismalEvent,
+      document
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 }
 
 //Function for getting all the inquires
