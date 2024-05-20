@@ -56,8 +56,8 @@ const listWeddingClient = (req, res) => {
 
 const updateWeddingClient = async (req, res) => {
   const id = req.params.id;
-  weddingClient
-    .findOneAndUpdate(
+  try {
+    const updatedClient = await weddingClient.findOneAndUpdate(
       { _id: id },
       {
         groom_Cannonical_Interview: req.body.groom_Cannonical_Interview,
@@ -67,21 +67,39 @@ const updateWeddingClient = async (req, res) => {
         weddingStatus: req.body.weddingStatus,
         bridealreadyBaptist: req.body.bridealreadyBaptist,
         bridealreadyKumpil: req.body.bridealreadyKumpil,
-      }
-    )
-    .then((client) => {
-      console.log(client);
+      },
+      { new: true }
+    );
+
+    if (updatedClient.weddingStatus === "cancel") {
+      const wedDate = updatedClient.start;
+
+      // Update the CalendarReservation collection
+      const updatedReservationDocument = await CalendarForReservation.findOneAndUpdate(
+        { start: wedDate },
+        { $set: { description: "Available" } },
+        { new: true, runValidators: true }
+      );
+
+      // Update the CalendarBaptismal collection
+      const updatedBaptismalDocument = await CalendarBaptismal.findOneAndUpdate(
+        { start: wedDate },
+        { $set: { description: "Available", slot: 5 } },
+        { new: true, runValidators: true }
+      );
+
       res.json({
-        message: "Succesfully add update",
-        client,
+        message: "Successfully updated",
+        updatedClient,
+        updatedReservationDocument,
+        updatedBaptismalDocument,
       });
-    })
-    .catch((err) => {
-      res.status(404).json({
-        message: "Failed to update client",
-        error: err.message,
-      });
-    });
+    } else {
+      res.json({ message: "Successfully updated", updatedClient });
+    }
+  } catch (err) {
+    res.status(404).json({ message: "Failed to update client", error: err.message });
+  }
 };
 
 const getSingleClient = (req, res) => {
