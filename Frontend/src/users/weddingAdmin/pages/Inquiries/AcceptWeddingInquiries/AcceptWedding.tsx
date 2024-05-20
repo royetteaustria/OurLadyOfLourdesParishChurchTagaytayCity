@@ -112,7 +112,6 @@ const AcceptWedding = () => {
             groomAge: res.data.groomAge,
             groomLastName: res.data.groomLastName,
             groomMiddleName: res.data.groomMiddleName,
-    
             Brideemail: res.data.Brideemail,
             BridephoneNumber: res.data.BridephoneNumber,
             brideName: res.data.brideName,
@@ -135,7 +134,7 @@ const AcceptWedding = () => {
     const reportData = {
       GroomName: GroomName,
       BrideName: BrideName,
-      DateOfWedding: DateOfWedding,
+      DateOfWedding: data.start,
       GroomLastName: GroomLastName,
       BrideLastName: BrideLastName
     };
