@@ -49,9 +49,9 @@ const CreateWeddingInquiries = async (req, res) => {
   };
   //Function for creating an inquiries
   const BaptismalDate = CalendarBaptismal.find({start: start})
-  const WeddingDate = CalendarForReservation.find({start: start})
+  
 
-  if(BaptismalDate === WeddingDate) {
+  if(BaptismalDate === wedDate) {
     try {
       const start = req.params.start;
       const newStatus = 'Not available';
