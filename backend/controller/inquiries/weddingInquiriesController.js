@@ -50,8 +50,8 @@ const CreateWeddingInquiries = async (req, res) => {
   //Function for creating an inquiries
   
   try {
-    const BaptismalDate = await CalendarBaptismal.find({start: wedDate});
-    if(BaptismalDate.length > 0) {
+    const BaptismalDate = await CalendarBaptismal.find({start: start});
+    if(BaptismalDate.length === wedDate) {
       const newStatus = 'Not available';
       const newSlot = 0;
       const document = await CalendarBaptismal.findOneAndUpdate(
