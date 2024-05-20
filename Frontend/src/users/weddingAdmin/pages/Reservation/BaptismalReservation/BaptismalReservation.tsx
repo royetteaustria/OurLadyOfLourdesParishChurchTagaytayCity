@@ -27,6 +27,10 @@ const BaptismalReservation = () => {
           <span className='size-4 p-2 px-4 ml-4 bg-[#f9d9b1]'></span>
           <span className='text-black ml-3  dark:text-white'>-Pending</span>
         </div>
+        <div className=''>
+          <span className='size-4 p-2 px-4 ml-4 bg-danger bg-opacity-70'></span>
+          <span className='text-black ml-3  dark:text-white'>-Not Available</span>
+        </div>
       </div>
       <div style={{ height: "95vh" }} className=" p-4 h-full">
         <AdvancedCalendar/>

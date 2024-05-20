@@ -1,6 +1,7 @@
 import weddinginquiries from "../../model/Inquiries/weddingInquiries.js";
 import nodemailer from 'nodemailer'
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
+import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 
 const CreateWeddingInquiries = (req, res) => {
   //For generating an automated email
@@ -133,10 +134,35 @@ const singleSubmitForm = async(req, res) => {
   }
 }
 
+const BlockDate = async(req, res) => {
+  try {
+    const start = req.params.start;
+    const newStatus = 'Not available';
+    const newSlot = 0;
+
+  const document = await CalendarBaptismal.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus, slot: newSlot } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
+  }
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 export {
     CreateWeddingInquiries,
     deleteweddingInquiries,
     listWeddingInquiries,
     SingleInfo,
-    singleSubmitForm
+    singleSubmitForm,
+    BlockDate
 }

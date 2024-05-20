@@ -52,6 +52,7 @@ const components = {
             ? "text-black text-opacity-70 bg-[#b6f4b2] h-full bg-opacity-90"
             : props.event.description === "Appointed"
             ? "text-white bg-primary bg-opacity-80 h-full "
+            : props.event.description === 'Not available' ? "text-white bg-danger bg-opacity-80 h-full "
             : "text-black text-opacity-70 bg-[#f9d9b1] h-full "
         }
         onClick={() => props.onClick(props.event)}
