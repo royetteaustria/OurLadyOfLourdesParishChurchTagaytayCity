@@ -2,16 +2,19 @@ import {uploadFile,
   updateFile, getAllClient, getSingleRequirements} from "../../controller/req/Req.js";
 import express from 'express'
 import multer from "multer";
+import path from 'path';
 
+const __dirname = path.resolve();
+const uploadsDir = path.join(__dirname, 'uploads');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, uploadsDir);
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, file.originalname);
   }
-})
+});
 const upload = multer({ storage: storage })
 
 
