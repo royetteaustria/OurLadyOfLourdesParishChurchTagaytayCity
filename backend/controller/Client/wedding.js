@@ -71,7 +71,7 @@ const updateWeddingClient = async (req, res) => {
       { new: true }
     );
 
-    if (updatedClient.weddingStatus === "cancel") {
+    if (updatedClient.weddingStatus === "Cancel") {
       const wedDate = updatedClient.start;
 
       // Update the CalendarReservation collection
