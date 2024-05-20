@@ -148,100 +148,98 @@ const AddBaptismal = () => {
   //     setIsLoading(false); }
   // };
   const getTimeSlots = (date: Date) => {
-        const dayOfWeek = date.getDay();
-      
-        switch (dayOfWeek) {
-          case 0: // Sunday
-            return ["11:00 AM"];
-          case 1: // Monday
-            return [];
-          case 2: // Tuesday
-          case 3: // Wednesday
-          case 4: // Thursday
-          case 5: // Friday
-            return ["8:00 AM", "9:00 AM", "10:00 AM"];
-          case 6: // Saturday
-            return ["8:00 AM", "9:00 AM", "10:00 AM"];
-          default:
-            return [];
-        }
-    };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (start === null) {
-      toast.error("Please select a date.");
-      return;
-    }
-
-    const isHolidayDate = isHoliday(start);
-
-    if (isHolidayDate || start.getDay() === 0 || start.getDay() === 1) {
-      toast.error("Cannot set reservation on holidays, Sundays, or Mondays");
-      return;
-    }
-
-    const reservations = [];
-    const currentDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-    const endDate = new Date(start.getFullYear() + 1, start.getMonth(), start.getDate() - 1);
-    setIsLoading(true);
-
-    while (currentDate <= endDate) {
-      const dayOfWeek = currentDate.getDay();
-
-      if (dayOfWeek !== 0 && dayOfWeek !== 1 && !isHoliday(currentDate)) {
-        const timeSlots = getTimeSlots(currentDate);
-        for (const timeSlot of timeSlots) {
-          const startTime = new Date(`${currentDate.toDateString()} ${timeSlot}`);
-          const endTime = new Date(startTime.getTime() + 3600000); // Add 1 hour
-          reservations.push({
-            start: startTime,
-            end: endTime,
-            description: "Available",
-            slot: 5, // Assuming 5 slots per time slot
-          });
-        }
-      }
-      currentDate.setDate(currentDate.getDate() + 1);
-    }
-
-    const retryFailedRequest = async (reservation: any) => {
-      let retries = 3;
-      while (retries > 0) {
-        try {
-          await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
-          return;
-        } catch (err) {
-          retries -= 1;
-          if (retries === 0) {
-            throw err;
-          }
-        }
-      }
-    };
-
-    try {
-      for (const reservation of reservations) {
-        await retryFailedRequest(reservation);
-      }
-      toast.success("Success adding reservations");
-      navigate("/weddingAdmin/BaptismalReservation");
-    } catch (err: any) {
-      // Check if the error is from the server
-      if (err.response) {
-        // Extract the error message from the response
-        const errorMessage = err.response.data.error;
-        toast.error(errorMessage);
-      } else {
-        // Handle other types of errors
-        console.error(err);
-        toast.error("Error adding reservations");
-      }
-    } finally {
-      setIsLoading(false);
+    const dayOfWeek = date.getDay();
+    switch (dayOfWeek) {
+      case 0: // Sunday
+        return ["11:00 AM"];
+      case 1: // Monday
+        return [];
+      case 2: // Tuesday
+      case 3: // Wednesday
+      case 4: // Thursday
+      case 5: // Friday
+        return ["8:00 AM", "9:00 AM", "10:00 AM"];
+      case 6: // Saturday
+        return ["8:00 AM", "9:00 AM", "10:00 AM"];
+      default:
+        return [];
     }
   };
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
   
+      if (start === null) {
+        toast.error("Please select a date.");
+        return;
+      }
+  
+      const isHolidayDate = isHoliday(start);
+  
+      if (isHolidayDate || start.getDay() === 1) { // Only excluding Mondays and holidays now
+        toast.error("Cannot set reservation on holidays or Mondays.");
+        return;
+      }
+  
+      const reservations = [];
+      const currentDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+      const endDate = new Date(start.getFullYear() + 1, start.getMonth(), start.getDate() - 1);
+      setIsLoading(true);
+  
+      while (currentDate <= endDate) {
+        const dayOfWeek = currentDate.getDay();
+  
+        if (dayOfWeek !== 1 && !isHoliday(currentDate)) { // Only excluding Mondays and holidays now
+          const timeSlots = getTimeSlots(currentDate);
+          for (const timeSlot of timeSlots) {
+            const startTime = new Date(`${currentDate.toDateString()} ${timeSlot}`);
+            const endTime = new Date(startTime.getTime() + 3600000); // Add 1 hour
+            reservations.push({
+              start: startTime,
+              end: endTime,
+              description: "Available",
+              slot: 5, // Assuming 5 slots per time slot
+            });
+          }
+        }
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+  
+      const retryFailedRequest = async (reservation: any) => {
+        let retries = 3;
+        while (retries > 0) {
+          try {
+            await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
+            return;
+          } catch (err) {
+            retries -= 1;
+            if (retries === 0) {
+              throw err;
+            }
+          }
+        }
+      };
+  
+      try {
+        for (const reservation of reservations) {
+          await retryFailedRequest(reservation);
+        }
+        toast.success("Success adding reservations");
+        navigate("/weddingAdmin/BaptismalReservation");
+      } catch (err: any) {
+        // Check if the error is from the server
+        if (err.response) {
+          // Extract the error message from the response
+          const errorMessage = err.response.data.error;
+          toast.error(errorMessage);
+        } else {
+          // Handle other types of errors
+          console.error(err);
+          toast.error("Error adding reservations");
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
   
   // const isNotMonday = (date : Date) => {
   //   const day = date.getDay();
