@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 
-const CreateWeddingInquiries = (req, res) => {
+const CreateWeddingInquiries = async (req, res) => {
   //For generating an automated email
   var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -48,6 +48,32 @@ const CreateWeddingInquiries = (req, res) => {
     <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`
   };
   //Function for creating an inquiries
+  const BaptismalDate = CalendarBaptismal.find({start: start})
+  const WeddingDate = CalendarForReservation.find({start: start})
+
+  if(BaptismalDate === WeddingDate) {
+    try {
+      const start = req.params.start;
+      const newStatus = 'Not available';
+      const newSlot = 0;
+  
+    const document = await CalendarBaptismal.findOneAndUpdate(
+      { start },
+      { $set: { description: newStatus, slot: newSlot } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found' });
+    }
+    res.json(document);
+    } catch(err) {
+      console.log(err)
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
   weddinginquiries.create(req.body)
     .then((weddingInquiries) => {
       //generating an email
@@ -140,25 +166,20 @@ const BlockDate = async(req, res) => {
     const newStatus = 'Not available';
     const newSlot = 0;
 
-    // Check if a document exists with the provided start date
-    const existingDocument = await CalendarBaptismal.findOne({ start });
-
-    if (!existingDocument) {
-      return res.status(404).json({ message: 'Document not found for the given date' });
+  const document = await CalendarBaptismal.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus, slot: newSlot } },
+    {
+      new: true,
+      runValidators: true,
     }
-
-    const document = await CalendarBaptismal.findOneAndUpdate(
-      { start },
-      { $set: { description: newStatus, slot: newSlot } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-
-    res.json(document);
-  } catch (err) {
-    console.log(err);
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
+  }
+  res.json(document);
+  } catch(err) {
+    console.log(err)
     res.status(500).json({ message: 'Internal server error' });
   }
 }
