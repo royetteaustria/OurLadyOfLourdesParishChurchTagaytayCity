@@ -32,31 +32,51 @@ const listWeddingClient = (req, res) => {
 
 const updateWeddingClient = async (req, res) => {
     const id = req.params.id;
-    
-    weddingClient.findOneAndUpdate({_id: id}, 
+    const newWeddingStatus = req.body.weddingStatus;
+
+    try {
+        // Update the wedding client status
+        const client = await weddingClient.findOneAndUpdate(
+            { _id: id },
             {
-            groom_Cannonical_Interview: req.body.groom_Cannonical_Interview,
-            groomalreadyBaptist: req.body.groomalreadyBaptist,
-            groomalreadyKumpil: req.body.groomalreadyKumpil,
-            Bride_Cannonical_Interview: req.body.Bride_Cannonical_Interview,
-            weddingStatus: req.body.weddingStatus,
-            bridealreadyBaptist: req.body.bridealreadyBaptist,
-            bridealreadyKumpil: req.body.bridealreadyKumpil
+                groom_Cannonical_Interview: req.body.groom_Cannonical_Interview,
+                groomalreadyBaptist: req.body.groomalreadyBaptist,
+                groomalreadyKumpil: req.body.groomalreadyKumpil,
+                Bride_Cannonical_Interview: req.body.Bride_Cannonical_Interview,
+                weddingStatus: newWeddingStatus,
+                bridealreadyBaptist: req.body.bridealreadyBaptist,
+                bridealreadyKumpil: req.body.bridealreadyKumpil
+            },
+            { new: true }
+        );
+
+        if (!client) {
+            return res.status(404).json({ message: "Client not found" });
+        }
+
+        // If the wedding status is "Cancelled", update the calendar
+        if (newWeddingStatus === "Cancel") {
+            const calendarUpdate = await CalendarForReservation.findOneAndUpdate(
+                { start: client.start },
+                { $set: { description: "Available" } },
+                { new: true, runValidators: true }
+            );
+
+            if (!calendarUpdate) {
+                return res.status(404).json({ message: "Calendar entry not found" });
             }
-        )
-        .then((client) => {
-            console.log(client)
-            res.json({
-                message:"Succesfully add update",
-                client,
-            });
-        })
-        .catch((err) => {
-            res.status(404).json({
-              message: "Failed to update client",
-              error: err.message,
-            });
-          });
+        }
+
+        res.json({
+            message: "Successfully updated",
+            client,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to update client",
+            error: err.message,
+        });
+    }
 };
 
 const getSingleClient = (req, res) => {
