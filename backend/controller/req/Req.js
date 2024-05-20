@@ -46,41 +46,37 @@ const getSingleRequirements = (req, res) => {
 
 const updateFile = async (req, res) => {
   const id = req.params.id;
-
   try {
     // First, find the existing document
     const requirements = await WeddingRequirements.findById(id);
-
     if (!requirements) {
       return res.status(404).json({ message: "Requirements not found" });
     }
 
-    // Create an object with the new file names or paths
+    // Create an object with the new file data
     const updatedData = {};
-
     // Iterate over each file field and update the corresponding field in updatedData
     for (const field in req.files) {
       if (req.files[field].length > 0) {
-        updatedData[field] = req.files[field][0].filename;
+        // Access the file Buffer
+        const fileBuffer = req.files[field][0].buffer;
+
+        // Process the file buffer as needed (e.g., save to database, process data, etc.)
+        // For example, you can convert the Buffer to a Base64 string and save it to the database
+        const fileData = fileBuffer.toString('base64');
+        updatedData[field] = fileData;
       }
     }
 
-    // Update the document with the new file names or paths
+    // Update the document with the processed file data
     const updatedRequirements = await WeddingRequirements.findByIdAndUpdate(
       id,
       { $set: updatedData },
       { new: true }
     );
-
-    res.json({
-      message: "Successfully updated files",
-      requirements: updatedRequirements,
-    });
+    res.json({ message: "Successfully processed files", requirements: updatedRequirements });
   } catch (err) {
-    res.status(500).json({
-      message: "Failed to update files",
-      error: err.message,
-    });
+    res.status(500).json({ message: "Failed to process files", error: err.message });
   }
 };
 
