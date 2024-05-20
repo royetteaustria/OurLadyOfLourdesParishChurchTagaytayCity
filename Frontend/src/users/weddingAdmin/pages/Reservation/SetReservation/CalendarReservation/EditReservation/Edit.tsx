@@ -38,7 +38,7 @@ const Edit = () => {
     };
     
     try {
-      const res = await axios.put(`https://our-lady-of-lourdes-parish-church-tagaytay-city.vercel.app/api/CalendarReservation/` + id, editReservation)
+      const res = await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/` + id, editReservation)
       console.log(res)
       toast.success('Successfully Update')
       navigate('/weddingAdmin/Reservation')
