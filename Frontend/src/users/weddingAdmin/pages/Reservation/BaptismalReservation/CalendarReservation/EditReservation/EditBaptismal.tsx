@@ -41,7 +41,7 @@ const EditBaptismal = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/BaptismalCalendar/` + id,
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/` + id,
         editReservation
       );
       console.log(res);

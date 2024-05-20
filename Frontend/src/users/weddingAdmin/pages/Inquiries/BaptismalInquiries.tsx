@@ -68,7 +68,7 @@ const baptismalInquiries = () => {
 
 
   async function deleteRecord(id: string) {
-    await axios.delete(`http://localhost:5000/api/baptismalInquiries/reject/`+id)
+    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/reject/`+id)
       .then(() => {
         console.log('data has been deleted');
         // You may want to update your data state here

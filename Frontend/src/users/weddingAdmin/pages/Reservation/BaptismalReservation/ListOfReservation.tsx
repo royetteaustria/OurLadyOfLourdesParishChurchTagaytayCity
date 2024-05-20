@@ -18,7 +18,7 @@ const ListOfReservation = () => {
     async function getDate() {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/CalendarReservation"
+          "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation"
         );
         const available = res.data;
         setData(available);

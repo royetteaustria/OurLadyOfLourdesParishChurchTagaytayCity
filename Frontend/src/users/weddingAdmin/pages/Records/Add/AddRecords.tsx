@@ -126,7 +126,7 @@ const AddRecords = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/WeddingRecords/create",
+        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/create",
         recordData
       );
       console.log(res);

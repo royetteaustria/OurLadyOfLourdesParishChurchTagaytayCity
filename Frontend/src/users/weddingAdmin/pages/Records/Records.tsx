@@ -52,7 +52,7 @@ const Records = () => {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await axios.get(`http://localhost:5000/api/WeddingRecords/weddingRecordsList`)
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/weddingRecordsList`)
       setData(response.data)
       setAllData(response.data)
     }
@@ -83,7 +83,7 @@ const Records = () => {
   // };
 
   async function deleteRecord(id: string) {
-    await axios.delete(`http://localhost:5000/api/WeddingRecords/deleteRecords/${id}`)
+    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/deleteRecords/${id}`)
       .then(() => {
         console.log('data has been deleted');
       })

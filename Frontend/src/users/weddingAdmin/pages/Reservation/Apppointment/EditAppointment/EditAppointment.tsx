@@ -39,7 +39,7 @@ const EditAppointment = () => {
     };
     
     try {
-      const res = await axios.put('http://localhost:5000/api/Events/'+id, EditAppointment)
+      const res = await axios.put('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Events/'+id, EditAppointment)
       console.log(res)
       toast.success('Successfully Update')
       navigate('/weddingAdmin/SetAppointment')

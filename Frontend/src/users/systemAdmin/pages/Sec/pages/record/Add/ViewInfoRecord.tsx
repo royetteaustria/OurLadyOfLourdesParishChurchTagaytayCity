@@ -24,7 +24,7 @@ const ViewInfoRecord = () => {
     const [data, setData] = useState(INITIAL_DATA)
     
     useEffect(() => {
-      axios.get(`http://localhost:5000/api/BaptismalRecords/SingleUserUpdate/`+id)
+      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/SingleUserUpdate/`+id)
         .then(res => {
           console.log(res);
           setData(prev => ({

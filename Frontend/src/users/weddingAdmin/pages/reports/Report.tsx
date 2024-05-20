@@ -127,17 +127,7 @@ const Report = () => {
       window.open(url, '_blank');
     };
     
-    // async function deleteReport(id:string) {
-    //   try {
-    //     await axios.delete(`http://localhost:5000/api/ReportModule/deleteReports/${id}`);
-    //     const newData = data.filter((el) => el._id !== id);
-    //     setData(newData);
-    //     toast.success(`Delete Successfully`);
-    //   } catch (error) {
-    //     console.error(error);
-    //     toast.error(`Failed to Delete`);
-    //   }
-    // }
+    
     
   return (
     <>

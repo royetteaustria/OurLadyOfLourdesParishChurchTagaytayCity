@@ -22,7 +22,7 @@ const InquiriesInfo = () => {
   const [data, setData] = useState(Data)
   const navigate = useNavigate()
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/massInquiries/Info/`+id)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/massInquiries/Info/`+id)
     .then(res => {
       console.log(res)
       setData(prev => ({
@@ -39,8 +39,8 @@ const InquiriesInfo = () => {
   const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:5000/api/MassClient/accept`, data);
-      await axios.delete(`http://localhost:5000/api/massInquiries/reject/${id}`)
+      const res = await axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/MassClient/accept`, data);
+      await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/massInquiries/reject/${id}`)
       console.log(res);
       toast.success('Successfully accept');
       navigate('/systemAdmin/MassClient');

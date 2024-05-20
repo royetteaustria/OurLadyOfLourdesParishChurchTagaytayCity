@@ -16,9 +16,9 @@ type Reports = {
   GroomName: string;
   BrideName: string;
   DateOfWedding: string;
-  TimeOfWedding: string;
-  Rites: string;
-  GuestPriest: string;
+  // TimeOfWedding: string;
+  // Rites: string;
+  // GuestPriest: string;
 };
 
 const Report = () => {
@@ -39,7 +39,7 @@ const Report = () => {
 
     useEffect(() => {
       async function getReports() {
-        const response = await axios.get(`http://localhost:5000/api/ReportModule/listofReport`)
+        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`)
         setData(response.data);
         setAllData(response.data)
       }
@@ -105,7 +105,7 @@ const Report = () => {
     
     // async function deleteReport(id:string) {
     //   try {
-    //     await axios.delete(`http://localhost:5000/api/ReportModule/deleteReports/${id}`);
+    //     await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/deleteReports/${id}`);
     //     const newData = data.filter((el) => el._id !== id);
     //     setData(newData);
     //     toast.success(`Delete Successfully`);
@@ -158,9 +158,9 @@ const Report = () => {
               <th className="font-bold text-black dark:text-white text-left pl-4">{(`Groom name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-12">{(`Bride name`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-12">{(`Date of marriage`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-12">{(`Time`).toUpperCase()}</th>
+              {/* <th className="font-bold text-black dark:text-white text-left pl-12">{(`Time`).toUpperCase()}</th>
               <th className="font-bold text-black dark:text-white text-left pl-12">{(`Rites`).toUpperCase()}</th>
-              <th className="font-bold text-black dark:text-white text-left pl-12">{(`Guest Priest`).toUpperCase()}</th>
+              <th className="font-bold text-black dark:text-white text-left pl-12">{(`Guest Priest`).toUpperCase()}</th> */}
               {/* <th className="font-semibold text-black dark:text-white text-left pl-2">Action</th> */}
             </tr>
           </thead>
@@ -186,7 +186,7 @@ const Report = () => {
                     <td className="pl-12">
                       <p className="font-normal text-black dark:text-white">{report.DateOfWedding.toUpperCase()}</p>
                     </td>
-                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-6 text-black dark:text-white">{report.TimeOfWedding.toUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -194,7 +194,7 @@ const Report = () => {
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="font-normal ml-6 text-black dark:text-white">{report.GuestPriest.toUpperCase()}</p>
-                    </td>
+                    </td> */}
                     {/* <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark space-x-4">
                     <button className="text-warning">
                           <Link to={`/systemAdmin/editReport/${report._id}`}><FaRegEdit size={20} style={{color: '#3C50E0'}}/></Link>

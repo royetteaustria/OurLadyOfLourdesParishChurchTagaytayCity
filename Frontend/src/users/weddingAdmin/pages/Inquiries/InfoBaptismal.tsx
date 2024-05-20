@@ -105,8 +105,8 @@ const InfoBaptismal = () => {
   const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:5000/api/BaptismalClient/accept`, data)
-      await axios.delete(`http://localhost:5000/api/baptismalInquiries/reject/${id}`)
+      const res = await axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/accept`, data)
+      await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/reject/${id}`)
       console.log(res)
       toast.success('Successfully accept');
       navigate('/weddingAdmin/baptismalClient')

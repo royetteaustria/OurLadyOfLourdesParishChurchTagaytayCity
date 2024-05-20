@@ -65,7 +65,7 @@ const BaptismRecord = ({}) => {
   };
 
   async function deleteRecord(id: string) {
-    await axios.delete(`http://localhost:5000/api/BaptismalRecords/deletebaptismalRecords/${id}`)
+    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/deletebaptismalRecords/${id}`)
       .then(() => {
         console.log('data has been deleted');
         // You may want to update your data state here

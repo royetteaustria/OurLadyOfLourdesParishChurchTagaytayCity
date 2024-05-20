@@ -51,7 +51,7 @@ const InfoRecords = () => {
   const [record, setRecord] = useState(WeddingRecord);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/WeddingRecords/SingleUser/`+id)
+    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/SingleUser/`+id)
       .then(res => {
         console.log(res);
         setRecord(prev => ({

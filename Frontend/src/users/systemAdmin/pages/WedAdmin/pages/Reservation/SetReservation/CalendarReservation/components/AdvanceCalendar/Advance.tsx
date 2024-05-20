@@ -51,7 +51,7 @@ const ControlCalendar: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/CalendarReservation')
+      .get('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation')
       .then((response) => {
         setEvents(response.data);
         console.log(response.data)

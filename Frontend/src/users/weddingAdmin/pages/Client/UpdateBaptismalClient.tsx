@@ -25,7 +25,7 @@ const UpdateBaptismalClient = () => {
   },[])
   const update = (e: FormEvent) => {
     e.preventDefault();
-    axios.put(`http://localhost:5000/api/BaptismalClient/update/${id}`, {
+    axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/update/${id}`, {
       status,
       seminar
     })
