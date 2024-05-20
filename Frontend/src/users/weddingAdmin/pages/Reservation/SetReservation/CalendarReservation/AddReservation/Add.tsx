@@ -77,8 +77,9 @@ const getFirstFridayOfMonth = (date : Date) => {
     return holidayDates.includes(holidayString) || holidayDates.includes(date.toDateString());
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | null) => {
-    if (!e) return;
+  // 
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (start === null) {
@@ -86,31 +87,23 @@ const getFirstFridayOfMonth = (date : Date) => {
       return;
     }
 
-    // Check if the selected date is a holiday in the Philippines
     const isHolidayDate = isHoliday(start);
 
-    // If it's a holiday or Monday or Sunday, prevent submission
     if (isHolidayDate || start.getDay() === 0 || start.getDay() === 1) {
-      toast.error("Cant set reservation on holidays");
+      toast.error("Cannot set reservation on holidays, Sundays, or Mondays");
       return;
     }
-    const reservations = [];
-    const currentDate = new Date(start.getFullYear(), start.getMonth(), start.getDate()); // Start from the selected date
-    const endDate = new Date(start.getFullYear() + 1, start.getMonth(), start.getDate() - 1); // End on the last day of the same month next year
-    // const loadingToast = toast.loading(<span className="text-primary p-4 ">Adding Reservations...</span>, {
-    //   position: 'top-right',
-    //    // Add transition property
 
-    // });
+    const reservations = [];
+    const currentDate = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    const endDate = new Date(start.getFullYear() + 1, start.getMonth(), start.getDate() - 1);
     setIsLoading(true);
+
     while (currentDate <= endDate) {
       const dayOfWeek = currentDate.getDay();
-      // const dayOfMonth = currentDate.getDate();
 
       if (dayOfWeek !== 0 && dayOfWeek !== 1 && !isHoliday(currentDate)) {
-        // Not Sunday, Monday, or a holiday
         const timeSlots = getTimeSlots(currentDate);
-
         for (const timeSlot of timeSlots) {
           const startTime = new Date(`${currentDate.toDateString()} ${timeSlot}`);
           const endTime = new Date(`${currentDate.toDateString()} ${timeSlot}`);
@@ -121,47 +114,53 @@ const getFirstFridayOfMonth = (date : Date) => {
           });
         }
       }
-
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    try {
-      // Send the array of reservations to the backend
-      await Promise.all(
-        reservations.map(async (reservation) => {
+    const retryFailedRequest = async (reservation : any) => {
+      let retries = 3;
+      while (retries > 0) {
+        try {
           await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/add", reservation);
-        })
-      );
-      // Success toast
+          return;
+        } catch (err) {
+          retries -= 1;
+          if (retries === 0) {
+            throw err;
+          }
+        }
+      }
+    };
+
+    try {
+      for (const reservation of reservations) {
+        await retryFailedRequest(reservation);
+      }
       toast.success("Success adding reservations");
       navigate("/weddingAdmin/Reservation");
     } catch (err) {
       console.error(err);
-      // Error toast
       toast.error("Error adding reservations");
     } finally {
-      // Close loading toast when done
       setIsLoading(false);
-      
     }
   };
 
   const getTimeSlots = (date: Date) => {
     const dayOfWeek = date.getDay();
-    // const dayOfMonth = date.getDate();
     const isFirstWednesday = date.toDateString() === getFirstWednesdayOfMonth(date).toDateString();
     const isFirstFriday = date.toDateString() === getFirstFridayOfMonth(date).toDateString();
-  
+
     switch (dayOfWeek) {
-      case 2: // Tuesday
+      case 2: 
         return ["8:00 AM", "10:00 AM", "1:00 PM", "3:00 PM"];
-      case 3: // Wednesday
+      case 3: 
         return isFirstWednesday ? ["8:00 AM", "10:00 AM", "2:00 PM"] : ["8:00 AM", "10:00 AM", "1:00 PM", "3:00 PM"];
-      case 4: // Thursday
+      case 4: 
         return ["8:00 AM", "10:00 AM", "1:00 PM", "3:00 PM"];
-      case 5: // Friday
+      case 5: 
         return isFirstFriday ? ["8:00 AM", "10:00 AM", "2:00 PM"] : ["8:00 AM", "10:00 AM", "1:00 PM", "3:00 PM"];
-      case 6: // Saturday
+      case 6: 
         return ["9:00 AM", "2:00 PM"];
       default:
         return [];
