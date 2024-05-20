@@ -44,12 +44,26 @@ const getReservation = async(req, res) => {
 }
 
 const addReservation = async(req, res) => {
-    try {
-        const newReservation = await CalendarBaptismal.create(req.body);
-        res.status(200).json(newReservation);
-    } catch(err) {
-        handleError(err, res)
+  const { start, end, description } = req.body;
+  try {
+    const ExistingReservation = await CalendarBaptismal.findOne({
+      start: { $gte: start, $lte: end },
+      end: { $gte: start, $lte: end },
+    });
+    if (ExistingReservation) {
+      return res.status(409).json({ error: "A reservation already exists for the specified time period." });
     }
+    const newReservation = await CalendarBaptismal.create({ start, end, description });
+    res.status(200).json(newReservation);
+  } catch (error) {
+    handleError(err, res);
+  }
+    // try {
+    //     const newReservation = await CalendarBaptismal.create(req.body);
+    //     res.status(200).json(newReservation);
+    // } catch(err) {
+    //     handleError(err, res)
+    // }
 }
 
 const EditReservation = async(req, res) => {

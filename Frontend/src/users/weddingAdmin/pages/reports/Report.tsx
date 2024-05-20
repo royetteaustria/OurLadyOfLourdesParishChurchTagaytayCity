@@ -40,15 +40,19 @@ const Report = () => {
   
   const [, setReportPdfBlob] = useState<Blob | null>(null);
 
-    useEffect(() => {
-      async function getReports() {
-        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`)
-        setData(response.data);
-        setAllData(response.data)
-      }
-      getReports();
-      return;
-    },[])
+  useEffect(() => {
+    async function getReports() {
+      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`);
+      const currentMonthReports = response.data.filter((report: { DateOfWedding:  Date; }) => {
+        const reportDate = new Date(report.DateOfWedding);
+        return reportDate.getMonth() === new Date().getMonth() && reportDate.getFullYear() === new Date().getFullYear();
+      });
+      setData(currentMonthReports);
+      setAllData(response.data);
+    }
+    getReports();
+    return;
+  }, []);
 
     function formatDateTime(date: Date | string) {
       if (typeof date === 'string') {
