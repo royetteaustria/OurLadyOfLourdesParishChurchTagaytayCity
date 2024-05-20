@@ -31,7 +31,6 @@ type Wedding_Inquiries = {
   brideMotherName: string,
   bridealreadyBaptist: string,
   bridealreadyKumpil: string,
-  time: string,
   start: string,
   createdAt:string
   brideLastName: string;
