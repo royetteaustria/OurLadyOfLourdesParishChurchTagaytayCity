@@ -1,36 +1,21 @@
 import weddingClient from "../../model/client/wedding.js";
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 
-const acceptWedidngClient = async (req, res) => {
-  const wedDate = req.params.start;
-  try {
-    const existDate = await CalendarForReservation.findOne({ start: wedDate });
-    if (!existDate) {
-      return res.status(404).json({ message: "Date not found in the calendar" });
-    }
-
-    // Update the description field of the corresponding CalendarForReservation document
-    const updatedCalendarDoc = await CalendarForReservation.findOneAndUpdate(
-      { start: wedDate },
-      { $set: { description: "Appointed" } },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedCalendarDoc) {
-      return res.status(404).json({ message: "Failed to update calendar description" });
-    }
-
-    // Create the wedding client
-    const weddingClient = await weddingClient.create(req.body);
-
-    res.json({
-      message: "Successfully accepted",
-      weddingClient,
-      updatedCalendarDoc,
+const acceptWedidngClient = (req, res) => {
+  weddingClient
+    .create(req.body)
+    .then((wedding_client) => {
+      res.json({
+        message: "Succesfully Accept",
+        wedding_client,
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        message: "Failed to Accept",
+        error: err.message,
+      });
     });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", error: error.message });
-  }
 };
 
 const listWeddingClient = (req, res) => {
