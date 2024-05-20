@@ -146,7 +146,7 @@ const AcceptWedding = () => {
       );
       // await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/${data.start}`)
       await axios.delete(
-        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/delete/${id}`
       );
       console.log(res);
       toast.success("Successfully Accept Inquiries");

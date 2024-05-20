@@ -83,7 +83,7 @@ const CreateWeddingInquiries = async (req, res) => {
 }
 
 //Function for rejecting an single inquries
-const deleteweddingInquiries = async (req, res) => {
+const rejectweddingInquiries = async (req, res) => {
   try {
     const deletedInquiry = await weddinginquiries.findOneAndDelete({ _id: req.params.id });
     if (!deletedInquiry) {
@@ -99,13 +99,13 @@ const deleteweddingInquiries = async (req, res) => {
     }
 
     // Update the baptismal event to mark it as available with 5 slots
-    baptismalEvent.description = 'Not available';
-    baptismalEvent.slot = 0;
+    baptismalEvent.description = 'Available';
+    baptismalEvent.slot = 5;
     await baptismalEvent.save();
 
     // Now, execute the singleSubmitForm functionality
     const start = deletedInquiry.start;
-    const newStatus = 'Pending';
+    const newStatus = 'Available';
 
     const document = await CalendarForReservation.findOneAndUpdate(
       { start },
@@ -141,6 +141,29 @@ const listWeddingInquiries = (req, res) => {
     .catch((err) => {
         res.status(500).json({ message: "Failed to retrieve records", error: err.message });
     });
+}
+
+//function for delete
+const deleteWeddingInquiries = (req, res) => {
+  weddinginquiries.find( {_id: req.params.id} )
+  .then((inquiries) => {
+    if(inquiries) {
+      res.json({
+        message: "Successfully delete wedding inquires",
+        weddingRecords
+      })
+    } else {
+      res.status(404).json({
+        message: "Inquiries not found",
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      message: "Failed to delete",
+      error: err.message,
+    });
+  });
 }
 
 //Function for getting single information if inquiries
@@ -200,10 +223,11 @@ const UpdateWedding = async(req, res) => {
 
 export {
     CreateWeddingInquiries,
-    deleteweddingInquiries,
+  rejectweddingInquiries,
     listWeddingInquiries,
     SingleInfo,
     singleSubmitForm,
     UpdateBaptismal,
-    UpdateWedding
+    UpdateWedding,
+    deleteWeddingInquiries
 }
