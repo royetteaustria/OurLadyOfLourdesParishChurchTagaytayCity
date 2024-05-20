@@ -4,8 +4,16 @@ import express from 'express'
 import multer from "multer";
 // import { put } from '@vercel/blob'
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const storage = multer.memoryStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({ storage: storage })
+
 
 const router = express.Router()
 
