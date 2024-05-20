@@ -42,7 +42,7 @@ const updateWeddingClient = async (req, res) => {
                 groomalreadyBaptist: req.body.groomalreadyBaptist,
                 groomalreadyKumpil: req.body.groomalreadyKumpil,
                 Bride_Cannonical_Interview: req.body.Bride_Cannonical_Interview,
-                weddingStatus: newWeddingStatus,
+                weddingStatus: req.body.weddingStatus,
                 bridealreadyBaptist: req.body.bridealreadyBaptist,
                 bridealreadyKumpil: req.body.bridealreadyKumpil
             },
@@ -56,7 +56,7 @@ const updateWeddingClient = async (req, res) => {
         // If the wedding status is "Cancelled", update the calendar
         if (weddingStatus === "Cancel") {
             const calendarUpdate = await CalendarForReservation.findOneAndUpdate(
-                { start: client.start },
+                { start: start },
                 { $set: { description: "Available" } },
                 { new: true, runValidators: true }
             );
