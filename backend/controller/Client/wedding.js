@@ -1,6 +1,6 @@
 import weddingClient from "../../model/client/wedding.js";
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
-
+import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 const acceptWedidngClient = async(req, res) => {
   try {
     // Get the start date from the request body
