@@ -1,40 +1,40 @@
 import weddinginquiries from "../../model/Inquiries/weddingInquiries.js";
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer'
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 
-const UpdateBaptismal = async (req, res) => {
+const UpdateBaptismal = async(req, res) => {
   try {
     const start = req.params.start;
-    const newStatus = "Available";
+    const newStatus = 'Available';
     const newSlot = 5;
 
-    const document = await CalendarBaptismal.findOneAndUpdate(
-      { start },
-      { $set: { description: newStatus, slot: newSlot } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-    if (!document) {
-      return res.status(404).json({ message: "Document not found" });
+  const document = await CalendarBaptismal.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus, slot: newSlot } },
+    {
+      new: true,
+      runValidators: true,
     }
-    res.json(document);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
   }
-};
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
 
 const CreateWeddingInquiries = async (req, res) => {
   //For generating an automated email
   var transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: 'gmail',
     auth: {
       user: process.env.NODE_MAILER_EMAIL,
       pass: process.env.NODE_MAILER_PASSWORD,
-    },
+    }
   });
 
   // function formatDateTime(date) {
@@ -55,34 +55,31 @@ const CreateWeddingInquiries = async (req, res) => {
   const brideGmail = req.body.Brideemail;
   const Gname = req.body.groomName;
   const Bname = req.body.brideName;
-  const wedDate = req.body.start;
+  const wedDate = req.body.start
   var mailOptions = {
-    from: "lourdeschurchwebsite@gmail.com",
+    from: 'lourdeschurchwebsite@gmail.com',
     to: [clientEmail, brideGmail],
-    subject: "Our Lady of lourdes Parish Church Wedding Inquiries",
-    html: `<p>Dear Mr. ${Gname}/Ms. ${Bname}</p> <p>This is to confirm that we have received your inquiries. Our Lady of Lourdes Parish Church is reviewing the details, and we will reach out with a response shortly. Thank you for considering.</p> <p>Sincererly,</p> <p>Our lady of Lourdes Parish Church Staffs</p> <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`,
+    subject: 'Our Lady of lourdes Parish Church Wedding Inquiries',
+    html: `<p>Dear Mr. ${Gname}/Ms. ${Bname}</p> <p>This is to confirm that we have received your inquiries. Our Lady of Lourdes Parish Church is reviewing the details, and we will reach out with a response shortly. Thank you for considering.</p> <p>Sincererly,</p> <p>Our lady of Lourdes Parish Church Staffs</p> <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`
   };
 
   try {
-    const existingBaptismal = await CalendarBaptismal.findOne({
-      start: wedDate,
-    });
+    const existingBaptismal = await CalendarBaptismal.findOne({ start: wedDate });
     if (existingBaptismal) {
       const updatedDocument = await CalendarBaptismal.findOneAndUpdate(
         { start: wedDate },
-        { $set: { description: "Not available", slot: 0 } },
+        { $set: { description: 'Not available', slot: 0 } },
         { new: true, runValidators: true }
       );
 
       if (!updatedDocument) {
-        return res.status(404).json({ message: "Document not found" });
+        return res.status(404).json({ message: 'Document not found' });
       }
 
       res.json(updatedDocument);
     } else {
       // Proceed with creating the wedding inquiry
-      weddinginquiries
-        .create(req.body)
+      weddinginquiries.create(req.body)
         .then((weddingInquiries) => {
           // Send email
           transporter.sendMail(mailOptions, function (error, info) {
@@ -92,158 +89,110 @@ const CreateWeddingInquiries = async (req, res) => {
               res.json({ message: info.response });
             }
           });
-          res.json({ message: "Successfully Inquired", weddingInquiries });
+          res.json({ message: 'Successfully Inquired', weddingInquiries });
         })
         .catch((err) => {
-          res
-            .status(404)
-            .json({ message: "Failed to Inquire", error: err.message });
+          res.status(404).json({ message: 'Failed to Inquire', error: err.message });
         });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: 'Internal server error' });
   }
-};
+}
 
 //Function for rejecting an single inquries
-const deleteweddingInquiries = async (req, res) => {
-  try {
-    const existingBaptismal = await CalendarBaptismal.findOne({
-      start: wedDate,
-    });
-    const existingWedding = await CalendarForReservation.findOne({
-      start: wedDate,
-    });
-    const newStatus = "Available";
-    if (existingBaptismal) {
-      const updatedDocument = await CalendarBaptismal.findOneAndUpdate(
-        { start: wedDate },
-        { $set: { description: "Available", slot: 5 } },
-        { new: true, runValidators: true }
-      );
-
-      if (!updatedDocument) {
-        return res.status(404).json({ message: "Document not found" });
-      }
-
-      res.json(updatedDocument);
-    }
-    if (existingWedding) {
-      const updatedWeddingCalendar =
-        await CalendarForReservation.findOneAndUpdate(
-          { start: wedDate },
-          { $set: { description: newStatus } },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-        if (!updatedWeddingCalendar) {
-          return res.status(404).json({ message: 'Document not found' });
-        }
-  
-        res.json(updatedWeddingCalendar);
-    } else {
-      weddinginquiries
-        .findOneAndDelete({ _id: req.params.id })
-        .then((weddingInquiries) => {
-          res.json({
+const deleteweddingInquiries = (req, res) => {
+    weddinginquiries.findOneAndDelete({ _id: req.params.id})
+    .then((weddingInquiries) => {
+        res.json({
             message: "Successfully delete wedding inquiries",
-            weddingInquiries,
-          });
+            weddingInquiries
         })
-        .catch((err) => {
-          res.status(404).json({
-            message: "failed to delete",
-            error: err.message,
-          });
+    })
+    .catch((err) => {
+        res.status(404).json({
+          message: "failed to delete",
+          error: err.message,
         });
-    }
-  } catch (error) {
-    console.log(err);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
+      });
+}
 
 //Function for getting all the inquires
 const listWeddingInquiries = (req, res) => {
-  weddinginquiries
-    .find()
+    weddinginquiries.find()
     .then((weddingInquiries) => {
-      if (weddingInquiries.length === 0) {
-        return res.json({ message: "No inquiries found" });
-      }
-      return res.status(200).json(weddingInquiries);
+        if (weddingInquiries.length === 0) {
+            return res.json({ message: "No inquiries found" });
+        }
+        return res.status(200).json(weddingInquiries);
     })
     .catch((err) => {
-      res
-        .status(500)
-        .json({ message: "Failed to retrieve records", error: err.message });
+        res.status(500).json({ message: "Failed to retrieve records", error: err.message });
     });
-};
+}
 
 //Function for getting single information if inquiries
 const SingleInfo = (req, res) => {
-  const id = req.params.id;
-  weddinginquiries
-    .findById({ _id: id })
-    .then((weddingInquiries) => res.json(weddingInquiries))
-    .catch((err) => res.json(err));
-};
+    const id = req.params.id;
+    weddinginquiries.findById({_id:id})
+    .then(weddingInquiries => res.json(weddingInquiries))
+    .catch(err => res.json(err))
+}
 
-const singleSubmitForm = async (req, res) => {
+const singleSubmitForm = async(req, res) => {
   try {
     const start = req.params.start;
-    const newStatus = "Pending";
+    const newStatus = 'Pending';
 
-    const document = await CalendarForReservation.findOneAndUpdate(
-      { start },
-      { $set: { description: newStatus } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-    if (!document) {
-      return res.status(404).json({ message: "Document not found" });
+  const document = await CalendarForReservation.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus } },
+    {
+      new: true,
+      runValidators: true,
     }
-    res.json(document);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
   }
-};
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
 
-const UpdateWedding = async (req, res) => {
+const UpdateWedding = async(req, res) => {
   try {
     const start = req.params.start;
-    const newStatus = "Available";
+    const newStatus = 'Available';
 
-    const document = await CalendarForReservation.findOneAndUpdate(
-      { start },
-      { $set: { description: newStatus } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-    if (!document) {
-      return res.status(404).json({ message: "Document not found" });
+  const document = await CalendarForReservation.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus } },
+    {
+      new: true,
+      runValidators: true,
     }
-    res.json(document);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
   }
-};
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 
 export {
-  CreateWeddingInquiries,
-  deleteweddingInquiries,
-  listWeddingInquiries,
-  SingleInfo,
-  singleSubmitForm,
-  UpdateBaptismal,
-  UpdateWedding,
-};
+    CreateWeddingInquiries,
+    deleteweddingInquiries,
+    listWeddingInquiries,
+    SingleInfo,
+    singleSubmitForm,
+    UpdateBaptismal,
+    UpdateWedding
+}
