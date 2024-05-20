@@ -31,6 +31,7 @@ type Wedding_Inquiries = {
   brideMotherName: string,
   bridealreadyBaptist: string,
   bridealreadyKumpil: string,
+
   start: string,
   createdAt:string
   brideLastName: string;
@@ -61,18 +62,14 @@ const WeddingInquiries = () => {
   };
   
   async function deleteRecord(id: string) {
-    try {
-      await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`);
-    // Assuming you want to update the 'start' property of the specific inquiry being deleted
-    const inquiryToUpdate = data.find(inquiry => inquiry._id === id);
-    if (inquiryToUpdate) {
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/UpdateWedding/${inquiryToUpdate.start}`);
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/UpdateBaptismal/${inquiryToUpdate.start}`);
-    }
-    toast.success('Succesfully reject inquiry')
-    } catch (error) {
-      toast.error('Failed to reject')
-    }
+    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`)
+      .then(() => {
+        console.log('data has been deleted');
+      })
+      .catch(err => console.log(err));
+      const newData = data.filter((el) => el._id !== id);
+      setData(newData);
+      toast.success('Successfully Reject inquiries');
   }
 
   function formatDateTime(date: Date | string) {
