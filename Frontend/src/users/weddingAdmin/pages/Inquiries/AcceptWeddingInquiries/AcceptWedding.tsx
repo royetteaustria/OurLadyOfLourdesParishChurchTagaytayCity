@@ -144,7 +144,7 @@ const AcceptWedding = () => {
         "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept",
         recordData
       );
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/${data.start}`)
+      // await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/${data.start}`)
       await axios.delete(
         `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`
       );
