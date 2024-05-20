@@ -138,7 +138,7 @@ const weddingClientSchema = mongoose.Schema(
     },
 
     start: {
-      type: String,
+      type: Date,
     },
   },
   {

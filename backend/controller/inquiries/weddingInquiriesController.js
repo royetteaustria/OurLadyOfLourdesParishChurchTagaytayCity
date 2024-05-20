@@ -140,20 +140,25 @@ const BlockDate = async(req, res) => {
     const newStatus = 'Not available';
     const newSlot = 0;
 
-  const document = await CalendarBaptismal.findOneAndUpdate(
-    { start },
-    { $set: { description: newStatus, slot: newSlot } },
-    {
-      new: true,
-      runValidators: true,
+    // Check if a document exists with the provided start date
+    const existingDocument = await CalendarBaptismal.findOne({ start });
+
+    if (!existingDocument) {
+      return res.status(404).json({ message: 'Document not found for the given date' });
     }
-  );
-  if (!document) {
-    return res.status(404).json({ message: 'Document not found' });
-  }
-  res.json(document);
-  } catch(err) {
-    console.log(err)
+
+    const document = await CalendarBaptismal.findOneAndUpdate(
+      { start },
+      { $set: { description: newStatus, slot: newSlot } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    res.json(document);
+  } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Internal server error' });
   }
 }
@@ -164,5 +169,5 @@ export {
     listWeddingInquiries,
     SingleInfo,
     singleSubmitForm,
-    BlockDate
+    BlockDate 
 }
