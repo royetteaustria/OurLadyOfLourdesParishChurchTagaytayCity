@@ -2,7 +2,7 @@ import weddingClient from "../../model/client/wedding.js";
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 
 const acceptWedidngClient = async (req, res) => {
-  const wedDate = req.body.start;
+  const wedDate = req.params.start;
   try {
     const existDate = await CalendarForReservation.findOne({ start: wedDate });
     if (!existDate) {
