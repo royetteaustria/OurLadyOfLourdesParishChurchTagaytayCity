@@ -87,7 +87,6 @@ const updateWeddingClient = async (req, res) => {
         { $set: { description: "Available", slot: 5 } },
         { new: true, runValidators: true }
       );
-
       res.json({
         message: "Successfully updated",
         updatedClient,
