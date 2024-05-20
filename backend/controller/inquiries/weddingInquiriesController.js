@@ -57,30 +57,25 @@ const CreateWeddingInquiries = async (req, res) => {
         { $set: { description: 'Not available', slot: 0 } },
         { new: true, runValidators: true }
       );
-
+  
       if (!updatedDocument) {
         return res.status(404).json({ message: 'Document not found' });
       }
-
+  
       res.json(updatedDocument);
-    } else {
-      // Proceed with creating the wedding inquiry
-      weddinginquiries.create(req.body)
-        .then((weddingInquiries) => {
-          // Send email
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              console.log(error);
-            } else {
-              res.json({ message: info.response });
-            }
-          });
-          res.json({ message: 'Successfully Inquired', weddingInquiries });
-        })
-        .catch((err) => {
-          res.status(404).json({ message: 'Failed to Inquire', error: err.message });
-        });
     }
+  
+    // Lumikha ng bagong inquiry anuman ang sitwasyon
+    const newWeddingInquiry = await weddinginquiries.create(req.body);
+  
+    // Send email
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.json({ message: info.response, newWeddingInquiry });
+      }
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Internal server error' });
