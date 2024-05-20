@@ -99,13 +99,13 @@ const deleteweddingInquiries = async (req, res) => {
     }
 
     // Update the baptismal event to mark it as available with 5 slots
-    baptismalEvent.description = 'Available';
-    baptismalEvent.slot = 5;
+    baptismalEvent.description = 'Not available';
+    baptismalEvent.slot = 0;
     await baptismalEvent.save();
 
     // Now, execute the singleSubmitForm functionality
     const start = deletedInquiry.start;
-    const newStatus = 'Available';
+    const newStatus = 'Pending';
 
     const document = await CalendarForReservation.findOneAndUpdate(
       { start },
