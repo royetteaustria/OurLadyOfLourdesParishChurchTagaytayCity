@@ -3,6 +3,30 @@ import nodemailer from 'nodemailer'
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 
+const BlockDate = async(req, res) => {
+  try {
+    const start = req.params.start;
+    const newStatus = 'Not available';
+    const newSlot = 0;
+
+  const document = await CalendarBaptismal.findOneAndUpdate(
+    { start },
+    { $set: { description: newStatus, slot: newSlot } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  if (!document) {
+    return res.status(404).json({ message: 'Document not found' });
+  }
+  res.json(document);
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 const CreateWeddingInquiries = async (req, res) => {
   //For generating an automated email
   var transporter = nodemailer.createTransport({
@@ -12,22 +36,18 @@ const CreateWeddingInquiries = async (req, res) => {
       pass: process.env.NODE_MAILER_PASSWORD,
     }
   });
+
   function formatDateTime(date) {
     if (typeof date === 'string') {
       date = new Date(date);
     }
-
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"];
-
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const day = date.getDate();
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
-
     const hours = date.getHours() % 12 || 12; // Get 12-hour format
     const minutes = date.getMinutes().toString().padStart(2, '0');
     const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
-
     return `${month} ${day} ${year} ${hours}:${minutes} ${amPm}`;
   }
 
@@ -36,54 +56,49 @@ const CreateWeddingInquiries = async (req, res) => {
   const Gname = req.body.groomName;
   const Bname = req.body.brideName;
   const wedDate = req.body.start
-  
   var mailOptions = {
     from: 'lourdeschurchwebsite@gmail.com',
     to: [clientEmail, brideGmail],
     subject: 'Our Lady of lourdes Parish Church Wedding Inquiries',
-    html: `<p>Dear Mr. ${Gname}/Ms. ${Bname}</p>
-    <p>This is to confirm that we have received your inquiries and your choosen date of wedding is ${formatDateTime(wedDate)}. Our Lady of Lourdes Parish Church is reviewing the details, and we will reach out with a response shortly. Thank you for considering.</p>
-    <p>Sincererly,</p>
-    <p>Our lady of Lourdes Parish Church Staffs</p>
-    <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`
+    html: `<p>Dear Mr. ${Gname}/Ms. ${Bname}</p> <p>This is to confirm that we have received your inquiries and your choosen date of wedding is ${formatDateTime(wedDate)}. Our Lady of Lourdes Parish Church is reviewing the details, and we will reach out with a response shortly. Thank you for considering.</p> <p>Sincererly,</p> <p>Our lady of Lourdes Parish Church Staffs</p> <p>Note: Please do not reply to this message. Replies to this message are undeliverable.</p>`
   };
-  //Function for creating an inquiries
-  
+
   try {
-    const BaptismalDate = await CalendarBaptismal.find({start: start});
-    if(BaptismalDate.length === wedDate) {
-      const newStatus = 'Not available';
-      const newSlot = 0;
-      const document = await CalendarBaptismal.findOneAndUpdate(
+    const existingBaptismal = await CalendarBaptismal.findOne({ start: wedDate });
+    if (existingBaptismal) {
+      const updatedDocument = await CalendarBaptismal.findOneAndUpdate(
         { start: wedDate },
-        { $set: { description: newStatus, slot: newSlot } },
+        { $set: { description: 'Not available', slot: 0 } },
         { new: true, runValidators: true }
       );
-      if (!document) {
+
+      if (!updatedDocument) {
         return res.status(404).json({ message: 'Document not found' });
       }
-      res.json(document);
+
+      res.json(updatedDocument);
+    } else {
+      // Proceed with creating the wedding inquiry
+      weddinginquiries.create(req.body)
+        .then((weddingInquiries) => {
+          // Send email
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              res.json({ message: info.response });
+            }
+          });
+          res.json({ message: 'Successfully Inquired', weddingInquiries });
+        })
+        .catch((err) => {
+          res.status(404).json({ message: 'Failed to Inquire', error: err.message });
+        });
     }
-  } catch(err) {
-    console.log(err)
+  } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Internal server error' });
   }
-
-  weddinginquiries.create(req.body)
-    .then((weddingInquiries) => {
-      //generating an email
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          res.json({ message: info.response });
-        }
-      });
-      res.json({ message: "Successfully Inquired", weddingInquiries });
-    })
-    .catch((err) => {
-      res.status(404).json({ message: "Failed to Inquire", error: err.message });
-    });
 }
 //Function for rejecting an single inquries
 const deleteweddingInquiries = (req, res) => {
@@ -147,29 +162,7 @@ const singleSubmitForm = async(req, res) => {
   }
 }
 
-const BlockDate = async(req, res) => {
-  try {
-    const start = req.params.start;
-    const newStatus = 'Not available';
-    const newSlot = 0;
 
-  const document = await CalendarBaptismal.findOneAndUpdate(
-    { start },
-    { $set: { description: newStatus, slot: newSlot } },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-  if (!document) {
-    return res.status(404).json({ message: 'Document not found' });
-  }
-  res.json(document);
-  } catch(err) {
-    console.log(err)
-    res.status(500).json({ message: 'Internal server error' });
-  }
-}
 
 export {
     CreateWeddingInquiries,
