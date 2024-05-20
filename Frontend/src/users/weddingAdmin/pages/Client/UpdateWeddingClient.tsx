@@ -45,7 +45,7 @@ const UpdateWeddingClient = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/WeddingClient/update/${id}`,
+        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/${id}`,
         client
       );
       console.log(response);
