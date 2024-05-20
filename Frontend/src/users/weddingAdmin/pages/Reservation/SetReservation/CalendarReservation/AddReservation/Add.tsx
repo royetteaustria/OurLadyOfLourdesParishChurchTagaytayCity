@@ -138,10 +138,18 @@ const getFirstFridayOfMonth = (date : Date) => {
       }
       toast.success("Success adding reservations");
       navigate("/weddingAdmin/Reservation");
-    } catch (err) {
-      console.error(err);
-      toast.error("Error adding reservations");
-    } finally {
+    } catch (err : any) {
+      // Check if the error is from the server
+      if (err.response) {
+        // Extract the error message from the response
+        const errorMessage = err.response.data.error;
+        toast.error(errorMessage);
+      } else {
+        // Handle other types of errors
+        console.error(err);
+        toast.error("Error adding reservations");
+      }
+    }finally {
       setIsLoading(false);
     }
   };
@@ -240,9 +248,9 @@ const getFirstFridayOfMonth = (date : Date) => {
                   </select>
                   </div>
                 </div>
-                <span className="flex justify-end">
+                <span className="flex justify-end w-full">
                     <button
-                      className={`bg-primary p-3 text-white  rounded-sm w-24 ${
+                      className={`bg-primary p-3 text-white w-full rounded-sm ${
                         isLoading ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
                       disabled={isLoading}
