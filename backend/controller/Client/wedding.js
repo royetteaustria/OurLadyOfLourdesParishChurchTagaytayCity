@@ -1,21 +1,40 @@
 import weddingClient from "../../model/client/wedding.js";
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
 
-const acceptWedidngClient = (req, res) => {
-  weddingClient
-    .create(req.body)
-    .then((wedding_client) => {
-      res.json({
-        message: "Succesfully Accept",
-        wedding_client,
-      });
-    })
-    .catch((err) => {
-      res.status(404).json({
-        message: "Failed to Accept",
-        error: err.message,
-      });
-    });
+const acceptWedidngClient = async(req, res) => {
+  try {
+    // Get the start date from the request body
+    const wedDate = req.body.start;
+
+    // Update the CalendarReservation collection
+    const updatedReservationDocument = await CalendarForReservation.findOneAndUpdate(
+      { start: wedDate },
+      { $set: { description: 'Pending' } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedReservationDocument) {
+      return res.status(404).json({ message: 'Reservation document not found' });
+    }
+
+    // Update the CalendarBaptismal collection
+    const updatedBaptismalDocument = await CalendarBaptismal.findOneAndUpdate(
+      { start: wedDate },
+      { $set: { description: 'Not available', slot: 0 } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedBaptismalDocument) {
+      return res.status(404).json({ message: 'Baptismal document not found' });
+    }
+
+    // Create the wedding client
+    const wedding_client = await weddingClient.create(req.body);
+
+    res.json({ message: "Successfully accepted", wedding_client, updatedReservationDocument, updatedBaptismalDocument });
+  } catch (err) {
+    res.status(404).json({ message: "Failed to accept", error: err.message });
+  }
 };
 
 const listWeddingClient = (req, res) => {
