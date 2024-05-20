@@ -13,7 +13,7 @@ type GroomUserData = {
   groomMotherName: string;
   groomalreadyBaptist: string;
   groomalreadyKumpil: string;
-  start: Date;
+  start: Date | string;
 };
 
 type GroomUserFormProps = GroomUserData & {

@@ -37,7 +37,7 @@ type FormData = {
   brideMotherName: string;
   bridealreadyBaptist: string;
   bridealreadyKumpil: string;
-  start: Date;
+  start: Date | string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -71,7 +71,7 @@ const INITIAL_DATA: FormData = {
   bridealreadyBaptist: "",
   bridealreadyKumpil: "",
 
-  start: new Date(),
+  start: '',
 };
 const AcceptWedding = () => {
   const [data, setData] = useState(INITIAL_DATA);
@@ -221,11 +221,11 @@ const AcceptWedding = () => {
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
             <input
-              type="text"
+              type="date"
               name="DateOfwedding"
               required
-              value={DateOfWedding.toISOString()}
-              onChange={(e) => setDateOfWedding(new Date(e.target.value))}
+              value={DateOfWedding.toString()}
+              onChange={(e) => setDateOfWedding(e.target.value)}
               placeholder="Enter Groom name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
