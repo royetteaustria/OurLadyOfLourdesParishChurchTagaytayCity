@@ -150,7 +150,7 @@ const deleteWeddingInquiries = (req, res) => {
     if(inquiries) {
       res.json({
         message: "Successfully delete wedding inquires",
-        weddingRecords
+        inquiries
       })
     } else {
       res.status(404).json({
