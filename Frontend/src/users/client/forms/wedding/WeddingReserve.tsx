@@ -84,27 +84,54 @@ const WeddingReserve = () => {
       <Review data={data} />,
     ]);
 
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const recordData = data;
-
-    try {
-      const res = await axios.post(
-        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/create`,
-        recordData
-      );
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update/${data.start}`)
-      await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/BlockDateUpdate/${data.start}`)
-      console.log(res);
-      toast.success("Successfully Reserve");
-      setFormSubmitted(true);
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    }
-    // Move the next() call inside the try block, so it only proceeds to the next step if the API call is successful
-    next();
-  };
+    const onSubmit = async (e: FormEvent) => {
+      e.preventDefault();
+      const recordData = data;
+    
+      try {
+        // Create wedding inquiry
+        const createRes = await axios.post(
+          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/create`,
+          recordData
+        );
+    
+        // Update calendar reservation
+        const updateRes = await axios.put(
+          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/update/${data.start}`
+        );
+    
+        // Update baptismal calendar
+        const blockDateRes = await axios.put(
+          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/BlockDateUpdate/${data.start}`
+        );
+    
+        console.log(createRes);
+        toast.success("Successfully Reserve");
+        setFormSubmitted(true);
+      } catch (error : any) {
+        console.error(error);
+    
+        // Check if the error is related to a specific API call
+        if (error.response) {
+          const errorMessage = error.response.data.message;
+    
+          if (error.config.url.includes("/create")) {
+            toast.error(`Error creating wedding inquiry: ${errorMessage}`);
+          } else if (error.config.url.includes("/update")) {
+            toast.error(`Error updating calendar reservation: ${errorMessage}`);
+          } else if (error.config.url.includes("/BlockDateUpdate")) {
+            toast.error(`Error updating baptismal calendar: ${errorMessage}`);
+          } else {
+            toast.error("Something went wrong");
+          }
+        } else {
+          toast.error("Something went wrong");
+        }
+      }
+    
+      // Move the next() call inside the try block, so it only proceeds to the next step if all API calls are successful
+      next();
+    };
 
   const cancel = () => {
     navigate("/reservation");
