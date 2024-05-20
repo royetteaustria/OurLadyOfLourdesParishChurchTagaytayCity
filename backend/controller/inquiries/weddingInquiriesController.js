@@ -145,7 +145,7 @@ const listWeddingInquiries = (req, res) => {
 
 //function for delete
 const deleteWeddingInquiries = (req, res) => {
-  weddinginquiries.find( {_id: req.params.id} )
+  weddinginquiries.findOneAndDelete( {_id: req.params.id} )
   .then((inquiries) => {
     if(inquiries) {
       res.json({
