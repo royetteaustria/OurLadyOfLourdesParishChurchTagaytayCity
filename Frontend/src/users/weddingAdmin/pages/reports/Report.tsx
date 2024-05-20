@@ -43,10 +43,9 @@ const Report = () => {
   useEffect(() => {
     async function getReports() {
       const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`);
-      const currentMonth = new Date().getMonth();
-      const currentMonthReports = response.data.filter((report: { DateOfWedding: | Date; }) => {
+      const currentMonthReports = response.data.filter((report: { DateOfWedding:  Date; }) => {
         const reportDate = new Date(report.DateOfWedding);
-        return reportDate.getMonth() === currentMonth;
+        return reportDate.getMonth() === new Date().getMonth() && reportDate.getFullYear() === new Date().getFullYear();
       });
       setData(currentMonthReports);
       setAllData(response.data);
@@ -54,6 +53,8 @@ const Report = () => {
     getReports();
     return;
   }, []);
+
+  
 
     function formatDateTime(date: Date | string) {
       if (typeof date === 'string') {
