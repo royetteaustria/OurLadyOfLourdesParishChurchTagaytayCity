@@ -23,7 +23,7 @@ export function ControlCalendar({updateFields} : AvailableDateProps) {
   }, []);
 
   const fetchAvailableDates = () => {
-    axios.get<AvailableDate[]>("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/available-dates")
+    axios.get<AvailableDate[]>("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/available-dates")
       .then(response => {
         const sortedDates = response.data.sort((a, b) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();
@@ -146,4 +146,4 @@ export function ControlCalendar({updateFields} : AvailableDateProps) {
 };
 export default ControlCalendar;
 
-//('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar');
+//('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar');

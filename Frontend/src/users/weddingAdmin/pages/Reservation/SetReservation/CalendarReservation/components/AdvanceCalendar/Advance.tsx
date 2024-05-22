@@ -50,7 +50,7 @@ const ControlCalendar: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation")
+      .get("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation")
       .then((response) => {
         const sortedEvents = response.data.sort((a: any, b: any) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();

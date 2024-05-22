@@ -14,7 +14,7 @@ const Edit = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/${id}`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation/${id}`)
       .then(res => {
         const eventData = res.data; // Assuming res.data is an object containing the event data
         setStart(new Date(eventData.start));
@@ -39,7 +39,7 @@ const Edit = () => {
     };
     
     try {
-      const res = await axios.put(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/` + id, editReservation)
+      const res = await axios.put(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation/` + id, editReservation)
       console.log(res)
       toast.success('Successfully Update')
       navigate('/systemAdmin/setReservation')

@@ -18,7 +18,7 @@ const RequirementsInformation = () => {
 
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalReq/${id}`)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalReq/${id}`)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
@@ -73,7 +73,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//uploads/${data.birthCertificate}`
+                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/uploads/${data.birthCertificate}`
                         )
                       }
                       className={
@@ -109,7 +109,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//uploads/${data.MarriageContract}`
+                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/uploads/${data.MarriageContract}`
                         )
                       }
                       className={
@@ -145,7 +145,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//uploads/${data.FatherBaptismalCerticate}`
+                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/uploads/${data.FatherBaptismalCerticate}`
                         )
                       }
                       className={
@@ -181,7 +181,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//uploads/${data.MotherBaptismalCerticate}`
+                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/uploads/${data.MotherBaptismalCerticate}`
                         )
                       }
                       className={
@@ -217,7 +217,7 @@ const RequirementsInformation = () => {
                     <button
                       onClick={() =>
                         handleViewFile(
-                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//uploads/${data.ParishPermit}`
+                          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/uploads/${data.ParishPermit}`
                         )
                       }
                       className={

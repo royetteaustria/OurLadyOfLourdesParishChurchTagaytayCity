@@ -21,7 +21,7 @@ const Add = () => {
       end: end,
       Status: Status,
     };
-    await axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/add', AddReservation)
+    await axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation/add', AddReservation)
     .then(res => {
       console.log(res);
       toast.success('Success add Reservation');

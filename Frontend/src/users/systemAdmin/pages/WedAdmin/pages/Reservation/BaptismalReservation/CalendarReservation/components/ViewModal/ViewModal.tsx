@@ -27,7 +27,7 @@ const ViewModal: React.FC<ViewModalProps> = ({ event, onClose }) => {
 
   // async function handleDeleteEvent() {
   //   try {
-  //     await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/delete/${event._id}`);
+  //     await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation/delete/${event._id}`);
   //     toast.success('Successfully deleted');
   //     onDeleteEvent(event._id);
   //     onClose();

@@ -88,11 +88,11 @@ const Baptismal = () => {
 
     try {
       const res = await axios.post(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/createInquiries`,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries/createInquiries`,
         recordData
       );
       // await axios.put(
-      //   `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/updateSlot/${data.start}`,)
+      //   `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries/updateSlot/${data.start}`,)
       console.log(res);
       toast.success("Successfully Inquire");
       setFormSubmitted(true);

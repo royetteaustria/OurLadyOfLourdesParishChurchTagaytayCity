@@ -24,7 +24,7 @@ const UpdateWeddingClient = () => {
     // Fetch data from the server and set it to the state
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/${id}`);
+        const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/singleClient/${id}`);
         setData(response.data);
       } catch (err) {
         console.log(err);
@@ -47,7 +47,7 @@ const UpdateWeddingClient = () => {
 
     try {
       const response = await axios.put(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/update/${id}`,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/update/${id}`,
         client
       );
       console.log(response);

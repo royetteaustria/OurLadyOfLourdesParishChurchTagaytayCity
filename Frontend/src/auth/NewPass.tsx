@@ -27,7 +27,7 @@ const NewPass = () => {
       );
       return;
     }
-        const response = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/reset-password/${id}/${token}`, { password });
+        const response = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/UserRoutes/reset-password/${id}/${token}`, { password });
         
         if (response.data.Status === "Success") {
             navigate('/signIn');

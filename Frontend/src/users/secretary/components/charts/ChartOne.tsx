@@ -126,7 +126,7 @@ const ChartOne: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/bapstismalRecordList`
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalRecords/bapstismalRecordList`
         );
         console.log(response.data); // Check the response data
         setBaptismalData(response.data);

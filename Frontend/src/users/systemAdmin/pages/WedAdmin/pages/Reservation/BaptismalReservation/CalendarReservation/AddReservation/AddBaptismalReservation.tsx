@@ -29,7 +29,7 @@ const AddBaptismal = () => {
       slot: slot,
     };
     await axios
-      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/add", AddReservation)
+      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/add", AddReservation)
       .then((res) => {
         console.log(res);
         toast.success("Success add Reservation");

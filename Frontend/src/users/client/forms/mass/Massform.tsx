@@ -37,7 +37,7 @@ const Mass = () => {
     };
     try {
       const res = await axios.post(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/massInquiries/create`,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/massInquiries/create`,
         MasslInquiries
       );
       console.log(res);

@@ -24,7 +24,7 @@ const ViewInfoRecord = () => {
     const [data, setData] = useState(INITIAL_DATA)
     
     useEffect(() => {
-      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/SingleUserUpdate/`+id)
+      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalRecords/SingleUserUpdate/`+id)
         .then(res => {
           console.log(res);
           setData(prev => ({

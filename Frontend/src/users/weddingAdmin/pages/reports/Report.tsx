@@ -42,7 +42,7 @@ const Report = () => {
 
   useEffect(() => {
     async function getReports() {
-      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/listofReport`);
+      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/ReportModule/listofReport`);
       const currentMonthReports = response.data.filter((report: { DateOfWedding:  Date; }) => {
         const reportDate = new Date(report.DateOfWedding);
         return reportDate.getMonth() === new Date().getMonth() && reportDate.getFullYear() === new Date().getFullYear();

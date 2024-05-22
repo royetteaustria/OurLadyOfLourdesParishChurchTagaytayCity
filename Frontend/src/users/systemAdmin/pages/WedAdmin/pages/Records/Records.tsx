@@ -32,7 +32,7 @@ const Records = () => {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/weddingRecordsList`)
+      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingRecords/weddingRecordsList`)
       setData(response.data)
       setAllData(response.data)
     }
@@ -63,7 +63,7 @@ const Records = () => {
   };
 
   async function deleteRecord(id: string) {
-    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/deleteRecords/${id}`)
+    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingRecords/deleteRecords/${id}`)
       .then(() => {
         console.log('data has been deleted');
         // You may want to update your data state here

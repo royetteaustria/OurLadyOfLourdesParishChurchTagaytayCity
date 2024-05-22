@@ -76,7 +76,7 @@ const ClientInfo = () => {
     };
     useEffect(() => {
       calculateTotalPaid();
-      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/`+id)
+      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/singleClient/`+id)
         .then((res) => {
           console.log(res);
           setData((prev) => ({
@@ -294,7 +294,7 @@ const ClientInfo = () => {
           <span className="ml-12">
         <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Baptismal_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Baptismal_Certificate}`)}
           className={data.Groom_Baptismal_Certificate === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -307,7 +307,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Confirmation_Certificate === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Confirmation_Certificate}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Confirmation_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Confirmation_Certificate}`)}
           className={data.Groom_Confirmation_Certificate === 'No uploaded file' ? 'hidden' : "ml-35 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -320,7 +320,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Birth_Certificate === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Birth_Certificate}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Birth_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Birth_Certificate}`)}
           className={data.Groom_Birth_Certificate === 'No uploaded file' ? 'hidden' : "ml-35 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -333,7 +333,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_CeNomar_Civil_Married === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_CeNomar_Civil_Married}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_CeNomar_Civil_Married}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_CeNomar_Civil_Married}`)}
           className={data.Groom_CeNomar_Civil_Married === 'No uploaded file' ? 'hidden' : "ml-35 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -346,7 +346,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Cannonical_Application === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Cannonical_Application}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Cannonical_Application}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Cannonical_Application}`)}
           className={data.Groom_Cannonical_Application === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -364,7 +364,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Id_Picture === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Id_Picture}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Id_Picture}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Id_Picture}`)}
           className={data.Groom_Id_Picture === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -377,7 +377,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Marriage_Banns === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Marriage_Banns}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Marriage_Banns}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Marriage_Banns}`)}
           className={data.Groom_Marriage_Banns === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -390,7 +390,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Banns_Reply === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Banns_Reply}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Banns_Reply}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Banns_Reply}`)}
           className={data.Groom_Banns_Reply === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -409,7 +409,7 @@ const ClientInfo = () => {
           <dd className={data.Groom_Marriage_Contract === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Groom_Marriage_Contract}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Groom_Marriage_Contract}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Groom_Marriage_Contract}`)}
           className={data.Groom_Marriage_Contract === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -426,7 +426,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Baptismal_Certificate === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Baptismal_Certificate}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Baptismal_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Baptismal_Certificate}`)}
           className={data.Bride_Baptismal_Certificate === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -439,7 +439,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Confirmation_Certificate === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Confirmation_Certificate}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Confirmation_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Confirmation_Certificate}`)}
           className={data.Bride_Confirmation_Certificate === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -452,7 +452,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Birth_Certificate === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Birth_Certificate}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Birth_Certificate}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Birth_Certificate}`)}
           className={data.Bride_Birth_Certificate === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -465,7 +465,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_CeNomar_Civil_Married === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_CeNomar_Civil_Married}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_CeNomar_Civil_Married}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_CeNomar_Civil_Married}`)}
           className={data.Bride_CeNomar_Civil_Married === 'No uploaded file' ? 'hidden' : "ml-35 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -478,7 +478,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Cannonical_Application === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Cannonical_Application}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Cannonical_Application}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Cannonical_Application}`)}
           className={data.Bride_Cannonical_Application === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -496,7 +496,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Id_Picture === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Id_Picture}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Id_Picture}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Id_Picture}`)}
           className={data.Bride_Id_Picture === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -509,7 +509,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Marriage_Banns === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Marriage_Banns}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Marriage_Banns}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Marriage_Banns}`)}
           className={data.Bride_Marriage_Banns === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -522,7 +522,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Banns_Reply === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Banns_Reply}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Banns_Reply}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Banns_Reply}`)}
           className={data.Bride_Banns_Reply === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file
@@ -541,7 +541,7 @@ const ClientInfo = () => {
           <dd className={data.Bride_Marriage_Contract === 'No uploaded file' ? "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-danger dark:text-danger sm:col-span-2 sm:mt-0" : "lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 text-success dark:text-success sm:col-span-2 sm:mt-0"}>{data.Bride_Marriage_Contract}
           <span>
           <button
-          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${data.Bride_Marriage_Contract}`)}
+          onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/${data.Bride_Marriage_Contract}`)}
           className={data.Bride_Marriage_Contract === 'No uploaded file' ? 'hidden' : "ml-4 text-white bg-primary rounded-md p-2"}
         >
           View file

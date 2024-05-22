@@ -15,7 +15,7 @@ const EditBaptismal = () => {
 
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/${id}`)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/${id}`)
       .then((res) => {
         const eventData = res.data; // Assuming res.data is an object containing the event data
         setStart(new Date(eventData.start));
@@ -40,7 +40,7 @@ const EditBaptismal = () => {
 
     try {
       const res = await axios.put(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/` + id,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/` + id,
         editReservation
       );
       console.log(res);

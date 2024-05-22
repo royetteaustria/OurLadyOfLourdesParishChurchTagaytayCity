@@ -27,7 +27,7 @@ const ViewModal: React.FC<ViewModalProps> = ({ event, onDeleteEvent, onClose }) 
 
   async function handleDeleteEvent() {
     try {
-      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/delete/${event._id}`);
+      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/delete/${event._id}`);
       toast.success('Successfully deleted');
       onDeleteEvent(event._id);
       onClose();

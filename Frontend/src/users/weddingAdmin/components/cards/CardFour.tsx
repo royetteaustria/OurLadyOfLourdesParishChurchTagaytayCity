@@ -5,7 +5,7 @@ import axios from 'axios';
 const CardFour = () => {
   const [totalInquirires, setTotalInquirires] = useState(0);
   useEffect(() => {
-    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries`)
     .then((response) => {
       const { data } = response;
       if (data && Array.isArray(data)) {

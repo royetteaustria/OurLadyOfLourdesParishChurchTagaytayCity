@@ -21,7 +21,7 @@ function ListofAdmin() {
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/userRoutes/listofusers`
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/userRoutes/listofusers`
       );
       const records = response.data;
       setData(records);

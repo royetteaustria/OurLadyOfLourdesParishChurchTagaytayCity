@@ -54,7 +54,7 @@ const ControlCalendar: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar')
+      .get('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar')
       .then((response) => {
         setEvents(response.data);
         console.log(response.data)

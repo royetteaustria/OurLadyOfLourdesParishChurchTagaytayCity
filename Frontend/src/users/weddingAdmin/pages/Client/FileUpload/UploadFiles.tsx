@@ -120,7 +120,7 @@ const UploadFiles = () => {
     formData.append("Bride_Marriage_Contract", data.Bride_Marriage_Contract);
 
     axios
-      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Weddingreq/upload", formData)
+      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/Weddingreq/upload", formData)
       .then((res) => {
         console.log(res);
         navigate("/weddingAdmin/Requirements");
@@ -130,7 +130,7 @@ const UploadFiles = () => {
   };
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/${id}`)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/singleClient/${id}`)
       .then((res) => {
         console.log(res);
         setData((prev) => ({

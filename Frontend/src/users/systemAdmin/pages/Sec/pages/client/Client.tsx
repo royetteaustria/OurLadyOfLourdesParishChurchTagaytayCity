@@ -35,7 +35,7 @@ const Client = () => {
     useEffect(() => {
       async function getInquiries() {
         try {
-          const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/MassClient/getAll`);
+          const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/MassClient/getAll`);
           const inquiries = response.data;
     
           // Check if inquiries is an array before updating the state

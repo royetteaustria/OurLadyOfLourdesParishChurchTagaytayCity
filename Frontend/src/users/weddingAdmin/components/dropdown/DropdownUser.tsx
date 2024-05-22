@@ -26,7 +26,7 @@ const DropdownUser = () => {
   // useEffect(() => {
   //   const fetchUserProfile = async () => {
   //     try {
-  //       const response = await axios.get('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/profile', {
+  //       const response = await axios.get('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/UserRoutes/profile', {
   //         headers: {
   //           'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
   //         },
@@ -53,7 +53,7 @@ const DropdownUser = () => {
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
-      await axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/logout', {
+      await axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/UserRoutes/logout', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },

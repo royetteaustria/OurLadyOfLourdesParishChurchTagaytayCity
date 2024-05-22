@@ -38,7 +38,7 @@ const Requirements = () => {
     async function getInquiries() {
       try {
         const response = await axios.get(
-          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Weddingreq`
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/Weddingreq`
         );
         const inquiries = response.data;
         // Check if inquiries is an array before updating the state

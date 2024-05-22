@@ -19,7 +19,7 @@ const UpdateBaptismalClient = () => {
   useEffect(() => {
     const fetchData = async() => {
       try {
-        const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/singleClient/`+id)
+        const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalClient/singleClient/`+id)
         setData(response.data)
       } catch (err) {
         console.log(err);
@@ -36,7 +36,7 @@ const UpdateBaptismalClient = () => {
     }
     try {
       const response = await axios.put(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/update/${id}`,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalClient/update/${id}`,
          client
          );
       console.log(response)

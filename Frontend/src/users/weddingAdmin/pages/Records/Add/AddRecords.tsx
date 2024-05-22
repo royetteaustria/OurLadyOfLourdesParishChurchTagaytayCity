@@ -124,7 +124,7 @@ const AddRecords = () => {
 
     try {
       const res = await axios.post(
-        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/create",
+        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingRecords/create",
         recordData
       );
       console.log(res);
@@ -140,7 +140,7 @@ const AddRecords = () => {
   };
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/` + id)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/singleClient/` + id)
       .then((res) => {
         console.log(res);
         setData((prev) => ({

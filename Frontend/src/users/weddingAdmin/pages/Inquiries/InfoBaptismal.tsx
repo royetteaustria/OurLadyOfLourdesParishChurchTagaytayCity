@@ -43,7 +43,7 @@ const InfoBaptismal = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-     axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/singleInquiries/` +id)
+     axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries/singleInquiries/` +id)
     .then(res => {
       console.log(res)
       setData(prev => ({
@@ -105,8 +105,8 @@ const InfoBaptismal = () => {
   const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/accept`, data)
-      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/delete/${id}`)
+      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalClient/accept`, data)
+      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries/delete/${id}`)
       console.log(res)
       toast.success('Successfully accept');
       navigate('/weddingAdmin/baptismalClient')

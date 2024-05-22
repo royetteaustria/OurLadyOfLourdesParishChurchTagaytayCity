@@ -112,7 +112,7 @@ const AddBaptismal = () => {
         let retries = 3;
         while (retries > 0) {
           try {
-            await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/add", reservation);
+            await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalCalendar/add", reservation);
             return;
           } catch (err) {
             retries -= 1;

@@ -22,7 +22,7 @@ const InquiriesInfo = () => {
   const [data, setData] = useState(Data)
   const navigate = useNavigate()
   useEffect(() => {
-    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/massInquiries/Info/`+id)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/massInquiries/Info/`+id)
     .then(res => {
       console.log(res)
       setData(prev => ({
@@ -39,8 +39,8 @@ const InquiriesInfo = () => {
   const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/MassClient/accept`, data);
-      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/massInquiries/reject/${id}`)
+      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/MassClient/accept`, data);
+      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/massInquiries/reject/${id}`)
       console.log(res);
       toast.success('Successfully accept');
       navigate('/systemAdmin/MassClient');

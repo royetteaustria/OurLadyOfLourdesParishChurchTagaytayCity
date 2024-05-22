@@ -18,7 +18,7 @@
 //     async function getDate() {
 //       try {
 //         const res = await axios.get(
-//           "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation"
+//           "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/CalendarReservation"
 //         );
 //         const available = res.data;
 //         setData(available);

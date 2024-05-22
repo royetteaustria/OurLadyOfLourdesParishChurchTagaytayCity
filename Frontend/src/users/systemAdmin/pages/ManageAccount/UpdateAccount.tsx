@@ -21,7 +21,7 @@ const UpdateAccount = () => {
     
       try {
         const res = await axios.put(
-          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/updateUser/${id}/${token}`,
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/UserRoutes/updateUser/${id}/${token}`,
           updateUser
         );
         console.log(res);
@@ -44,7 +44,7 @@ const UpdateAccount = () => {
 
 
     useEffect(() => {
-      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/getInfo/`+ id)
+      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/UserRoutes/getInfo/`+ id)
       .then(res => {
         const data = res.data;
         setUsername(data.username)

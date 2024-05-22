@@ -37,7 +37,7 @@ const BaptismalRequirements = () => {
 
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/singleClient/${id}`)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalClient/singleClient/${id}`)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
@@ -61,7 +61,7 @@ const BaptismalRequirements = () => {
     formData.append("ParishPermit", data.ParishPermit);
 
     axios
-      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Baptismalreq/upload", formData)
+      .post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/Baptismalreq/upload", formData)
       .then((res) => {
         console.log(res);
         navigate("/ParishSecretary/BaptismalRequirementsList");

@@ -111,7 +111,7 @@ const EditRecords = () => {
   ])
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/SingleUser/`+id)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingRecords/SingleUser/`+id)
       .then(res => {
         console.log(res);
         setData(prev => ({
@@ -164,7 +164,7 @@ const EditRecords = () => {
     const recordData = data;
 
     try {
-      const res = await axios.put('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/updaterecords/'+id, recordData);
+      const res = await axios.put('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingRecords/updaterecords/'+id, recordData);
       console.log(res);
       toast.success('Successfully update record');
       navigate('/systemAdmin/WeddingRecord');

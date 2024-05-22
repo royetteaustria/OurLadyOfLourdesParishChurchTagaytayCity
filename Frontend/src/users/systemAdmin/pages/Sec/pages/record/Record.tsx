@@ -33,7 +33,7 @@ const BaptismRecord = ({}) => {
 
   useEffect(() => {
     async function getRecords() {
-      const res = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/bapstismalRecordList`)
+      const res = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalRecords/bapstismalRecordList`)
       const records = await res.data;
       setData(records)
       setAllData(res.data)
@@ -65,7 +65,7 @@ const BaptismRecord = ({}) => {
   };
 
   async function deleteRecord(id: string) {
-    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/deletebaptismalRecords/${id}`)
+    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/BaptismalRecords/deletebaptismalRecords/${id}`)
       .then(() => {
         console.log('data has been deleted');
         // You may want to update your data state here

@@ -101,7 +101,7 @@ const AcceptWedding = () => {
 
   useEffect(() => {
     axios
-      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/Info/` + id)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/weddingInquiries/Info/` + id)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
@@ -139,13 +139,13 @@ const AcceptWedding = () => {
       BrideLastName: BrideLastName,
     };
     try {
-      await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/create", reportData);
+      await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/ReportModule/create", reportData);
       const res = await axios.post(
-        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/accept",
+        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/WeddingClient/accept",
         recordData
       );
       await axios.delete(
-        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/delete/${id}`
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/weddingInquiries/delete/${id}`
       );
       console.log(res);
       toast.success("Successfully Accept Inquiries");
