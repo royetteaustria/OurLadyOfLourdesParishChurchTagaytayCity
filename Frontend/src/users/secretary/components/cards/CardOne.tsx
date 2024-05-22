@@ -6,7 +6,7 @@ const CardOne = () => {
   const [totalInquirires, setTotalInquirires] = useState(0);
   useEffect(() => {
     // Fetch data from API
-    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app//api/massInquiries/listofInquire`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app///api/massInquiries/listofInquire`)
       .then((response) => {
         const { data } = response;
         if (data && Array.isArray(data)) {

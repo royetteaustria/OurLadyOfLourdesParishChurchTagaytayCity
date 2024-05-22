@@ -16,8 +16,10 @@ import Breadcrumb from "../../components/breadcrumbs/Breadcrum";
 type WeddingRecord = {
   _id: string
   groomName: string;
+  groomLastName: string;
   brideName: string;
-  dateOfMarriage: string;
+  brideLastName: string;
+  start: string;
 };
 
 const Records = () => {
@@ -52,7 +54,7 @@ const Records = () => {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/weddingRecordsList`)
+      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/weddingRecordsList`)
       setData(response.data)
       setAllData(response.data)
     }
@@ -61,7 +63,7 @@ const Records = () => {
 
   const handleSelect = (date: any) => {
     const filtered = alldata.filter((data) => {
-      const dataDate = new Date(data.dateOfMarriage);
+      const dataDate = new Date(data.start);
       return (
         dataDate >= date.selection.startDate &&
         dataDate <= date.selection.endDate
@@ -77,13 +79,9 @@ const Records = () => {
     setOpen(!open);
   };
 
-  // const handleDeleteConfirmation = (recordId: string) => {
-  //   setRecordToDelete(recordId);
-  //   setShowModal(true);
-  // };
 
   async function deleteRecord(id: string) {
-    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/deleteRecords/${id}`)
+    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/deleteRecords/${id}`)
       .then(() => {
         console.log('data has been deleted');
       })
@@ -124,11 +122,11 @@ const Records = () => {
                 </div>
               </form>
             </div>
-            <div className={data.length > 0 ? 'inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-primary focus:outline-none rounded' : 'hidden'}>
+            {/* <div className={data.length > 0 ? 'inline-flex sm:ml-3 mt-4 sm:mt-0 items-start justify-start px-6 py-3 bg-primary focus:outline-none rounded' : 'hidden'}>
               <button>
                 <Link to='/weddingAdmin/addrecords'><p className="text-sm font-medium leading-none text-white">Add record</p></Link>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto dark:bg-boxdark">
@@ -171,7 +169,7 @@ const Records = () => {
                       </div>
                     </td>
                     <td className="pl-12">
-                      <p className="font-normal text-black dark:text-white">{formatDateTime(record.dateOfMarriage).toLocaleUpperCase()}</p>
+                      <p className="font-normal text-black dark:text-white">{formatDateTime(record.start).toLocaleUpperCase()}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <div className="flex items-center space-x-3.5">

@@ -22,7 +22,7 @@ const AddEvent = () => {
       end: end,
       describe: describe
     };
-    axios.post('http://localhost:5000/api/Events', AddEvent)
+    axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Events', AddEvent)
     .then(res => {
       console.log(res);
       toast.success('Success add Appointment');

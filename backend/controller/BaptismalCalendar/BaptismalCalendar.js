@@ -137,8 +137,9 @@ const getAvailableSlots = async (req, res) => {
 // }
 
 const getAvailableDates = async (req, res) => {
+  
     try {
-      const availableDates = await CalendarBaptismal.find({ description: "Available" });
+      const availableDates = await CalendarBaptismal.find({ description: "Available"});
       res.status(200).json(availableDates);
     } catch (err) {
       handleError(err, res);

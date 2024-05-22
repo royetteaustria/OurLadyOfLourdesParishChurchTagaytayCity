@@ -11,7 +11,7 @@ const Forgot = () => {
     const handleSubmit = async(e : FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            const res = await axios.post('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/forgot-password', {email});
+            const res = await axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/forgot-password', {email});
             if(res.data.Status === "Success") {
                 navigate('/EmailVerified');
             } else if (res.data.Status === "User not existed") {

@@ -1,5 +1,5 @@
 type BaptismalData = {
-  dateofBaptismal: Date | null;
+  start: Date | string;
   name: string;
   lname: string;
   email: string;
@@ -56,7 +56,7 @@ const ReviewReservation: React.FC<ReviewProps> = ({ data }) => {
               Date of Baptismal
             </dt>
             <dd className="lg:ml-12 md:ml-2 sm:ml-4 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
-            {formatDateTime(data.dateofBaptismal ? data.dateofBaptismal : new Date())}
+            {formatDateTime(data.start )}
             </dd>
           </div>
 

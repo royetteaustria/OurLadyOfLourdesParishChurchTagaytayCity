@@ -52,7 +52,7 @@ const InfoRecords = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/SingleUser/` + id)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/SingleUser/` + id)
       .then((res) => {
         console.log(res);
         setRecord((prev) => ({

@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/breadcrumbs/Breadcrum";
 
 const Data = {
   _id: "",
-  dateofBaptismal: "",
+  start: "",
   name: "",
   lname: "",
   email: "",
@@ -48,13 +48,13 @@ const BaptismalClientInfo = () => {
   
   useEffect(() => {
     axios
-      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/singleClient/` + id)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/singleClient/` + id)
       .then((res) => {
         console.log(res);
         setData((prev) => ({
           ...prev,
           _id: res.data._id,
-          dateofBaptismal: res.data.dateofBaptismal,
+          start: res.data.start,
           name: res.data.name,
           lname: res.data.lname,
           email: res.data.email,
@@ -115,7 +115,7 @@ const BaptismalClientInfo = () => {
                 Date of Baptismal
               </dt>
               <dd className="lg:ml-40 md:ml-40 sm:ml-40 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">
-                {formatDateTime(data.dateofBaptismal)}
+                {formatDateTime(data.start)}
               </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

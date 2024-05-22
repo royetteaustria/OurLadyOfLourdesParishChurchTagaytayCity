@@ -59,7 +59,7 @@ export function GroomUpdateClient({
                       }
                       placeholder="Select file"
                     />
-                    {/* <span className="text-primary cursor-pointer border p-2 " onClick={() => handleViewFile(`http://localhost:5000/${Groom_Baptismal_Certificate}`)}>{Groom_Baptismal_Certificate}</span> */}
+                    {/* <span className="text-primary cursor-pointer border p-2 " onClick={() => handleViewFile(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//${Groom_Baptismal_Certificate}`)}>{Groom_Baptismal_Certificate}</span> */}
                   </div>
                   <div className="mb-4.5 mt-2">
                     <label className="mb-2.5 block text-black dark:text-white">

@@ -2,107 +2,105 @@ import { useMultistepForm } from "./useMultistepForm";
 import GroomForm from "./GroomForm";
 import BrideForm from "./BrideForm";
 import { OtherInfoRecord } from "./OtherInfo";
-import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FormEvent, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 type FormData = {
   groomName: string;
-  groomBirth: string;
   groomMiddleName: string;
-  groomLastName:string
+  groomLastName: string;
+  groomBirth: string;
   groomPlaceofBirth: string;
-  groomSex: string;
   groomCitezenship: string;
-  groomResidence: string;
+  groomAddress: string;
   groomReligion: string;
   groomCivilStatus: string;
-  groomNameofFather: string;
+  groomFatherName: string;
   groomFatherCitezenship: string;
-  groomNameofMother: string;
+  groomMotherName: string;
   groomMotherCitezenship: string;
   groomNameOfPersonWhoGaveConcent: string;
   groomNameOfPersonWhoGaveConcentRelationship: string;
   groomPersonWhoGaveConcentResidence: string;
 
+  //bride
   brideName: string;
-  brideMiddleName:string;
-  brideLastName:string;
+  brideMiddleName: string;
+  brideLastName: string;
   brideBirth: string;
   bridePlaceofBirth: string;
-  brideSex: string;
   brideCitezenship: string;
-  brideResidence: string;
+  brideAddress: string;
   brideReligion: string;
   brideCivilStatus: string;
-  brideNameofFather: string;
+  brideFatherName: string;
   brideFatherCitezenship: string;
-  brideNameofMother: string;
+  brideMotherName: string;
   brideMotherCitezenship: string;
   brideNameOfPersonWhoGaveConcent: string;
   brideNameOfPersonWhoGaveConcentRelationship: string;
   bridePersonWhoGaveConcentResidence: string;
 
+  //other info
   RegistryNo: string;
   Province: string;
   City_Municipality: string;
   placeOfMarriage: string;
-  dateOfMarriage: string;
-  timeOfMarriage: string;
-  priestWhoMarried: string;
+  start: string;
+  
+  priestWhoMarried: string
 };
 
 const INITIAL_DATA: FormData = {
-  groomName: "",
-  groomBirth: "",
-  groomPlaceofBirth: "",
+  groomName: '',
+  groomMiddleName: '',
+  groomLastName: '',
+  groomBirth: '',
+  groomPlaceofBirth: '',
+  groomCitezenship: '',
+  groomAddress: '',
+  groomReligion: '',
+  groomCivilStatus: '',
+  groomFatherName: '',
+  groomFatherCitezenship: '',
+  groomMotherName: '',
+  groomMotherCitezenship: '',
+  groomNameOfPersonWhoGaveConcent: '',
+  groomNameOfPersonWhoGaveConcentRelationship: '',
+  groomPersonWhoGaveConcentResidence: '',
 
-  groomCitezenship: "",
-  groomResidence: "",
-  groomReligion: "",
-  groomCivilStatus: "",
-  groomNameofFather: "",
-  groomFatherCitezenship: "",
-  groomNameofMother: "",
-  groomMotherCitezenship: "",
-  groomNameOfPersonWhoGaveConcent: "",
-  groomNameOfPersonWhoGaveConcentRelationship: "",
-  groomPersonWhoGaveConcentResidence: "",
+  //bride
+  brideName: '',
+  brideMiddleName: '',
+  brideLastName: '',
+  brideBirth: '',
+  bridePlaceofBirth: '',
+  brideCitezenship: '',
+  brideAddress: '',
+  brideReligion: '',
+  brideCivilStatus: '',
+  brideFatherName: '',
+  brideFatherCitezenship: '',
+  brideMotherName: '',
+  brideMotherCitezenship: '',
+  brideNameOfPersonWhoGaveConcent: '',
+  brideNameOfPersonWhoGaveConcentRelationship: '',
+  bridePersonWhoGaveConcentResidence: '',
 
-  brideName: "",
-  brideBirth: "",
-  bridePlaceofBirth: "",
-
-  brideCitezenship: "",
-  brideResidence: "",
-  brideReligion: "",
-  brideCivilStatus: "",
-  brideNameofFather: "",
-  brideFatherCitezenship: "",
-  brideNameofMother: "",
-  brideMotherCitezenship: "",
-  brideNameOfPersonWhoGaveConcent: "",
-  brideNameOfPersonWhoGaveConcentRelationship: "",
-  bridePersonWhoGaveConcentResidence: "",
-
-  RegistryNo: "",
-  Province: "",
-  City_Municipality: "",
-  placeOfMarriage: "",
-  dateOfMarriage: "",
-  timeOfMarriage: "",
-  priestWhoMarried: "Rev. Fr. Arnold M. Montella",
-  groomMiddleName: "",
-  groomLastName: "",
-  groomSex: "",
-  brideMiddleName: "",
-  brideLastName: "",
-  brideSex: ""
-};
+  //other info
+  RegistryNo: '',
+  Province: '',
+  City_Municipality: '',
+  placeOfMarriage: '',
+  start: '',
+  
+  priestWhoMarried: '', }
 
 const AddRecords = () => {
   const [data, setData] = useState(INITIAL_DATA);
+  const { id } = useParams();
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
       return {
@@ -126,7 +124,7 @@ const AddRecords = () => {
 
     try {
       const res = await axios.post(
-        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/create",
+        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/create",
         recordData
       );
       console.log(res);
@@ -140,6 +138,47 @@ const AddRecords = () => {
     // Move the next() call inside the try block, so it only proceeds to the next step if the API call is successful
     next();
   };
+  useEffect(() => {
+    axios
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/` + id)
+      .then((res) => {
+        console.log(res);
+        setData((prev) => ({
+          ...prev,
+          _id: res.data._id,
+          email: res.data.email,
+          phoneNumber: res.data.phoneNumber,
+          groomName: res.data.groomName,
+          groomMiddleName: res.data.groomMiddleName,
+          groomLastName: res.data.groomLastName,
+          groomAge: res.data.groomAge,
+          groomBaptizedAt: res.data.groomBaptizedAt,
+          groomAddress: res.data.groomAddress,
+          groomNameOfParishChurch: res.data.groomNameOfParishChurch,
+          groomaddressOfParishChurch: res.data.groomaddressOfParishChurch,
+          groomFatherName: res.data.groomFatherName,
+          groomMotherName: res.data.groomMotherName,
+          groomalreadyBaptist: res.data.groomalreadyBaptist,
+          groomalreadyKumpil: res.data.groomalreadyKumpil,
+          Brideemail: res.data.Brideemail,
+          brideLastName: res.data.brideLastName,
+          brideMiddleName: res.data.brideMiddleName,
+          brideName: res.data.brideName,
+          brideAge: res.data.brideAge,
+          brideBaptizedAt: res.data.brideBaptizedAt,
+          brideAddress: res.data.brideAddress,
+          brideNameOfParishChurch: res.data.brideNameOfParishChurch,
+          brideaddressOfParishChurch: res.data.brideaddressOfParishChurch,
+          brideFatherName: res.data.brideFatherName,
+          brideMotherName: res.data.brideMotherName,
+          bridealreadyBaptist: res.data.bridealreadyBaptist,
+          bridealreadyKumpil: res.data.bridealreadyKumpil,
+          weddingStatus: res.data.weddingStatus,
+          start: res.data.start,
+        }));
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -165,10 +204,15 @@ const AddRecords = () => {
                 </button>
               )}
               <button
-                className={isFirstStep ? "flex justify-center w-full rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1" : currentStepIndex === 1 ? "flex justify-center rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1" : "flex justify-center rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1"}
+                className={
+                  isFirstStep
+                    ? "flex justify-center w-full rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1"
+                    : currentStepIndex === 1
+                    ? "flex justify-center rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1"
+                    : "flex justify-center rounded bg-primary py-3 px-6 ml-8 font-medium text-gray hover:shadow-1"
+                }
                 type="button"
                 onClick={isLastStep ? onSubmit : next} // Use onSubmit when it's the last step
-                
               >
                 {isLastStep ? "Add record" : "Next"}
               </button>

@@ -3,9 +3,8 @@ type Otherinfo = {
   Province: string;
   City_Municipality: string;
   placeOfMarriage: string;
-  dateOfMarriage: string;
-  timeOfMarriage: string;
-  priestWhoMarried: string;
+  start: string;
+  priestWhoMarried: string
 };
 
 type OtherInforFormProps = Otherinfo & {
@@ -15,13 +14,30 @@ type OtherInforFormProps = Otherinfo & {
 export function OtherInfoRecord({
   RegistryNo,
   priestWhoMarried,
-  timeOfMarriage,
   Province,
   City_Municipality,
   placeOfMarriage,
-  dateOfMarriage,
+  start,
   updateFields,
 }: OtherInforFormProps) {
+  function formatDateTime(date: Date | string) {
+    if (typeof date === 'string') {
+      date = new Date(date);
+    }
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    const hours = date.getHours() % 12 || 12; // Get 12-hour format
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+    return `${month} ${day}, ${year} ${hours}:${minutes} ${amPm}`;
+  }
   return (
     <>
       <div className="mx-auto max-w-270">
@@ -108,27 +124,11 @@ export function OtherInfoRecord({
                     </label>
                     <div className="relative">
                       <input
-                        type="date"
+                        type="text"
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                        value={dateOfMarriage}
+                        value={formatDateTime(start)}
                         onChange={(e) =>
-                          updateFields({ dateOfMarriage: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="mb-5.5">
-                    <label className="mb-3 block text-black dark:text-white">
-                      Time of marriage
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="time"
-                        className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                        value={timeOfMarriage}
-                        onChange={(e) =>
-                          updateFields({ timeOfMarriage: e.target.value })
+                          updateFields({ start: e.target.value })
                         }
                         required
                       />
@@ -139,26 +139,17 @@ export function OtherInfoRecord({
                       Guest Priest
                     </label>
                     <div className="relative z-20 bg-transparent dark:bg-form-input">
-                      <select
+                    <div className="relative">
+                      <input
+                        type="text"
+                        className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                         value={priestWhoMarried}
                         onChange={(e) =>
                           updateFields({ priestWhoMarried: e.target.value })
                         }
-                        className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus-border-primary active-border-primary dark-border-form-strokedark dark-bg-form-input dark-focus-border-primary"
-                      >
-                        <option value="Rev. Fr. Arnold M. Montella">
-                          Rev. Fr. Arnold M. Montella
-                        </option>
-                        <option value="Rev. Fr. Eugenio Juanito P. Lopez">
-                          Rev. Fr. Eugenio Juanito P. Lopez
-                        </option>
-                        <option value="Rev. Fr. Rolando B. Datu">
-                          Rev. Fr. Rolando B. Datu
-                        </option>
-                        <option value="Rev. Fr. Zacarias M Parra">
-                          Rev. Fr. Zacarias M Parra
-                        </option>
-                      </select>
+                        required
+                      />
+                      </div>
                       
                     </div>
                   </div>

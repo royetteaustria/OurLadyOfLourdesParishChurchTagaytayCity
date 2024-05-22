@@ -10,21 +10,20 @@ import RejectBaptismal from '../../components/modal/RejectBaptismal/RejectBaptis
 
 type Baptismal_Inquiries = {
   _id: string,
-  dateofBaptismal: string,
-  name: string,
-  lname: string,
-  email: string,
-  dateofBirth: string,
-  birthPlace: string,
- 
-
-  currentAddress: string,
-  fatherName: string,
-  fatherBirthOfPlace: string,
-  motherName: string,
-  mothertherBirthOfPlace: string,
-  marriedPlace: string,
-  createdAt:string
+  start: string,
+  name:string
+  lname:string
+  email:string
+  dateofBirth:string
+  birthPlace:string
+  cellphoneNumber:string
+  currentAddress:string
+  fatherName:string
+  fatherBirthOfPlace:string
+  motherName:string
+  motherBirthOfPlace:string
+  marriedPlace:string
+  baptismalType:string
 }
 
 const baptismalInquiries = () => {
@@ -51,7 +50,7 @@ const baptismalInquiries = () => {
   }
   useEffect(() => {
     async function getInquiries() {
-      const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries`)
+      const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries`)
       const inquries = await response.data;
       setData(inquries)
     }
@@ -68,7 +67,7 @@ const baptismalInquiries = () => {
 
 
   async function deleteRecord(id: string) {
-    await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/reject/`+id)
+    await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/reject/`+id)
       .then(() => {
         console.log('data has been deleted');
         // You may want to update your data state here
@@ -109,7 +108,7 @@ const baptismalInquiries = () => {
               <tr key={index}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">
-                    {data.name.toLocaleUpperCase()}
+                    {data.name.toLocaleUpperCase()} {data.lname.toLocaleUpperCase()}
                   </h5>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -122,7 +121,7 @@ const baptismalInquiries = () => {
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-4.5">
                   <h5 className="font-medium text-black dark:text-white">
-                    {formatDateTime(data.dateofBaptismal).toLocaleUpperCase()}
+                    {formatDateTime(data.start).toLocaleUpperCase()}
                   </h5>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

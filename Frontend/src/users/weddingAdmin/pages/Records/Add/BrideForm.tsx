@@ -1,21 +1,20 @@
 type BrideUserData = {
   brideName: string;
+  brideMiddleName: string;
+  brideLastName: string;
   brideBirth: string;
   bridePlaceofBirth: string;
-  
   brideCitezenship: string;
-  brideResidence: string;
+  brideAddress: string;
   brideReligion: string;
   brideCivilStatus: string;
-  brideNameofFather: string;
+  brideFatherName: string;
   brideFatherCitezenship: string;
-  brideNameofMother: string;
+  brideMotherName: string;
   brideMotherCitezenship: string;
   brideNameOfPersonWhoGaveConcent: string;
   brideNameOfPersonWhoGaveConcentRelationship: string;
   bridePersonWhoGaveConcentResidence: string;
-  brideMiddleName:string,
-  brideLastName:string,
 };
 
 type BrideUserFormProps = BrideUserData & {
@@ -24,22 +23,21 @@ type BrideUserFormProps = BrideUserData & {
 
 export function BrideForm({
   brideName,
+  brideMiddleName,
+  brideLastName,
   brideBirth,
   bridePlaceofBirth,
- 
   brideCitezenship,
-  brideResidence,
+  brideAddress,
   brideReligion,
   brideCivilStatus,
-  brideNameofFather,
+  brideFatherName,
   brideFatherCitezenship,
-  brideNameofMother,
+  brideMotherName,
   brideMotherCitezenship,
   brideNameOfPersonWhoGaveConcent,
   brideNameOfPersonWhoGaveConcentRelationship,
   bridePersonWhoGaveConcentResidence,
-  brideMiddleName,
-  brideLastName,
   updateFields,
 }: BrideUserFormProps) {
   return (
@@ -62,6 +60,7 @@ export function BrideForm({
                     <input
                       className="w-full rounded border   border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Name"
                       value={brideName}
                       required
@@ -77,6 +76,7 @@ export function BrideForm({
                     <input
                       className="w-full rounded border   border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Middle name"
                       value={brideMiddleName}
                       required
@@ -92,6 +92,7 @@ export function BrideForm({
                     <input
                       className="w-full rounded border   border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Last name"
                       value={brideLastName}
                       required
@@ -169,11 +170,12 @@ export function BrideForm({
                     <div className="relative">
                       <input
                         type="text"
+                        disabled
                         placeholder="Residence"
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                        value={brideResidence}
+                        value={brideAddress}
                         onChange={(e) =>
-                          updateFields({ brideResidence: e.target.value })
+                          updateFields({ brideAddress: e.target.value })
                         }
                         required
                       />
@@ -198,16 +200,26 @@ export function BrideForm({
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                       Civil Status
                     </label>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="text"
-                      placeholder="Civil Status"
-                      value={brideCivilStatus}
-                      onChange={(e) =>
-                        updateFields({ brideCivilStatus: e.target.value })
-                      }
-                      required
-                    />
+                    <select
+                        value={brideCivilStatus}
+                        onChange={(e) =>
+                          updateFields({ brideCivilStatus: e.target.value })
+                        }
+                        className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus-border-primary active-border-primary dark-border-form-strokedark dark-bg-form-input dark-focus-border-primary"
+                      >
+                        <option value="Single">
+                          Single
+                        </option>
+                        <option value="Married">
+                          Married
+                        </option>
+                        <option value="Widowed">
+                          Widowed
+                        </option>
+                        <option value="Legally Separated">
+                          Legally Separated
+                        </option>
+                      </select>
                   </div>
                   <div className="mb-5.5 mt-2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
@@ -216,10 +228,11 @@ export function BrideForm({
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Name"
-                      value={brideNameofFather}
+                      value={brideFatherName}
                       onChange={(e) =>
-                        updateFields({ brideNameofFather: e.target.value })
+                        updateFields({ brideFatherName: e.target.value })
                       }
                       required
                     />
@@ -244,12 +257,13 @@ export function BrideForm({
                       Mother Name(Maiden) <span className="italic">(First Name, Middle Name, Last Name)</span>
                     </label>
                     <input
+                    disabled
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
                       placeholder="Name"
-                      value={brideNameofMother}
+                      value={brideMotherName}
                       onChange={(e) =>
-                        updateFields({ brideNameofMother: e.target.value })
+                        updateFields({ brideMotherName: e.target.value })
                       }
                       required
                     />

@@ -97,7 +97,7 @@ const UpdateWeddingClient = () => {
   const {id} = useParams();
 
   useEffect (() => {
-    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/singleClient/`+id)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/singleClient/`+id)
     .then(res => {
       console.log(res)
       setData(prev => ({
@@ -149,7 +149,7 @@ const UpdateWeddingClient = () => {
   ])
   const update = (e: FormEvent) => {
     e.preventDefault()
-    axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/`+id, data)
+    axios.put(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/update/`+id, data)
     .then(res => {
       console.log(res)
       if (data.weddingStatus === 'Complete') {

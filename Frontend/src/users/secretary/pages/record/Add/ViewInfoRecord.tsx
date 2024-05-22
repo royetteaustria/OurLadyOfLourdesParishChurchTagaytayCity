@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 
 const INITIAL_DATA = {
-  dateofBaptismal: '',
+  start: '',
   name: '',
   dateofBirth: '',
   birthPlace: '',
@@ -24,12 +24,12 @@ const ViewInfoRecord = () => {
     const [data, setData] = useState(INITIAL_DATA)
     
     useEffect(() => {
-      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/SingleUserUpdate/`+id)
+      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/SingleUserUpdate/`+id)
         .then(res => {
           console.log(res);
           setData(prev => ({
             ...prev,
-            dateofBaptismal: res.data.dateofBaptismal,
+            start: res.data.start,
             name: res.data.name,
             dateofBirth: res.data.dateofBirth,
             birthPlace: res.data.birthPlace,
@@ -47,6 +47,38 @@ const ViewInfoRecord = () => {
         })
         .catch(err => console.log(err));
     }, []);
+    function formatDateTime(date: Date | string) {
+      if (typeof date === 'string') {
+        date = new Date(date);
+      }
+  
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+  
+      const day = date.getDate();
+      const month = monthNames[date.getMonth()];
+      const year = date.getFullYear();
+  
+      const hours = date.getHours() % 12 || 12; // Get 12-hour format
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+  
+      return `${month} ${day}, ${year} ${hours}:${minutes} ${amPm}`;
+    }
+    function formatDate(date: Date | string) {
+      if (typeof date === 'string') {
+        date = new Date(date);
+      }
+  
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+  
+      const day = date.getDate();
+      const month = monthNames[date.getMonth()];
+      const year = date.getFullYear();
+  
+      return `${month} ${day}, ${year}`;
+    }
   return (
     <>
       <div className="bg-white p-6 dark:bg-boxdark dark:text-bodydark1">
@@ -61,7 +93,7 @@ const ViewInfoRecord = () => {
           </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">Date of birth</dt>
-          <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{data.dateofBirth}</dd>
+          <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{formatDate(data.dateofBirth)}</dd>
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">Birth Place</dt>
@@ -97,7 +129,7 @@ const ViewInfoRecord = () => {
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">Date of Baptismal</dt>
-          <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">{data.dateofBaptismal}</dd>
+          <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 text-black dark:text-bodydark1 sm:col-span-2 sm:mt-0">{formatDateTime(data.start)}</dd>
         </div>
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-semibold leading-6 dark:text-bodydark1 text-black">Priest who baptized</dt>

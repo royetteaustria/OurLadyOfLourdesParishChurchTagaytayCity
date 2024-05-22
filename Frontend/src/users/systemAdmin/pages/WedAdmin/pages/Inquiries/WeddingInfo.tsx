@@ -68,7 +68,7 @@ const WeddingInfo = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/`+id)
+      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/Info/`+id)
       .then(res => {
         console.log(res)
         setData(prev => ({
@@ -108,8 +108,8 @@ const WeddingInfo = () => {
     const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept`, data)
-      await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/reject/${id}`)
+      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/accept`, data)
+      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/reject/${id}`)
       console.log(res)
       toast.success('Successfully accept');
       navigate('/systemAdmin/WeddingClient')

@@ -34,7 +34,7 @@ const AddAccount = () => {
       );
       return;
     }
-    axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/userRoutes/register`, userData)
+    axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/userRoutes/register`, userData)
       .then((res) => {
         console.log(res);
         toast.success('Successfully added account');

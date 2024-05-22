@@ -1,5 +1,6 @@
 type MainInfoData = {
     name: string,
+    lname: string,
     dateofBirth: string,
     birthPlace: string,
     cellphoneNumber: string,
@@ -15,7 +16,7 @@ type MainInfoFormProps = MainInfoData & {
     updateFields: (fields: Partial<MainInfoData>) => void
 }
 
-export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, currentAddress, fatherName, fatherBirthOfPlace, motherName, motherBirthOfPlace,  marriedPlace, updateFields}: MainInfoFormProps) {
+export function MainRecord({name, lname, dateofBirth, birthPlace,  cellphoneNumber, currentAddress, fatherName, fatherBirthOfPlace, motherName, motherBirthOfPlace,  marriedPlace, updateFields}: MainInfoFormProps) {
   return (
     <>
     <div className="mx-auto max-w-270">
@@ -40,10 +41,27 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Name"
                       value={name}
                       required
                       onChange={e => updateFields({ name: e.target.value })}
+                    />
+                  </div>
+                  <div className="mb-5.5 mt-2">
+                    <label
+                      className="mb-3 block text-sm font-medium text-black dark:text-white"
+                    >
+                      Last Name of Child <span className="italic">(First name, Middle name, Last name)</span>
+                    </label>
+                    <input
+                      className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                      type="text"
+                      disabled
+                      placeholder="Name"
+                      value={lname}
+                      required
+                      onChange={e => updateFields({ lname: e.target.value })}
                     />
                   </div>
                   <div className="mb-5.5 mt-2">
@@ -55,6 +73,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="date"
+                      disabled
                       placeholder="Date of birth"
                       value={dateofBirth}
                       required
@@ -71,6 +90,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Birth place"
                       value={birthPlace}
                       required
@@ -87,6 +107,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Number"
                       value={cellphoneNumber}
                       onChange={e => updateFields({ cellphoneNumber: e.target.value })}
@@ -101,6 +122,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                     <div className="relative">
                     <input
                       type="text"
+                      disabled
                       placeholder="Address"
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       value={currentAddress}
@@ -116,6 +138,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                   <div className="relative">
                   <input
                     type="text"
+                    disabled
                     placeholder="Name"
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     value={fatherName}
@@ -133,6 +156,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                   <input
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text"
+                    disabled
                     placeholder="Birthplace"
                     value={fatherBirthOfPlace}
                     onChange={e => updateFields({ fatherBirthOfPlace: e.target.value })}
@@ -148,6 +172,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                   <input
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text"
+                    disabled
                     placeholder="Name"
                     value={motherName}
                     onChange={e => updateFields({ motherName: e.target.value })}
@@ -163,6 +188,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                   <input
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text"
+                    disabled
                     placeholder="Birthplace"
                     value={motherBirthOfPlace}
                     onChange={e => updateFields({ motherBirthOfPlace: e.target.value })}
@@ -178,6 +204,7 @@ export function MainRecord({name, dateofBirth, birthPlace,  cellphoneNumber, cur
                   <input
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text"
+                    disabled
                     placeholder="Married in"
                     value={marriedPlace}
                     onChange={e => updateFields({ marriedPlace: e.target.value })}

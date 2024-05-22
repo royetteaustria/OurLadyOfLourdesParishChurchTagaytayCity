@@ -70,7 +70,7 @@ const coreRoutes = [
       component: Record,
     },
     {
-      path: '/ParishSecretary/Addrecord',
+      path: '/ParishSecretary/Addrecord/:id',
       title: 'Wedding Aanlytics',
       component: AddRecord,
     },

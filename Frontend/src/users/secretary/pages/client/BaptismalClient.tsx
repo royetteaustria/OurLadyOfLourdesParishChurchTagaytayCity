@@ -12,7 +12,7 @@ type BaptismalClient = {
   _id: string,
   name: string,
   lname: string,
-  dateofBaptismal: string,
+  start: string,
   status: string
 
 }
@@ -56,7 +56,7 @@ const BaptismalClient = () => {
   useEffect(() => {
     async function getInquiries() {
       try {
-        const res = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/list`)
+        const res = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/list`)
         const inquiries = res.data;
         if (Array.isArray(inquiries)) {
           setData(inquiries);
@@ -142,7 +142,7 @@ const BaptismalClient = () => {
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark xl:pl-2">
                   <h5 className="font-medium text-black dark:text-white">
-                    {formatDateTime(data.dateofBaptismal).toUpperCase()}
+                    {formatDateTime(data.start).toUpperCase()}
                   </h5>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-4.5">

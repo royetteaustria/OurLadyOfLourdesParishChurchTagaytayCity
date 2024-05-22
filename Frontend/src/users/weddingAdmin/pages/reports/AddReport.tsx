@@ -24,7 +24,7 @@ const AddReport = () => {
       Rites: Rites,
       GuestPriest: GuestPriest
     };
-    axios.post('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create', reportData)
+    axios.post('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/create', reportData)
       .then(res => {
         console.log(res)
         toast.success('Successfully added report');

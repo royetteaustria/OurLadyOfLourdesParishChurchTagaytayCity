@@ -13,7 +13,6 @@ const EmptyInquiries = () => {
         <h1 className="text-gray-700 font-medium text-2xl text-center mb-3">No inquiry yet</h1>
       </div>
     </div>
-    
     )
   }
   

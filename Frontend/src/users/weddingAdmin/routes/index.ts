@@ -137,7 +137,7 @@ const coreRoutes = [
     component: Records,
   },
   {
-    path: '/weddingAdmin/addrecords',
+    path: '/weddingAdmin/addrecords/:id',
     title: 'Records',
     component: AddRecords,
   },

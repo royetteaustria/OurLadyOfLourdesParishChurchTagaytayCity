@@ -3,14 +3,16 @@ import {
     CreateBaptismalInquiries,
     deletebaptismalInquiries,
     listbaptismalInquiries,
-    getSingleInquire
+    getSingleInquire,
+    rejectBaptismalInquiry
 } from '../../controller/inquiries/baptismalInquiriesController.js'
 
 const router = express.Router();
 
 router.get('/', listbaptismalInquiries)
 router.get('/singleInquiries/:id', getSingleInquire)
+router.delete('/reject/:id', rejectBaptismalInquiry)
 router.post('/createInquiries', CreateBaptismalInquiries,)
-router.delete('/reject/:id', deletebaptismalInquiries)
+router.delete('/delete/:id', deletebaptismalInquiries)
 
 export default router;

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast"
 
 type accept = {
-  dateofBaptismal: string,
+  start: string,
   name: string,
   lname: string,
   email: string,
@@ -22,7 +22,7 @@ type accept = {
 }
 
 const Data: accept = {
-  dateofBaptismal: '',
+  start: '',
   name: '',
   lname: '',
   email: '',
@@ -43,12 +43,12 @@ const InfoBaptismal = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-     axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/singleInquiries/` +id)
+     axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/singleInquiries/` +id)
     .then(res => {
       console.log(res)
       setData(prev => ({
         ...prev,
-        dateofBaptismal: res.data.dateofBaptismal,
+        start: res.data.start,
         name: res.data.name,
         lname: res.data.lname,
         email: res.data.email,
@@ -96,17 +96,17 @@ const InfoBaptismal = () => {
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
 
-    // const hours = date.getHours() % 12 || 12; // Get 12-hour format
-    // const minutes = date.getMinutes().toString().padStart(2, '0');
-    // const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+    const hours = date.getHours() % 12 || 12; // Get 12-hour format
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-    return `${month} ${day} ${year}`;
+    return `${month} ${day} ${year} ${hours}:${minutes} ${amPm}`;
   }
   const accept = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res = await axios.post(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalClient/accept`, data)
-      await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/reject/${id}`)
+      const res = await axios.post(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalClient/accept`, data)
+      await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/delete/${id}`)
       console.log(res)
       toast.success('Successfully accept');
       navigate('/weddingAdmin/baptismalClient')
@@ -127,7 +127,7 @@ const InfoBaptismal = () => {
           <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">Date of baptismal</dt>
-              <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{formatDateTime(data.dateofBaptismal)}</dd>
+              <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{formatDateTime(data.start)}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">Type of baptismal</dt>
@@ -186,7 +186,7 @@ const InfoBaptismal = () => {
           <div className="flex justify-end items-end pt-4 pr-12">
             <form onSubmit={accept}>
             <input type="text" className="hidden" value={data.email} onChange={(e) => setData((prevData) => ({ ...prevData, email: e.target.value }))}/>
-            <input type="text" className="hidden" value={data.dateofBaptismal} onChange={(e) => setData((prevData) => ({ ...prevData, dateofBaptismal: e.target.value }))}/>
+            <input type="text" className="hidden" value={data.start} onChange={(e) => setData((prevData) => ({ ...prevData, start: e.target.value }))}/>
             <input type="text" className="hidden" value={data.name} onChange={(e) => setData((prevData) => ({ ...prevData, name: e.target.value }))}/>
             <input type="text" className="hidden" value={data.lname} onChange={(e) => setData((prevData) => ({ ...prevData, lname: e.target.value }))}/>
             <input type="text" className="hidden" value={data.dateofBirth} onChange={(e) => setData((prevData) => ({ ...prevData, dateofBirth: e.target.value }))}/>

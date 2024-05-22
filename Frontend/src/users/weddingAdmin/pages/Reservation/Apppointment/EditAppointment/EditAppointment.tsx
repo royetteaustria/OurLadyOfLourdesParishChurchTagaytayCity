@@ -14,7 +14,7 @@ const EditAppointment = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Events/${id}`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Events/${id}`)
       .then(res => {
         const eventData = res.data; // Assuming your API returns the event data as an object
         setTitle(eventData.title);
@@ -39,7 +39,7 @@ const EditAppointment = () => {
     };
     
     try {
-      const res = await axios.put('https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Events/'+id, EditAppointment)
+      const res = await axios.put('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Events/'+id, EditAppointment)
       console.log(res)
       toast.success('Successfully Update')
       navigate('/weddingAdmin/SetAppointment')

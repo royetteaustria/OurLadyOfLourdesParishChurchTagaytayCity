@@ -1,8 +1,7 @@
-import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 type BaptismalData = {
-  dateofBaptismal: Date | null;
+  start: Date | string;
   name: string;
   lname: string;
   email: string;
@@ -15,6 +14,7 @@ type BaptismalData = {
   motherName: string;
   motherBirthOfPlace: string;
   marriedPlace: string;
+  isCheckboxChecked: Boolean;
   baptismalType: string;
 };
 
@@ -23,7 +23,6 @@ type BaptismalFormProps = BaptismalData & {
 };
 
 export function BaptismalForm({
-  dateofBaptismal,
   lname,
   email,
   name,
@@ -53,235 +52,7 @@ export function BaptismalForm({
   const ismotherBirthOfPlace = motherBirthOfPlace.trim().length > 0;
   const ismarriedPlace = marriedPlace.trim().length > 0;
   const isbaptismalType = baptismalType.trim().length > 0;
-  const isNotMonday = (date : Date) => {
-    const day = date.getDay();
-    return day !== 1; // 1 represents Monday
-  };
-  const hasnameAndLastname = name.trim().length > 0 && lname.trim().length > 0;
-  const isNameSameAslName = hasnameAndLastname && name.trim() === lname.trim();
-
-  const hasnameAndbirthPlace =
-    name.trim().length > 0 && birthPlace.trim().length > 0;
-  const isNameSameAsbirthPlace =
-    hasnameAndbirthPlace && name.trim() === birthPlace.trim();
-
-  const hasnameAndcurrentAddress =
-    name.trim().length > 0 && currentAddress.trim().length > 0;
-  const isNameSameAscurrentAddress =
-    hasnameAndcurrentAddress && name.trim() === currentAddress.trim();
-
-  const hasnameAndfatherName =
-    name.trim().length > 0 && fatherName.trim().length > 0;
-  const isNameSameAsfatherName =
-    hasnameAndfatherName && name.trim() === fatherName.trim();
-
-  const hasnameAndfatherBirthOfPlace =
-    name.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const isNameSameAsfatherBirthOfPlace =
-    hasnameAndfatherBirthOfPlace && name.trim() === fatherBirthOfPlace.trim();
-
-  const hasnameAndmotherName =
-    name.trim().length > 0 && motherName.trim().length > 0;
-  const isNameSameAsmotherName =
-    hasnameAndmotherName && name.trim() === motherName.trim();
-
-  const hasnameAndmotherBirthOfPlace =
-    name.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const isNameSameAsmotherBirthOfPlace =
-    hasnameAndmotherBirthOfPlace && name.trim() === motherBirthOfPlace.trim();
-
-  const hasnameAndmarriedPlace =
-    name.trim().length > 0 && marriedPlace.trim().length > 0;
-  const isNameSameAsmarriedPlace =
-    hasnameAndmarriedPlace && name.trim() === marriedPlace.trim();
-
-  const haslnameAndName = lname.trim().length > 0 && name.trim().length > 0;
-  const islnameSameAsName = haslnameAndName && lname.trim() === name.trim();
-
-  const haslnameAndbirthPlace =
-    lname.trim().length > 0 && birthPlace.trim().length > 0;
-  const islnameSameAsbirthPlace =
-    haslnameAndbirthPlace && lname.trim() === birthPlace.trim();
-
-  const haslnameAndcurrentAddress =
-    lname.trim().length > 0 && currentAddress.trim().length > 0;
-  const islnameSameAscurrentAddress =
-    haslnameAndcurrentAddress && lname.trim() === currentAddress.trim();
-
-  const haslnameAndfatherName =
-    lname.trim().length > 0 && fatherName.trim().length > 0;
-  const islnameSameAsfatherName =
-    haslnameAndfatherName && lname.trim() === fatherName.trim();
-
-  const haslnameAndfatherBirthOfPlace =
-    lname.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const islnameSameAsfatherBirthOfPlace =
-    haslnameAndfatherBirthOfPlace && lname.trim() === fatherBirthOfPlace.trim();
-
-  const haslnameAndmotherName =
-    lname.trim().length > 0 && motherName.trim().length > 0;
-  const islnameSameAsmotherName =
-    haslnameAndmotherName && lname.trim() === motherName.trim();
-
-  const haslnameAndmotherBirthOfPlace =
-    lname.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const islnameSameAsmotherBirthOfPlace =
-    haslnameAndmotherBirthOfPlace && lname.trim() === motherBirthOfPlace.trim();
-
-  const haslnameAndmarriedPlace =
-    lname.trim().length > 0 && marriedPlace.trim().length > 0;
-  const islnameSameAsmarriedPlace =
-    haslnameAndmarriedPlace && lname.trim() === marriedPlace.trim();
-
-  const hasbirthPlaceAndName =
-    birthPlace.trim().length > 0 && name.trim().length > 0;
-  const isbirthPlaceSameAsName =
-    hasbirthPlaceAndName && birthPlace.trim() === name.trim();
-
-  const hasbirthPlaceAndlname =
-    birthPlace.trim().length > 0 && lname.trim().length > 0;
-  const isbirthPlaceSameAslname =
-    hasbirthPlaceAndlname && birthPlace.trim() === lname.trim();
-
-  const hasbirthPlaceAndfatherName =
-    birthPlace.trim().length > 0 && fatherName.trim().length > 0;
-  const isbirthPlaceSameAsfatherName =
-    hasbirthPlaceAndfatherName && birthPlace.trim() === fatherName.trim();
-
-  const hasbirthPlaceAndfatherBirthOfPlace =
-    birthPlace.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const isbirthPlaceSameAsfatherBirthOfPlace =
-    hasbirthPlaceAndfatherBirthOfPlace &&
-    birthPlace.trim() === fatherBirthOfPlace.trim();
-
-  const hasbirthPlaceAndmotherName =
-    birthPlace.trim().length > 0 && motherName.trim().length > 0;
-  const isbirthPlaceSameAsmotherName =
-    hasbirthPlaceAndmotherName && birthPlace.trim() === motherName.trim();
-
-  const hasbirthPlaceAndmotherBirthOfPlace =
-    birthPlace.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const isbirthPlaceSameAsmotherBirthOfPlace =
-    hasbirthPlaceAndmotherBirthOfPlace &&
-    birthPlace.trim() === motherBirthOfPlace.trim();
-
-  const hasbirthPlaceAndmarriedPlace =
-    birthPlace.trim().length > 0 && marriedPlace.trim().length > 0;
-  const isbirthPlaceSameAsmarriedPlace =
-    hasbirthPlaceAndmarriedPlace && birthPlace.trim() === marriedPlace.trim();
-
-  const hascurrentAddressAndName =
-    currentAddress.trim().length > 0 && name.trim().length > 0;
-  const iscurrentAddressSameAsName =
-    hascurrentAddressAndName && currentAddress.trim() === name.trim();
-
-  const hascurrentAddressAndlname =
-    currentAddress.trim().length > 0 && lname.trim().length > 0;
-  const iscurrentAddressSameAslname =
-    hascurrentAddressAndlname && currentAddress.trim() === lname.trim();
-
-  const hascurrentAddressAndbirthPlace =
-    currentAddress.trim().length > 0 && birthPlace.trim().length > 0;
-  const iscurrentAddressSameAsbirthPlace =
-    hascurrentAddressAndbirthPlace &&
-    currentAddress.trim() === birthPlace.trim();
-
-  const hascurrentAddressAndfatherName =
-    currentAddress.trim().length > 0 && fatherName.trim().length > 0;
-  const iscurrentAddressSameAsfatherName =
-    hascurrentAddressAndfatherName &&
-    currentAddress.trim() === fatherName.trim();
-
-  const hascurrentAddressAndmotherName =
-    currentAddress.trim().length > 0 && motherName.trim().length > 0;
-  const iscurrentAddressSameAsmotherName =
-    hascurrentAddressAndmotherName &&
-    currentAddress.trim() === motherName.trim();
-
-  const hascurrentAddressAndmarriedPlace =
-    currentAddress.trim().length > 0 && marriedPlace.trim().length > 0;
-  const iscurrentAddressSameAsmarriedPlace =
-    hascurrentAddressAndmarriedPlace &&
-    currentAddress.trim() === marriedPlace.trim();
-
-  // For fatherName
-  const hasfatherNameAndName =
-    fatherName.trim().length > 0 && name.trim().length > 0;
-  const isfatherNameSameAsName =
-    hasfatherNameAndName && fatherName.trim() === name.trim();
-
-  const hasfatherNameAndlname =
-    fatherName.trim().length > 0 && lname.trim().length > 0;
-  const isfatherNameSameAslname =
-    hasfatherNameAndlname && fatherName.trim() === lname.trim();
-
-  const hasfatherNameAndbirthPlace =
-    fatherName.trim().length > 0 && birthPlace.trim().length > 0;
-  const isfatherNameSameAsbirthPlace =
-    hasfatherNameAndbirthPlace && fatherName.trim() === birthPlace.trim();
-
-  const hasfatherNameAndcurrentAddress =
-    fatherName.trim().length > 0 && currentAddress.trim().length > 0;
-  const isfatherNameSameAscurrentAddress =
-    hasfatherNameAndcurrentAddress &&
-    fatherName.trim() === currentAddress.trim();
-
-  const hasfatherNameAndfatherBirthOfPlace =
-    fatherName.trim().length > 0 && fatherBirthOfPlace.trim().length > 0;
-  const isfatherNameSameAsfatherBirthOfPlace =
-    hasfatherNameAndfatherBirthOfPlace &&
-    fatherName.trim() === fatherBirthOfPlace.trim();
-
-  const hasfatherNameAndmotherName =
-    fatherName.trim().length > 0 && motherName.trim().length > 0;
-  const isfatherNameSameAsmotherName =
-    hasfatherNameAndmotherName && fatherName.trim() === motherName.trim();
-
-  const hasfatherNameAndmotherBirthOfPlace =
-    fatherName.trim().length > 0 && motherBirthOfPlace.trim().length > 0;
-  const isfatherNameSameAsmotherBirthOfPlace =
-    hasfatherNameAndmotherBirthOfPlace &&
-    fatherName.trim() === motherBirthOfPlace.trim();
-
-  const hasfatherNameAndmarriedPlace =
-    fatherName.trim().length > 0 && marriedPlace.trim().length > 0;
-  const isfatherNameSameAsmarriedPlace =
-    hasfatherNameAndmarriedPlace && fatherName.trim() === marriedPlace.trim();
-
-  // For fatherBirthOfPlace
-
-
-
-
-
-
-
-  // For motherName
-
-
-
-
-
-
-
-
-  // For motherBirthOfPlace
-
-
-
-
-
-
-
-
-  // For marriedPlace
-
-
-
-
-
-
-
+  
   return (
     <>
       <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
@@ -302,46 +73,6 @@ export function BaptismalForm({
               placeholder="First name"
               className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
             />
-            {isNameSameAslName && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Last name cannot be the same
-              </p>
-            )}
-            {isNameSameAsbirthPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Birth Place cannot be the same
-              </p>
-            )}
-            {isNameSameAscurrentAddress && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Current Address cannot be the same
-              </p>
-            )}
-            {isNameSameAsfatherName && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Father Name cannot be the same
-              </p>
-            )}
-            {isNameSameAsfatherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Father Birth Of Place cannot be the same
-              </p>
-            )}
-            {isNameSameAsmotherName && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Mother Name cannot be the same
-              </p>
-            )}
-            {isNameSameAsmotherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Mother Birth Of Place cannot be the same
-              </p>
-            )}
-            {isNameSameAsmarriedPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Name and Married Place cannot be the same
-              </p>
-            )}
             {!isname && (
               <p className="text-danger mt-3 ml-2">First name is required</p>
             )}
@@ -357,49 +88,10 @@ export function BaptismalForm({
               placeholder="Last name"
               className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
             />
-            {islnameSameAsName && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Name cannot be the same
-              </p>
-            )}
             {!islname && (
               <p className="text-danger mt-3 ml-2">Last name is required</p>
             )}
-            {islnameSameAsbirthPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Birth Place cannot be the same
-              </p>
-            )}
-            {islnameSameAscurrentAddress && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Current Address cannot be the same
-              </p>
-            )}
-            {islnameSameAsfatherName && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Father Name cannot be the same
-              </p>
-            )}
-            {islnameSameAsfatherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Father Birth Of Place cannot be the same
-              </p>
-            )}
-            {islnameSameAsmotherName && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Mother Name cannot be the same
-              </p>
-            )}
-            {islnameSameAsmotherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Mother Birth Of Place cannot be the same
-              </p>
-            )}
-            {islnameSameAsmarriedPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Last Name and Married Place cannot be the same
-              </p>
-            )}
+            
           </div>
         </div>
         <div className="mb-4.5">
@@ -464,42 +156,7 @@ export function BaptismalForm({
           {!isbirthPlace && (
             <p className="text-danger mt-3 ml-2">Birthplace is required</p>
           )}
-          {isbirthPlaceSameAsName && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Name cannot be the same
-            </p>
-          )}
-          {isbirthPlaceSameAslname && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Last Name cannot be the same
-            </p>
-          )}
-
-          {isbirthPlaceSameAsfatherName && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Father Name cannot be the same
-            </p>
-          )}
-          {isbirthPlaceSameAsfatherBirthOfPlace && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Father Birth Of Place cannot be the same
-            </p>
-          )}
-          {isbirthPlaceSameAsmotherName && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Mother Name cannot be the same
-            </p>
-          )}
-          {isbirthPlaceSameAsmotherBirthOfPlace && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Mother Birth Of Place cannot be the same
-            </p>
-          )}
-          {isbirthPlaceSameAsmarriedPlace && (
-            <p className="text-danger mt-3 ml-2">
-              Birth Place and Married Place cannot be the same
-            </p>
-          )}
+          
         </div>
         <div className="mb-4.5">
           <label className="mb-2.5 block text-black dark:text-white">
@@ -515,61 +172,6 @@ export function BaptismalForm({
           {!iscurrentAddress && (
             <p className="text-danger mt-3 ml-2">Address is required</p>
           )}
-          {iscurrentAddressSameAsName && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Name cannot be the same
-            </p>
-          )}
-          {iscurrentAddressSameAslname && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Last Name cannot be the same
-            </p>
-          )}
-          {iscurrentAddressSameAsbirthPlace && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Birth Place cannot be the same
-            </p>
-          )}
-          {iscurrentAddressSameAsfatherName && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Father Name cannot be the same
-            </p>
-          )}
-
-          {iscurrentAddressSameAsmotherName && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Mother Name cannot be the same
-            </p>
-          )}
-
-          {iscurrentAddressSameAsmarriedPlace && (
-            <p className="text-danger mt-3 ml-2">
-              Current Address and Married Place cannot be the same
-            </p>
-          )}
-        </div>
-        <div className="mb-5.5">
-          <label className="mb-3 block text-black dark:text-white">
-            Date of Baptismal
-          </label>
-          <div className="relative">
-          <ReactDatePicker
-          className="ring-1 text-lg font-medium text-black w-full"
-          placeholderText="Select date"
-          selected={dateofBaptismal}
-          onChange={(date: Date | null) => updateFields({ dateofBaptismal: date || undefined })}
-          showTimeSelect
-                      timeIntervals={60}
-                      timeCaption="Time"
-                      timeFormat="h:mm aa"
-                      dateFormat="MMMM d, yyyy h:mm aa"
-                      minTime={new Date(0, 0, 0, 8, 0, 0)} // 6:00 AM
-                      maxTime={new Date(0, 0, 0, 10, 0, 0)} // 5:00 PM
-                      filterDate={isNotMonday}
-        />
-
-
-          </div>
         </div>
         <div className="mb-4.5">
           <label className="mb-2.5 block text-black dark:text-white">
@@ -603,46 +205,6 @@ export function BaptismalForm({
             />
             {!isfatherName && (
               <p className="text-danger mt-3 ml-2">Father name is required</p>
-            )}
-            {isfatherNameSameAsName && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Name cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAslname && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Last Name cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAsbirthPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Birth Place cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAscurrentAddress && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Father Name cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAsfatherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Father Birth Of Place cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAsmotherName && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Mother Name cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAsmotherBirthOfPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Mother Birth Of Place cannot be the same
-              </p>
-            )}
-            {isfatherNameSameAsmarriedPlace && (
-              <p className="text-danger mt-3 ml-2">
-                Father Name and Married Place cannot be the same
-              </p>
             )}
           </div>
           <div className="mb-4.5">

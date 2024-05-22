@@ -30,7 +30,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        groomResidence:{
+        groomAddress:{
             type: String,
             required: true,
         },
@@ -42,7 +42,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        groomNameofFather:{
+        groomFatherName:{
             type: String,
             required: true,
         },
@@ -50,7 +50,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        groomNameofMother:{
+        groomMotherName:{
             type: String,
             required: true,
         },
@@ -100,7 +100,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        brideResidence:{
+        brideAddress:{
             type: String,
             required: true,
         },
@@ -112,7 +112,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        brideNameofFather:{
+        brideFatherName:{
             type: String,
             required: true,
         },
@@ -120,7 +120,7 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        brideNameofMother:{
+        brideMotherName:{
             type: String,
             required: true,
         },
@@ -158,14 +158,14 @@ const weddingRecordsSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        dateOfMarriage: {
+        start: {
             type: String,
             required: true,
         },
-        timeOfMarriage: {
-            type: String,
-            required: true,
-        },
+        // timeOfMarriage: {
+        //     type: String,
+        //     required: true,
+        // },
         priestWhoMarried: {
             type: String,
             required: true,

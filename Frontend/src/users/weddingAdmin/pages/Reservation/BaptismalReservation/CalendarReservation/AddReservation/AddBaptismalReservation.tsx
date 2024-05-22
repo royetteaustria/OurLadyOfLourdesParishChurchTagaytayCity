@@ -50,103 +50,7 @@ const AddBaptismal = () => {
     const holidayString = `${month}/${day}/${year}`;
     return holidayDates.includes(holidayString) || holidayDates.includes(date.toDateString());
   };
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | null) => {
-  //   if (!e) return;
-  //   e.preventDefault();
   
-  //   if (start === null) {
-  //     toast.error("Please select a date.");
-  //     return;
-  //   }
-  
-  //   // Check if the selected date is a holiday in the Philippines
-  //   const isHolidayDate = isHoliday(start);
-  
-  //   // If it's a holiday or Sunday, prevent submission
-  //   if (isHolidayDate || start.getDay() === 0) {
-  //     toast.error("Can't set reservation on holidays or Sundays.");
-  //     return;
-  //   }
-  //   const getTimeSlots = (date: Date) => {
-  //     const dayOfWeek = date.getDay();
-    
-  //     switch (dayOfWeek) {
-  //       case 0: // Sunday
-  //         return ["11:00 AM"];
-  //       case 1: // Monday
-  //         return [];
-  //       case 2: // Tuesday
-  //       case 3: // Wednesday
-  //       case 4: // Thursday
-  //       case 5: // Friday
-  //         return ["8:00 AM", "9:00 AM", "10:00 AM"];
-  //       case 6: // Saturday
-  //         return ["8:00 AM", "9:00 AM", "10:00 AM"];
-  //       default:
-  //         return [];
-  //     }
-  // };
-  
-  //   // Check if the selected date is more than one year in advance
-  //   let endDate = new Date(start);
-  //   endDate.setFullYear(endDate.getFullYear() + 1); // Declare endDate as let instead of const
-  //   if (new Date() > endDate) {
-  //     toast.error("Reservation cannot be set more than one year in advance.");
-  //     return;
-  //   }
-  
-  //   const reservations = [];
-  
-  //   // Set end date to one year from the selected date
-  //   endDate = new Date(start);
-  //   endDate.setFullYear(endDate.getFullYear() + 1);
-    
-  //   setIsLoading(true);
-  //   // Loop through dates from start date to end date
-  //   while (start <= endDate) {
-  //     // const dayOfWeek = start.getDay();
-  //     const timeSlots = getTimeSlots(start);
-  
-  //     // Add reservations for valid days and time slots
-  //     if (timeSlots.length > 0) {
-  //       for (const timeSlot of timeSlots) {
-  //         const startTime = new Date(start);
-  //         const [hours, minutes] = timeSlot.split(":");
-  //         startTime.setHours(parseInt(hours));
-  //         startTime.setMinutes(parseInt(minutes));
-  //         const endTime = new Date(startTime.getTime() + 3600000); // Add 1 hour for end time
-  
-  //         reservations.push({
-  //           start: startTime,
-  //           end: endTime,
-  //           description: "Available",
-  //           slot: 5, // Assuming 5 slots per time slot
-  //         });
-  //       }
-  //     }
-  
-  //     // Move to the next day
-  //     start.setDate(start.getDate() + 1);
-  //   }
-  
-  //   try {
-  //     // Send the array of reservations to the backend
-  //     await Promise.all(
-  //       reservations.map(async (reservation) => {
-  //         await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
-  //       })
-  //     );
-  //     // Success toast
-  //     toast.success("Success adding reservations");
-  //     navigate("/weddingAdmin/BaptismalReservation");
-  //   } catch (err) {
-  //     console.error(err);
-  //     // Error toast
-  //     toast.error("Error adding reservations");
-  //   } finally {
-  //     // Close loading toast when done
-  //     setIsLoading(false); }
-  // };
   const getTimeSlots = (date: Date) => {
     const dayOfWeek = date.getDay();
     switch (dayOfWeek) {
@@ -208,7 +112,7 @@ const AddBaptismal = () => {
         let retries = 3;
         while (retries > 0) {
           try {
-            await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/add", reservation);
+            await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/add", reservation);
             return;
           } catch (err) {
             retries -= 1;
@@ -268,19 +172,12 @@ const AddBaptismal = () => {
                       selected={start}
                       minDate={new Date(new Date().getTime() + 86400000)}
                       onChange={(date: Date | null) => setStart(date)}
-                      // showTimeSelect
-                      // timeIntervals={60}
-                      // timeCaption="Time"
-                      // timeFormat="h:mm aa"
                       dateFormat="MMMM d, yyyy"
-                      // minTime={new Date(0, 0, 0, 8, 0, 0)} // 6:00 AM
-                      // maxTime={new Date(0, 0, 0, 10, 0, 0)} // 5:00 PM
                       className="form-control bg-transparent"
                       id="end"
                       filterDate={isNotMonday}
                     />
                   </div>
-
                   <div className="mb-5.5 mt-2 hidden">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                       Select date and Time
@@ -295,12 +192,7 @@ const AddBaptismal = () => {
                           new Date().getDate()
                         )
                       }
-                      // minDate={start}
                       onChange={(date: Date | null) => setEnd(date)} // Change to handle Date | null
-                      // showTimeSelect
-                      // minTime={new Date(0, 0, 0, 6, 0, 0)} // 6:00 AM
-                      // maxTime={new Date(0, 0, 0, 17, 0, 0)}
-                      // timeFormat="HH:mm"
                       dateFormat="MMMM d, yyyy"
                       className="form-control bg-transparent"
                       id="start"
@@ -322,25 +214,7 @@ const AddBaptismal = () => {
                         <option value="Not Available">Not Availble</option>
                       </select>
                     </div>
-                    {/* <div className="mb-5.5 mt-2">
-                      <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                        Input Slot
-                      </label>
-                      <div className="relative bg-transparent dark:bg-form-input">
-                      <select
-                        value={slot}
-                        onChange={(e) => setSlot(parseInt(e.target.value))}
-                        className="relative  w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus-border-primary"
-                      >
-                        <option value={0}>0</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                      </select>
-                    </div>
-                    </div> */}
+                    
                   </div>
                   <span className="flex justify-end w-full">
                     <button

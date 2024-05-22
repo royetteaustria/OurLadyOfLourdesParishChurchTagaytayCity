@@ -123,7 +123,7 @@ const ChartOne: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/weddingRecordsList'
+          'https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/weddingRecordsList'
         );
         console.log(response.data); // Check the response data
         setWeddingData(response.data);
@@ -159,13 +159,13 @@ const ChartOne: React.FC = () => {
     }
 
     const filteredData = selectedYear
-      ? weddingData.filter((data) => new Date(data.dateOfMarriage).getFullYear() === selectedYear)
+      ? weddingData.filter((data) => new Date(data.start).getFullYear() === selectedYear)
       : weddingData;
 
     const monthCounts = Array.from({ length: 12 }, () => 0);
 
     filteredData.forEach((data) => {
-      const index = new Date(data.dateOfMarriage).getMonth();
+      const index = new Date(data.start).getMonth();
       monthCounts[index]++;
     });
 
@@ -202,7 +202,7 @@ const ChartOne: React.FC = () => {
                   value={selectedYear || ""}
                   onChange={handleYearChange}
                 >
-                  {[...new Set(weddingData.map((data) => new Date(data.dateOfMarriage).getFullYear()))]
+                  {[...new Set(weddingData.map((data) => new Date(data.start).getFullYear()))]
                     .sort((a, b) => a - b)
                     .map((year) => (
                       <option key={year} value={year}>

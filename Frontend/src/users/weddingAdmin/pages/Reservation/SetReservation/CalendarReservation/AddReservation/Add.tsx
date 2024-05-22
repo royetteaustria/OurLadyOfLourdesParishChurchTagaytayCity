@@ -121,7 +121,7 @@ const getFirstFridayOfMonth = (date : Date) => {
       let retries = 3;
       while (retries > 0) {
         try {
-          await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/add", reservation);
+          await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/add", reservation);
           return;
         } catch (err) {
           retries -= 1;
@@ -227,7 +227,7 @@ const getFirstFridayOfMonth = (date : Date) => {
   //     // Send the array of reservations to the backend
   //     await Promise.all(
   //       reservations.map(async (reservation) => {
-  //         await axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation/add", reservation);
+  //         await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation/add", reservation);
   //       })
   //     );
   //     // Success toast

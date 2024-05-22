@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const ClientBaptismalSchema = mongoose.Schema(
   {
-    dateofBaptismal: {
+    start: {
       type: Date,
       required: true,
     },

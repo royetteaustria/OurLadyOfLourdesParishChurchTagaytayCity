@@ -223,7 +223,7 @@ const UpdateWedding = async(req, res) => {
 
 export {
     CreateWeddingInquiries,
-  rejectweddingInquiries,
+    rejectweddingInquiries,
     listWeddingInquiries,
     SingleInfo,
     singleSubmitForm,

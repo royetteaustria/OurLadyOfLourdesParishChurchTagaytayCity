@@ -1,21 +1,20 @@
 type GroomUserData = {
   groomName: string;
+  groomMiddleName: string;
+  groomLastName: string;
   groomBirth: string;
   groomPlaceofBirth: string;
- 
   groomCitezenship: string;
-  groomResidence: string;
+  groomAddress: string;
   groomReligion: string;
   groomCivilStatus: string;
-  groomNameofFather: string;
+  groomFatherName: string;
   groomFatherCitezenship: string;
-  groomNameofMother: string;
+  groomMotherName: string;
   groomMotherCitezenship: string;
   groomNameOfPersonWhoGaveConcent: string;
   groomNameOfPersonWhoGaveConcentRelationship: string;
   groomPersonWhoGaveConcentResidence: string;
-  groomMiddleName:string;
-  groomLastName:string;
 };
 type GroomUserFormProps = GroomUserData & {
   updateFields: (fields: Partial<GroomUserData>) => void;
@@ -23,22 +22,21 @@ type GroomUserFormProps = GroomUserData & {
 
 export function GroomForm({
   groomName,
+  groomMiddleName,
+  groomLastName,
   groomBirth,
   groomPlaceofBirth,
-  
   groomCitezenship,
-  groomResidence,
+  groomAddress,
   groomReligion,
   groomCivilStatus,
-  groomNameofFather,
+  groomFatherName,
   groomFatherCitezenship,
-  groomNameofMother,
+  groomMotherName,
   groomMotherCitezenship,
   groomNameOfPersonWhoGaveConcent,
   groomNameOfPersonWhoGaveConcentRelationship,
   groomPersonWhoGaveConcentResidence,
-  groomMiddleName,
-  groomLastName,
   updateFields,
 }: GroomUserFormProps) {
   return (
@@ -62,6 +60,7 @@ export function GroomForm({
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Name"
                       value={groomName}
                       onChange={(e) =>
@@ -77,6 +76,7 @@ export function GroomForm({
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Middle name"
                       value={groomMiddleName}
                       onChange={(e) =>
@@ -91,6 +91,7 @@ export function GroomForm({
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
+                      disabled
                       placeholder="Last name"
                       value={groomLastName}
                       onChange={(e) =>
@@ -169,11 +170,12 @@ export function GroomForm({
                     <div className="relative">
                       <input
                         type="text"
+                        disabled
                         placeholder="Residence"
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                        value={groomResidence}
+                        value={groomAddress}
                         onChange={(e) =>
-                          updateFields({ groomResidence: e.target.value })
+                          updateFields({ groomAddress: e.target.value })
                         }
                         required
                       />
@@ -195,19 +197,29 @@ export function GroomForm({
                     />
                   </div>
                   <div className="mb-5.5 mt-2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                      Civil Status
-                    </label>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="text"
-                      placeholder="Civil Status"
-                      value={groomCivilStatus}
-                      onChange={(e) =>
-                        updateFields({ groomCivilStatus: e.target.value })
-                      }
-                      required
-                    />
+                  <div className="relative z-20 bg-transparent dark:bg-form-input">
+                      <select
+                        value={groomCivilStatus}
+                        onChange={(e) =>
+                          updateFields({ groomCivilStatus: e.target.value })
+                        }
+                        className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus-border-primary active-border-primary dark-border-form-strokedark dark-bg-form-input dark-focus-border-primary"
+                      >
+                        <option value="Single">
+                          Single
+                        </option>
+                        <option value="Married">
+                          Married
+                        </option>
+                        <option value="Widowed">
+                          Widowed
+                        </option>
+                        <option value="Legally Separated">
+                          Legally Separated
+                        </option>
+                      </select>
+                      
+                    </div>
                   </div>
                   <div className="mb-5.5 mt-2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
@@ -217,9 +229,9 @@ export function GroomForm({
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
                       placeholder="Name"
-                      value={groomNameofFather}
+                      value={groomFatherName}
                       onChange={(e) =>
-                        updateFields({ groomNameofFather: e.target.value })
+                        updateFields({ groomFatherName: e.target.value })
                       }
                       required
                     />
@@ -247,9 +259,9 @@ export function GroomForm({
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="text"
                       placeholder="Name"
-                      value={groomNameofMother}
+                      value={groomMotherName}
                       onChange={(e) =>
-                        updateFields({ groomNameofMother: e.target.value })
+                        updateFields({ groomMotherName: e.target.value })
                       }
                       required
                     />

@@ -14,7 +14,8 @@ const BaptismalCalendar = new mongoose.Schema({
         type: String, 
     },
     slot: { 
-        type: Number, 
+        type: Number,
+        default: 5 
     },
     
 })

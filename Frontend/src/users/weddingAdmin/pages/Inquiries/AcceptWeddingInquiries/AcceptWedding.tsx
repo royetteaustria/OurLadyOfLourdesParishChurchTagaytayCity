@@ -71,14 +71,14 @@ const INITIAL_DATA: FormData = {
   bridealreadyBaptist: "",
   bridealreadyKumpil: "",
 
-  start: '',
+  start: "",
 };
 const AcceptWedding = () => {
   const [data, setData] = useState(INITIAL_DATA);
   const [GroomName, setGroomName] = useState(data.groomName);
   const [BrideName, setBrideName] = useState(data.brideName);
-  const [BrideLastName, setBrideLastName] = useState(data.brideLastName)
-  const [GroomLastName, setGroomLastName] = useState(data.groomLastName)
+  const [BrideLastName, setBrideLastName] = useState(data.brideLastName);
+  const [GroomLastName, setGroomLastName] = useState(data.groomLastName);
   const [DateOfWedding, setDateOfWedding] = useState(data.start);
   // const [Rites, setRites] = useState('');
   // const [GuestPriest, setGuestPriest] = useState('');
@@ -99,34 +99,34 @@ const AcceptWedding = () => {
       <BrideForm {...data} updateFields={updateFields} />,
     ]);
 
-    useEffect(() => {
-      axios
-        .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/` + id)
-        .then((res) => {
-          console.log(res);
-          setData((prev) => ({
-            ...prev,
-            email: res.data.email,
-            phoneNumber: res.data.phoneNumber,
-            groomName: res.data.groomName,
-            groomAge: res.data.groomAge,
-            groomLastName: res.data.groomLastName,
-            groomMiddleName: res.data.groomMiddleName,
-            Brideemail: res.data.Brideemail,
-            BridephoneNumber: res.data.BridephoneNumber,
-            brideName: res.data.brideName,
-            brideAge: res.data.brideAge,
-            brideLastName: res.data.brideLastName,
-            brideMiddleName: res.data.brideMiddleName,
-            start: res.data.start,
-          }));
-          setGroomName(res.data.groomName); // Update GroomName state
-          setBrideName(res.data.brideName); // Update BrideName state
-          setGroomLastName(res.data.groomLastName); // Update GroomName state
-          setBrideLastName(res.data.brideLastName); // Update BrideName state
-        })
-        .catch((err) => console.log(err));
-    }, [id]);
+  useEffect(() => {
+    axios
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/Info/` + id)
+      .then((res) => {
+        console.log(res);
+        setData((prev) => ({
+          ...prev,
+          email: res.data.email,
+          phoneNumber: res.data.phoneNumber,
+          groomName: res.data.groomName,
+          groomAge: res.data.groomAge,
+          groomLastName: res.data.groomLastName,
+          groomMiddleName: res.data.groomMiddleName,
+          Brideemail: res.data.Brideemail,
+          BridephoneNumber: res.data.BridephoneNumber,
+          brideName: res.data.brideName,
+          brideAge: res.data.brideAge,
+          brideLastName: res.data.brideLastName,
+          brideMiddleName: res.data.brideMiddleName,
+          start: res.data.start,
+        }));
+        setGroomName(res.data.groomName); // Update GroomName state
+        setBrideName(res.data.brideName); // Update BrideName state
+        setGroomLastName(res.data.groomLastName); // Update GroomName state
+        setBrideLastName(res.data.brideLastName); // Update BrideName state
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -136,17 +136,16 @@ const AcceptWedding = () => {
       BrideName: BrideName,
       DateOfWedding: data.start,
       GroomLastName: GroomLastName,
-      BrideLastName: BrideLastName
+      BrideLastName: BrideLastName,
     };
     try {
-     axios.post("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/create", reportData);
+      await axios.post("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/create", reportData);
       const res = await axios.post(
-        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/accept",
+        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/accept",
         recordData
       );
-      // await axios.put(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/update/${data.start}`)
       await axios.delete(
-        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/delete/${id}`
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/delete/${id}`
       );
       console.log(res);
       toast.success("Successfully Accept Inquiries");
@@ -174,18 +173,9 @@ const AcceptWedding = () => {
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           {step}
           <form onSubmit={onSubmit}>
-            {/* <input
-              type="text"
-              name="GroomName"
-              required
-              value={data.groomName}
-              // onChange={(e) => setGroomName(e.target.value)}
-              placeholder="Enter Groom name"
-              className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-            /> */}
             <input
               type="text"
-              name="GroomName"
+              name="groomName"
               required
               value={GroomName}
               onChange={(e) => setGroomName(e.target.value)}
@@ -194,38 +184,38 @@ const AcceptWedding = () => {
             />
             <input
               type="text"
-              name="GroomName"
+              name="brideName"
               required
               value={BrideName}
               onChange={(e) => setBrideName(e.target.value)}
-              placeholder="Enter Groom name"
+              placeholder="Enter Bride name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
             <input
               type="text"
-              name="Groom Last name"
+              name="groomLastName"
               required
               value={GroomLastName}
               onChange={(e) => setGroomLastName(e.target.value)}
-              placeholder="Enter Groom name"
+              placeholder="Enter Groom last name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
             <input
               type="text"
-              name="Bride Lastname"
+              name="brideLastName"
               required
               value={BrideLastName}
               onChange={(e) => setBrideLastName(e.target.value)}
-              placeholder="Enter Groom name"
+              placeholder="Enter Bride last name"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
             <input
               type="date"
-              name="DateOfwedding"
+              name="dateOfWedding"
               required
               value={DateOfWedding.toString()}
               onChange={(e) => setDateOfWedding(e.target.value)}
-              placeholder="Enter Groom name"
+              placeholder="Enter Wedding date"
               className="hidden w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
             />
 

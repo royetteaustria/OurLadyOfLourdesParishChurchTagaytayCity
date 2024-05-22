@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type OtherInfo = {
-  dateofBaptismal: string;
+  start: string;
   priestWhoBaptized: string;
   godMother: string[];
   godFather: string[];
@@ -12,7 +12,7 @@ type OtherInfoProps = OtherInfo & {
 };
 
 export function OtherRecord({
-  dateofBaptismal,
+  start,
   priestWhoBaptized,
   godMother,
   godFather,
@@ -21,6 +21,24 @@ export function OtherRecord({
   const [newGodmother, setNewGodmother] = useState('');
   const [newGodfather, setNewGodfather] = useState('');
 
+  function formatDateTime(date: Date | string) {
+        if (typeof date === 'string') {
+          date = new Date(date);
+        }
+    
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"];
+    
+        const day = date.getDate();
+        const month = monthNames[date.getMonth()];
+        const year = date.getFullYear();
+    
+        const hours = date.getHours() % 12 || 12; // Get 12-hour format
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+    
+        return `${month} ${day}, ${year} ${hours}:${minutes} ${amPm}`;
+      }
   const addGodmother = () => {
     if (newGodmother.trim() !== "") {
       updateFields({
@@ -74,42 +92,31 @@ export function OtherRecord({
                     </label>
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="date"
-                      placeholder="Date of birth"
-                      value={dateofBaptismal}
+                      type="text"
+                      disabled
+                      placeholder="Date of baptismal"
+                      value={formatDateTime(start)}
                       required
                       onChange={(e) =>
-                        updateFields({ dateofBaptismal: e.target.value })
+                        updateFields({ start: e.target.value })
                       }
                     />
                   </div>
                   <div className="mb-4.5">
                     <label className="mb-2.5 block text-black dark:text-white">
-                      Priest who Baptized
+                      Priest who has Baptized
                     </label>
                     <div className="relative z-20 bg-transparent dark:bg-form-input">
-                      <select
-                        value={priestWhoBaptized}
-                        onChange={(e) =>
-                          updateFields({
-                            priestWhoBaptized: e.target.value,
-                          })
-                        }
-                        className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus-border-primary active-border-primary dark-border-form-strokedark dark-bg-form-input dark-focus-border-primary"
-                      >
-                        <option value="Rev. Fr. Arnold M. Montella">
-                          Rev. Fr. Arnold M. Montella
-                        </option>
-                        <option value="Rev. Fr. Eugenio Juanito P. Lopez">
-                          Rev. Fr. Eugenio Juanito P. Lopez
-                        </option>
-                        <option value="Rev. Fr. Rolando B. Datu">
-                          Rev. Fr. Rolando B. Datu
-                        </option>
-                        <option value="Rev. Fr. Zacarias M Parra">
-                          Rev. Fr. Zacarias M Parra
-                        </option>
-                      </select>
+                    <div className="mb-5.5 mt-2">
+                    <input
+                      className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                      type="text"
+                      placeholder="Name"
+                      value={priestWhoBaptized}
+                      required
+                      onChange={e => updateFields({ priestWhoBaptized: e.target.value })}
+                    />
+                  </div>
                       {/* <span className="absolute top-1/2 right-4 z-30 -translate-y-1/2">
                         <RiArrowDropDownLine size={30} />
                       </span> */}

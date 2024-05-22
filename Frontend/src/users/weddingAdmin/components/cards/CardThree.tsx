@@ -7,7 +7,7 @@ const CardThree = () => {
 
   useEffect(() => {
     // Fetch data from API using Axios
-    axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingRecords/weddingRecordsList`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingRecords/weddingRecordsList`)
       .then((response) => {
         // Assuming the API response is an array of baptismal records
         const { data } = response;

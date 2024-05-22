@@ -126,7 +126,7 @@ const ChartOne: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalRecords/bapstismalRecordList`
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalRecords/bapstismalRecordList`
         );
         console.log(response.data); // Check the response data
         setBaptismalData(response.data);
@@ -158,13 +158,13 @@ const ChartOne: React.FC = () => {
     }
 
     const filteredData = selectedYear
-    ? BaptismalData.filter((data) => new Date(data.dateofBaptismal).getFullYear() === selectedYear)
+    ? BaptismalData.filter((data) => new Date(data.start).getFullYear() === selectedYear)
     : BaptismalData;
 
   const monthCounts = Array.from({ length: 12 }, () => 0);
 
   filteredData.forEach((data) => {
-    const index = new Date(data.dateofBaptismal).getMonth();
+    const index = new Date(data.start).getMonth();
     monthCounts[index]++;
   });
 
@@ -201,7 +201,7 @@ const ChartOne: React.FC = () => {
                   value={selectedYear || ""}
                   onChange={handleYearChange}
                 >
-                  {[...new Set(BaptismalData.map((data) => new Date(data.dateofBaptismal).getFullYear()))]
+                  {[...new Set(BaptismalData.map((data) => new Date(data.start).getFullYear()))]
                     .sort((a, b) => a - b)
                     .map((year) => (
                       <option key={year} value={year}>

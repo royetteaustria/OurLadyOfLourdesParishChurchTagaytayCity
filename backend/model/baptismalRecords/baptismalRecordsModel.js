@@ -2,13 +2,16 @@ import mongoose from "mongoose";
 
 const baptismalrecordsSchema = mongoose.Schema (
     {
-        dateofBaptismal: {
-        type: String,
+        start: {
+        type: Date,
         required: true,
         },
         name: {
         type: String,
         required: true,
+        },
+        lname: {
+        type: String,
         },
         dateofBirth: {
         type: String,

@@ -53,7 +53,8 @@ const components = {
             : props.event.description === "Appointed"
             ? "text-white bg-primary bg-opacity-80 h-full "
             : props.event.description === 'Not available' ? "text-white bg-danger bg-opacity-80 h-full "
-            : "text-black text-opacity-70 bg-[#f9d9b1] h-full "
+            : props.event.description === 'Pending' ? "text-black text-opacity-70 bg-[#f9d9b1] h-full "
+            : ''
         }
         onClick={() => props.onClick(props.event)}
       >
@@ -75,7 +76,7 @@ const ControlCalendar: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar")
+      .get("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar")
       .then((response) => {
         const sortedEvents = response.data.sort((a: any, b: any) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();

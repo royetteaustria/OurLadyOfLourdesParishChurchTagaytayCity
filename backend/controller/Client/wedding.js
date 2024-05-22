@@ -1,6 +1,7 @@
+import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
 import weddingClient from "../../model/client/wedding.js";
 import CalendarForReservation from "../../model/manageReservation/CalendarReservation.js";
-import CalendarBaptismal from "../../model/BaptismalCalendar/Calendar.js";
+import Report from "../../model/report/Report.js";
 
 const acceptWedidngClient = async(req, res) => {
   try {
@@ -17,22 +18,10 @@ const acceptWedidngClient = async(req, res) => {
     if (!updatedReservationDocument) {
       return res.status(404).json({ message: 'Reservation document not found' });
     }
-
-    // Update the CalendarBaptismal collection
-    const updatedBaptismalDocument = await CalendarBaptismal.findOneAndUpdate(
-      { start: wedDate },
-      { $set: { description: 'Not available', slot: 0 } },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedBaptismalDocument) {
-      return res.status(404).json({ message: 'Baptismal document not found' });
-    }
-
-    // Create the wedding client
+    
     const wedding_client = await weddingClient.create(req.body);
 
-    res.json({ message: "Successfully accepted", wedding_client, updatedReservationDocument, updatedBaptismalDocument });
+    res.json({ message: "Successfully accepted", wedding_client, updatedReservationDocument });
   } catch (err) {
     res.status(404).json({ message: "Failed to accept", error: err.message });
   }
@@ -56,6 +45,7 @@ const listWeddingClient = (req, res) => {
 
 const updateWeddingClient = async (req, res) => {
   const id = req.params.id;
+  
   try {
     const updatedClient = await weddingClient.findOneAndUpdate(
       { _id: id },
@@ -71,36 +61,51 @@ const updateWeddingClient = async (req, res) => {
       { new: true }
     );
 
+    let updatedReservationDocument;
+    let updatedBaptismalDocument;
+    let deletedReportDocument;
+
     if (updatedClient.weddingStatus === "Cancel") {
       const wedDate = updatedClient.start;
+      const weddingExists = await CalendarForReservation.findOne({ start: wedDate });
+      const baptismalExists = await CalendarBaptismal.findOne({ start: wedDate });
+      
 
-      // Update the CalendarReservation collection
-      const updatedReservationDocument = await CalendarForReservation.findOneAndUpdate(
-        { start: wedDate },
-        { $set: { description: "Available" } },
-        { new: true, runValidators: true }
-      );
+      if (weddingExists) {
+        updatedReservationDocument = await CalendarForReservation.findOneAndUpdate(
+          { start: wedDate },
+          { $set: { description: "Available" } },
+          { new: true, runValidators: true }
+        );
+      }
 
-      // Update the CalendarBaptismal collection
-      const updatedBaptismalDocument = await CalendarBaptismal.findOneAndUpdate(
-        { start: wedDate },
-        { $set: { description: "Available", slot: 5 } },
-        { new: true, runValidators: true }
-      );
+      if (baptismalExists) {
+        updatedBaptismalDocument = await CalendarBaptismal.findOneAndUpdate(
+          { start: wedDate },
+          { $set: { description: "Available", slot: 5 } },
+          { new: true, runValidators: true }
+        );
+      }
+      // deletedReportDocument = await Report.findOneAndDelete({ DateOfWedding: wedDate });
 
-      res.json({
-        message: "Successfully updated",
-        updatedClient,
-        updatedReservationDocument,
-        updatedBaptismalDocument,
-      });
-    } else {
-      res.json({ message: "Successfully updated", updatedClient });
+      // if(!deletedReportDocument) {
+      //   return res.status(404).json({ message: 'Failed to delete report' });
+      // }
     }
+
+    res.json({
+      message: "Successfully updated",
+      updatedClient,
+      updatedReservationDocument,
+      updatedBaptismalDocument,
+      deletedReportDocument,
+    });
   } catch (err) {
     res.status(404).json({ message: "Failed to update client", error: err.message });
   }
 };
+
+
 
 const getSingleClient = (req, res) => {
   const id = req.params.id;
@@ -110,28 +115,6 @@ const getSingleClient = (req, res) => {
     .catch((err) => res.json(err));
 };
 
-// const updatedToAppointment = async (req, res) => {
-//   try {
-//     const start = req.params.start;
-//     const newStatus = "Appointed";
-
-//     const document = await CalendarForReservation.findOneAndUpdate(
-//       { start },
-//       { $set: { description: newStatus } },
-//       {
-//         new: true,
-//         runValidators: true,
-//       }
-//     );
-//     if (!document) {
-//       return res.status(404).json({ message: "Document not found" });
-//     }
-//     res.json(document);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-// };
 
 export {
   acceptWedidngClient,

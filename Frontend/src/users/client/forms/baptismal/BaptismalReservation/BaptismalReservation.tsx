@@ -1,5 +1,5 @@
 import Breadcrumb from '../../../../weddingAdmin/components/breadcrumbs/Breadcrum';
-import { AdvancedCalendar } from './CalendarReservation/components';
+
 
 const BaptismalReservation = () => {
   
@@ -25,7 +25,7 @@ const BaptismalReservation = () => {
         </div>
       </div>
       <div style={{ height: "95vh" }} className=" p-4 h-full">
-        <AdvancedCalendar/>
+        
       </div>
     </div>
     

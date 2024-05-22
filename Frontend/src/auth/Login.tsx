@@ -17,7 +17,7 @@ const Login = () => {
     
     try {
       const { data } = await axios.post(
-        "https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/UserRoutes/login",
+        "https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/login",
         credentials
       );
       console.log("Login API Response:", data);
@@ -45,7 +45,7 @@ const Login = () => {
     }
   };
 
-  //'http://localhost:5000/api/UserRoutes/login'
+  //'https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/UserRoutes/login'
   return (
     <>
       <section className="bg-gray-50 dark:bg-black flex items-center justify-center h-screen">

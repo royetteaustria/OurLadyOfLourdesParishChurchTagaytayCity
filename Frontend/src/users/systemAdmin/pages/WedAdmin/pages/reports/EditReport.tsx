@@ -16,7 +16,7 @@ const EditReport = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/ReportModule/${id}`)
+    axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/${id}`)
     .then(res => {
         console.log(res)
         setGroomName(res.data.GroomName)
@@ -41,7 +41,7 @@ const EditReport = () => {
       Rites: Rites,
       GuestPriest: GuestPriest
     };
-    axios.put('http://localhost:5000/api/ReportModule/updateReports', reportData)
+    axios.put('https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/updateReports', reportData)
       .then(res => {
         console.log(res)
         toast.success('Successfully edit report');

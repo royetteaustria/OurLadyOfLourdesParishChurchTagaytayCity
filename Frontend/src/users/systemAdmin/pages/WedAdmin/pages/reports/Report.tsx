@@ -39,7 +39,7 @@ const Report = () => {
 
     useEffect(() => {
       async function getReports() {
-        const response = await axios.get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/listofReport`)
+        const response = await axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/listofReport`)
         setData(response.data);
         setAllData(response.data)
       }
@@ -105,7 +105,7 @@ const Report = () => {
     
     // async function deleteReport(id:string) {
     //   try {
-    //     await axios.delete(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/ReportModule/deleteReports/${id}`);
+    //     await axios.delete(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/ReportModule/deleteReports/${id}`);
     //     const newData = data.filter((el) => el._id !== id);
     //     setData(newData);
     //     toast.success(`Delete Successfully`);

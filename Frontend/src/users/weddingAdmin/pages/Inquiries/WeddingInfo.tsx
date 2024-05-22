@@ -45,7 +45,7 @@ const WeddingInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/weddingInquiries/Info/` + id)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/weddingInquiries/Info/` + id)
       .then((res) => {
         console.log(res);
         setData((prev) => ({

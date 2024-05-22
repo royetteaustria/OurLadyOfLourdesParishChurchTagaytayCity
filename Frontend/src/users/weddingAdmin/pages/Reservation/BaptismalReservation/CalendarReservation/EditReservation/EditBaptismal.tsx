@@ -15,7 +15,7 @@ const EditBaptismal = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/${id}`)
+      .get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/${id}`)
       .then((res) => {
         const eventData = res.data; // Assuming res.data is an object containing the event data
         setStart(new Date(eventData.start));
@@ -41,7 +41,7 @@ const EditBaptismal = () => {
 
     try {
       const res = await axios.put(
-        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/BaptismalCalendar/` + id,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/BaptismalCalendar/` + id,
         editReservation
       );
       console.log(res);
@@ -143,6 +143,7 @@ const EditBaptismal = () => {
                         onChange={(e) => setSlot(parseInt(e.target.value))}
                         className="relative  w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus-border-primary"
                       >
+                        <option value='0'>0</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>

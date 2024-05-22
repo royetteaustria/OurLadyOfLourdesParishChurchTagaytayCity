@@ -15,25 +15,25 @@ import "slick-carousel/slick/slick-theme.css";
 import image1 from "../../assets/Baptise1.jpg";
 import image2 from "../../assets/Baptise2.jpg";
 type FormData = {
-  dateofBaptismal: Date | null;
-  name: string;
-  lname: string;
-  email: string;
-  dateofBirth: string;
-  birthPlace: string;
-  cellphoneNumber: string;
-  currentAddress: string;
-  fatherName: string;
-  fatherBirthOfPlace: string;
-  motherName: string;
-  motherBirthOfPlace: string;
-  marriedPlace: string;
+  start: Date | string;
+  name: string
+  lname: string
+  email: string
+  dateofBirth: string
+  birthPlace: string
+  cellphoneNumber: string
+  currentAddress: string
+  fatherName: string
+  fatherBirthOfPlace: string
+  motherName: string
+  motherBirthOfPlace: string
+  marriedPlace: string
+  baptismalType: string
   isCheckboxChecked: Boolean;
-  baptismalType: string;
 };
 
 const reserve: FormData = {
-  dateofBaptismal: null,
+  start: '',
   name: "",
   lname: "",
   email: "",
@@ -77,7 +77,7 @@ const Baptismal = () => {
         setIsCheckboxChecked={setIsCheckboxChecked}
         updateFields={updateFields}
       />,
-      <AdvancedCalendar />,
+      <AdvancedCalendar {...data} updateFields={updateFields}/>,
       <BaptismalForm {...data} updateFields={updateFields} />,
       <ReviewReservation data={data} />,
     ]);
@@ -88,9 +88,11 @@ const Baptismal = () => {
 
     try {
       const res = await axios.post(
-        `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/baptismalInquiries/createInquiries`,
+        `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/createInquiries`,
         recordData
       );
+      // await axios.put(
+      //   `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/baptismalInquiries/updateSlot/${data.start}`,)
       console.log(res);
       toast.success("Successfully Inquire");
       setFormSubmitted(true);

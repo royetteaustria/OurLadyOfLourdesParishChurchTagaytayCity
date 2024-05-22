@@ -27,15 +27,16 @@ const components = {
   event: (props: any) => {
     return (
       <div
-        className={
-          props.event.description === "Available"
-            ? "text-black text-opacity-70 bg-[#b6f4b2] h-full bg-opacity-90"
-            : props.event.description === "Appointed"
-            ? "text-white bg-primary bg-opacity-80 h-full "
-            : "text-black text-opacity-70 bg-[#f9d9b1] h-full "
-        }
-        onClick={() => props.onClick(props.event)}
-      >
+      className={
+        props.event.description === "Available"
+          ? "text-black text-opacity-70 bg-[#b6f4b2] h-full bg-opacity-90"
+          : props.event.description === "Appointed"
+          ? "text-white bg-primary bg-opacity-80 h-full "
+          : props.event.description === 'Not available' ? "text-white bg-danger bg-opacity-80 h-full "
+          : "text-black text-opacity-70 bg-[#f9d9b1] h-full "
+      }
+      onClick={() => props.onClick(props.event)}
+    >
         {formatDateTime(props.event.start)}
       </div>
     );
@@ -49,7 +50,7 @@ const ControlCalendar: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/CalendarReservation")
+      .get("https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/CalendarReservation")
       .then((response) => {
         const sortedEvents = response.data.sort((a: any, b: any) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();

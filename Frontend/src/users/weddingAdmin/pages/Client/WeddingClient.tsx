@@ -21,6 +21,7 @@ type WeddingClient = {
 const WeddingClient = () => {
   const [data, setData] = useState<WeddingClient[]>([]);
   const [filterTextValue, updateFilterText] = useState("All");
+  
   const [search, setSearch] = useState("");
   const FilterClient = data.filter((client) => {
     if (filterTextValue === "COMPLETE") {
@@ -38,7 +39,7 @@ const WeddingClient = () => {
     async function getInquiries() {
       try {
         const response = await axios.get(
-          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/WeddingClient/listOfClient`
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/WeddingClient/listOfClient`
         );
         const inquiries = response.data;
         // Check if inquiries is an array before updating the state

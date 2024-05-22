@@ -36,7 +36,7 @@ const BaptismalRequirementsList = () => {
     async function getInquiries() {
       try {
         const response = await axios.get(
-          `https://ourladyoflourdes-parishchurch-tagaytay-city-server.vercel.app/api/Baptismalreq`
+          `https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//api/Baptismalreq`
         );
         const inquiries = response.data;
         // Check if inquiries is an array before updating the state
