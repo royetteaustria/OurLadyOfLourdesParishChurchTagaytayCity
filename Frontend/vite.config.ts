@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5101,
     proxy: {
       'api' : {
-        target:  'https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app//',
+        target:  'http://localhost:5000',
         changeOrigin: true,
       }
     }

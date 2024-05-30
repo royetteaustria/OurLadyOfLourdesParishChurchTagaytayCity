@@ -65,7 +65,7 @@ const DropdownUser = () => {
             {userName}
           </span> */}
           
-          <span className="block text-sm text-black dark:text-white">Event Administrator</span>
+          <span className="block text-sm text-black dark:text-white">System Administrator</span>
         </span>
 
         

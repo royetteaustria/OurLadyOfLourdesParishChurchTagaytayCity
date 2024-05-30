@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/breadcrumbs/Breadcrum"
 import { useEffect, useState, FormEvent } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast"
-
+import useFormatDateTime from "../../../../hooks/useFormatDateTime"
 type accept = {
   start: string,
   name: string,
@@ -41,7 +41,7 @@ const InfoBaptismal = () => {
   const {id} = useParams()
   const [data, setData] = useState(Data)
   const navigate = useNavigate()
-
+  const dateFormat = useFormatDateTime()
   useEffect(() => {
      axios.get(`https://our-lady-of-lourdes-parish-church-tagaytay-city-backend.vercel.app/api/baptismalInquiries/singleInquiries/` +id)
     .then(res => {
@@ -65,24 +65,24 @@ const InfoBaptismal = () => {
       }))
     })
   },[id])
-  function formatDateTime(date: Date | string) {
-    if (typeof date === 'string') {
-      date = new Date(date);
-    }
+  // function formatDateTime(date: Date | string) {
+  //   if (typeof date === 'string') {
+  //     date = new Date(date);
+  //   }
 
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"];
+  //   const monthNames = ["January", "February", "March", "April", "May", "June",
+  //     "July", "August", "September", "October", "November", "December"];
 
-    const day = date.getDate();
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
+  //   const day = date.getDate();
+  //   const month = monthNames[date.getMonth()];
+  //   const year = date.getFullYear();
 
-    const hours = date.getHours() % 12 || 12; // Get 12-hour format
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
+  //   const hours = date.getHours() % 12 || 12; // Get 12-hour format
+  //   const minutes = date.getMinutes().toString().padStart(2, '0');
+  //   const amPm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-    return `${month} ${day} ${year} ${hours}:${minutes} ${amPm}`;
-  }
+  //   return `${month} ${day} ${year} ${hours}:${minutes} ${amPm}`;
+  // }
 
   function formatDate(date: Date | string) {
     if (typeof date === 'string') {
@@ -127,7 +127,7 @@ const InfoBaptismal = () => {
           <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">Date of baptismal</dt>
-              <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{formatDateTime(data.start)}</dd>
+              <dd className="lg:ml-48 md:ml-48 sm:ml-48 mt-1 text-sm leading-6 dark:text-bodydark1 text-black sm:col-span-2 sm:mt-0">{dateFormat(data.start)}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm dark:text-bodydark1 font-semibold leading-6 text-black">Type of baptismal</dt>

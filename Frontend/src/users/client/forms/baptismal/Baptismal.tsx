@@ -255,6 +255,7 @@ const Baptismal = () => {
                       onClick={isLastStep ? handleSubmit : next}
                       disabled={
                         (isFirstStep && !isCheckboxChecked) ||
+                        (currentStepIndex === 1 && (data.start === '')) ||
                         (currentStepIndex === 2 &&
                           (data.baptismalType === "" ||
                             data.name === "" ||
